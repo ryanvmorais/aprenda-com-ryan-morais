@@ -66,6 +66,7 @@ Para garantir que o jogo funcione corretamente, certifique-se de ter os seguinte
 Para facilitar o acesso de quem está começando, adicionei scripts de inicialização automática. Basta baixar o projeto e:
 * **No Windows:** Dê dois cliques no arquivo `iniciar_calculadora.bat`.
 * **No Linux/macOS:** Execute o arquivo `iniciar_calculadora.sh` no terminal.
+
 *Esses scripts verificam automaticamente se você tem o Python instalado antes de iniciar a calculadora.*
 
 ---
