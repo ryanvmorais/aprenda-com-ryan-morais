@@ -15,6 +15,7 @@ Bem-vindo ao repositório oficial do canal! Aqui você encontra o índice de tod
 ### 🛡️ Ferramentas e projetos maiores
 * **[webvigil](https://github.com/ryanvmorais/webvigil):** Scanner de vulnerabilidades web (DAST) em Python — engine reutilizável, CLI e dashboard opcional.
 * **[django-fullstack-portfolio](https://github.com/ryanvmorais/django-fullstack-portfolio):** Template de portfólio profissional em Django, com segurança avançada (CSP, honeypot, rate limit) e testes automatizados.
+* **[django-blog-culinario](https://github.com/ryanvmorais/django-blog-culinario):** Blog culinário multipáginas em Django — modelagem, views, templates, autenticação, admin e segurança.
 
 ---
 
