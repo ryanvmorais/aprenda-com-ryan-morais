@@ -1,8 +1,8 @@
-# Auditoria semanal de CVEs nas dependencias (pip-audit sobre o uv.lock).
-# Existe porque o CI so roda em PR e o Dependabot nem sempre abre PR de correcao
-# (o Pillow 13 nao saiu como PR no site): uma CVE publicada depois do ultimo PR
-# passaria despercebida. Run vermelho = vulnerabilidade conhecida no lock; o GitHub
-# avisa por e-mail quem editou o cron por ultimo. Rode `/atualizar-dependencias`.
+# Auditoria semanal de CVEs nas dependencias (pip-audit sobre o uv.lock de cada projeto).
+# Existe porque o CI so roda em PR e o Dependabot nem sempre abre PR de correcao:
+# uma CVE publicada depois do ultimo PR passaria despercebida. Run vermelho =
+# vulnerabilidade conhecida no lock; o GitHub avisa por e-mail quem editou o cron por
+# ultimo. Rode `/atualizar-dependencias`.
 #
 # Audita o lock inteiro (runtime, extras e grupos de dev), sem depender de o projeto
 # ter o pip-audit como dependencia. A ferramenta roda com o mesmo cooldown de 7 dias
@@ -29,12 +29,21 @@ permissions:
 
 jobs:
   pip-audit:
-    name: pip-audit (CVEs no uv.lock)
+    name: pip-audit (${{ matrix.projeto }})
     runs-on: ubuntu-26.04
     # Um run normal leva menos de 1 minuto; o teto evita que um job travado gaste a cota.
     timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: mini_projetos/${{ matrix.projeto }}
+    strategy:
+      # Um projeto vermelho nao esconde o resultado dos outros.
+      fail-fast: false
+      matrix:
+        projeto: [calculadora_simples, jogo_da_cobrinha, jogo_da_velha, pedra_papel_tesoura]
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Checkout do repositorio
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Instala o uv
         uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0

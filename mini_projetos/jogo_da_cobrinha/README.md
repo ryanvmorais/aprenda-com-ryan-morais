@@ -4,13 +4,13 @@
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
 ![deps](https://img.shields.io/badge/deps-uv-DE5FE9)
-[![CI](https://github.com/ryanvmorais/python-jogo-da-cobrinha/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanvmorais/python-jogo-da-cobrinha/actions/workflows/ci.yml)
+[![CI](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
 ![Lint](https://img.shields.io/badge/lint-ruff-261230)
 ![Format](https://img.shields.io/badge/style-black-000000)
 ![Types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Este repositório contém o clássico **Jogo da Cobrinha (Snake Game) em Python**, projetado como material de estudo para desenvolvedores iniciantes. O foco principal é a aplicação de **lógica de movimento**, manipulação de listas dinâmicas e o uso da biblioteca `curses` para interfaces de terminal.
+Esta pasta contém o clássico **Jogo da Cobrinha (Snake Game) em Python**, projetado como material de estudo para desenvolvedores iniciantes. O foco principal é a aplicação de **lógica de movimento**, manipulação de listas dinâmicas e o uso da biblioteca `curses` para interfaces de terminal.
 
 ### 🎯 Objetivo do Projeto:
 
@@ -65,8 +65,8 @@ As ferramentas de qualidade (Ruff, Black, Mypy e Pytest) estão em [Qualidade e 
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/ryanvmorais/python-jogo-da-cobrinha.git
-    cd python-jogo-da-cobrinha
+    git clone https://github.com/ryanvmorais/aprenda-com-ryan-morais.git
+    cd aprenda-com-ryan-morais/mini_projetos/jogo_da_cobrinha
     ```
 2.  **Execute o jogo:** no terminal do sistema (Prompt de Comando ou PowerShell), dentro da pasta do projeto, para uma melhor experiência visual. O `uv` cria o ambiente virtual e instala o `windows-curses` no Windows sozinho.
     ```bash
@@ -122,7 +122,7 @@ Veja todos os projetos e vídeos do canal em [aprenda-com-ryan-morais](https://g
 
 Aprender algo novo tem seus desafios, mas estou aqui para caminharmos juntos! Se você encontrou algum erro, teve dificuldade em rodar o jogo ou pensou numa melhoria que tornaria este material ainda mais didático:
 
-- **Abra uma [Issue](https://github.com/ryanvmorais/python-jogo-da-cobrinha/issues):** descreva sua dúvida ou sugestão. É a melhor forma de trocarmos conhecimento e ajudarmos outras pessoas que tenham a mesma dúvida.
+- **Abra uma [Issue](https://github.com/ryanvmorais/aprenda-com-ryan-morais/issues):** descreva sua dúvida ou sugestão. É a melhor forma de trocarmos conhecimento e ajudarmos outras pessoas que tenham a mesma dúvida.
 - **Contribua com código:** quer propor uma melhoria? Veja o passo a passo no [CONTRIBUTING.md](CONTRIBUTING.md).
 - **Me mande um e-mail:** se preferir algo mais privado, escreva para [**contato@ryanmorais.com.br**](mailto:contato@ryanmorais.com.br).
 

@@ -47,13 +47,7 @@ CODE_OF_CONDUCT.md             # Contributor Covenant 2.1 (pt-BR); contato: cont
 SECURITY.md                    # política de segurança; relatos pelo Private Vulnerability Reporting
 CONTRIBUTING.md                # guia de contribuição (fork, Conventional Commits, PR)
 assets/                        # captura do terminal usada no topo do README
-.github/
-  workflows/ci.yml         # ruff -> black --check -> mypy -> pytest, em push/PR; Actions fixadas por SHA
-  workflows/codeql.yml     # CodeQL (Python): push/PR na main e 1x por semana
-  workflows/pip-audit.yml  # pip-audit sobre o uv.lock: segunda 09:00 (São Paulo) e à mão
-  dependabot.yml           # PRs aos domingos, agrupados por ecossistema (uv + github-actions), cooldown de 7 dias
-  ISSUE_TEMPLATE/          # formulário de dúvida, erro ou sugestão (+ config.yml sem issue em branco)
-  pull_request_template.md # corpo padrão do PR: o quê/por quê e "Closes #N"
+../../.github/   # CI, CodeQL, pip-audit, Dependabot e templates: ficam na raiz do repositório
 ```
 
 `operacoes` é a peça central: menu e motor de cálculo leem do mesmo
@@ -81,7 +75,7 @@ Formatação, docstrings, type hints e comentários seguem `/estilo-arquivos`
 ## Qualidade e automação
 
 Sequência: `ruff check --fix` → `black` → `mypy` → `pytest` (skill
-`/qualidade-python`). CI (`.github/workflows/ci.yml`) roda a mesma sequência
+`/qualidade-python`). CI (`../../.github/workflows/ci.yml`) roda a mesma sequência
 em Python 3.12 (o piso), 3.14 e 3.15 a cada push/PR. Sem hooks locais configurados.
 
 Estratégia de teste de `calculadora()` (loop interativo): `limpar_tela` é
@@ -107,5 +101,5 @@ e depois `/fechar-sessao`.
 tem dependências de runtime (`dependencies = []`); só o grupo `dev`
 (ruff, black, mypy, pytest). `[tool.uv] package = false`: é um script, não
 uma biblioteca instalável — não crie `src/` nem um `[build-system]` para ele.
-Dependabot (`.github/dependabot.yml`) abre, aos domingos, um PR agrupado por ecossistema (um major vem em PR próprio); revise
+Dependabot (`../../.github/dependabot.yml`) abre, aos domingos, um PR agrupado por ecossistema (um major vem em PR próprio); revise
 com a skill `/revisar-dependabot`.

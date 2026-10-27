@@ -14,7 +14,7 @@ educacional em `0.x`, sem versões antigas mantidas.
 
 Reporte **em privado**, pelos avisos de segurança do GitHub: abra a aba **Security** do
 repositório e escolha **Report a vulnerability**, ou use o
-[link direto](https://github.com/ryanvmorais/python-jogo-da-velha/security/advisories/new). Não abra
+[link direto](https://github.com/ryanvmorais/aprenda-com-ryan-morais/security/advisories/new). Não abra
 issue nem pull request públicos para isso.
 
 Inclua o necessário para reproduzir: a versão (ou o commit), os passos, o que você esperava
@@ -33,4 +33,4 @@ correção ficar pronta. O relator recebe o crédito no aviso, a menos que prefi
 É material didático: um programa de terminal que roda localmente, sem servidor, contas ou
 dados pessoais. O que cabe aqui é uma falha em dependência, em workflow do GitHub Actions ou
 no código dos atalhos de execução. Dúvidas e sugestões comuns vão pelas
-[issues](https://github.com/ryanvmorais/python-jogo-da-velha/issues), como o README convida.
+[issues](https://github.com/ryanvmorais/aprenda-com-ryan-morais/issues), como o README convida.

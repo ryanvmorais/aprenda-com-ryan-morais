@@ -131,7 +131,7 @@ Docs: https://docs.pytest.org/
 ## CI e supply chain
 
 Roda no GitHub, fora da sua máquina: confere o código a cada mudança e vigia
-as dependências. Os arquivos ficam em `.github/`.
+as dependências. Os arquivos ficam na `../../.github/`, na raiz do repositório.
 
 ### GitHub Actions
 
@@ -203,7 +203,7 @@ um app à parte; o Dependabot já vem no GitHub e cobre `uv` e Actions. O cooldo
 quebrar no dia da publicação; as security updates ignoram o cooldown.
 
 O que estudar:
-- `.github/dependabot.yml` — `groups`, `cooldown` e `schedule`.
+- `../../.github/dependabot.yml` — `groups`, `cooldown` e `schedule`.
 - Como ler o PR agrupado: o que é minor/patch e por que o major vem separado.
 - `open-pull-requests-limit` — como limitar quantos PRs ficam abertos ao mesmo tempo.
 

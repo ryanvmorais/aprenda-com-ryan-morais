@@ -158,7 +158,7 @@ conta nem serviço extra, e um check verde no PR significa o mesmo que um
 clone limpo passando. O SHA no lugar da tag existe porque uma tag pode ser
 movida depois de publicada e o SHA não.
 
-**Estudar:** `.github/workflows/ci.yml`, `strategy.matrix`, `uses:` com SHA
+**Estudar:** `../../.github/workflows/ci.yml`, `strategy.matrix`, `uses:` com SHA
 fixo, `runs-on: ubuntu-26.04` (rótulo fixo, nunca `ubuntu-latest`).
 
 ### CodeQL
@@ -170,7 +170,7 @@ vulnerabilidade. Roda em push/PR na `main` e uma vez por semana.
 setup" do GitHub, porque o runner fica fixo e um job travado pode ser
 re-executado.
 
-**Estudar:** `.github/workflows/codeql.yml`, a aba Security → Code scanning
+**Estudar:** `../../.github/workflows/codeql.yml`, a aba Security → Code scanning
 do repositório.
 
 ### pip-audit
@@ -182,7 +182,7 @@ Confere o `uv.lock` contra a base de CVEs conhecidas toda segunda, às 09:00
 correção, então uma CVE publicada depois do último PR passaria despercebida.
 Run vermelho = vulnerabilidade conhecida no lock.
 
-**Estudar:** `.github/workflows/pip-audit.yml`, `uv export` (gera a lista que
+**Estudar:** `../../.github/workflows/pip-audit.yml`, `uv export` (gera a lista que
 o `pip-audit` lê).
 
 ### Dependabot
@@ -195,7 +195,7 @@ versão recém-publicada.
 cooldown dá tempo para uma versão publicada com problema ser retirada antes
 de chegar ao repositório.
 
-**Estudar:** `.github/dependabot.yml`, `groups` (junta minor e patch do `uv`
+**Estudar:** `../../.github/dependabot.yml`, `groups` (junta minor e patch do `uv`
 num PR só), `cooldown`.
 
 ---
