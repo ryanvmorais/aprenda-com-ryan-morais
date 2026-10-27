@@ -1,16 +1,16 @@
 # 🚀 Material de Apoio - Canal Ryan Morais
 
-Bem-vindo ao repositório oficial do canal! Aqui você encontra o índice de todos os projetos e laboratórios apresentados nos vídeos — cada um no seu próprio repositório, com instalação e instruções completas.
+Bem-vindo ao repositório oficial do canal! Aqui você encontra o índice de todos os projetos e laboratórios apresentados nos vídeos — os projetos maiores, cada um no seu próprio repositório, e os mini projetos de lógica na pasta [mini_projetos](https://github.com/ryanvmorais/aprenda-com-ryan-morais/tree/main/mini_projetos), todos com instalação e instruções completas.
 
 ---
 
 ## 📚 Projetos por categoria
 
 ### 🎮 Lógica de Programação (Python para iniciantes)
-* **[Calculadora Simples em Python](https://github.com/ryanvmorais/python-calculadora-simples):** Dicionários, loops e tratamento de erros.
-* **[Jogo da Velha em Python](https://github.com/ryanvmorais/python-jogo-da-velha):** Matrizes, estruturas condicionais e POO.
-* **[Jogo da Cobrinha em Python](https://github.com/ryanvmorais/python-jogo-da-cobrinha):** Listas dinâmicas e game loop com a biblioteca `curses`.
-* **[Pedra, Papel e Tesoura em Python](https://github.com/ryanvmorais/python-pedra-papel-tesoura):** Dicionários e Programação Orientada a Objetos.
+* **[Calculadora Simples em Python](https://github.com/ryanvmorais/aprenda-com-ryan-morais/tree/main/mini_projetos/calculadora_simples):** Dicionários, loops e tratamento de erros.
+* **[Jogo da Velha em Python](https://github.com/ryanvmorais/aprenda-com-ryan-morais/tree/main/mini_projetos/jogo_da_velha):** Matrizes, estruturas condicionais e POO.
+* **[Jogo da Cobrinha em Python](https://github.com/ryanvmorais/aprenda-com-ryan-morais/tree/main/mini_projetos/jogo_da_cobrinha):** Listas dinâmicas e game loop com a biblioteca `curses`.
+* **[Pedra, Papel e Tesoura em Python](https://github.com/ryanvmorais/aprenda-com-ryan-morais/tree/main/mini_projetos/pedra_papel_tesoura):** Dicionários e Programação Orientada a Objetos.
 
 ### 🛡️ Ferramentas e projetos maiores
 * **[webvigil](https://github.com/ryanvmorais/webvigil):** Scanner de vulnerabilidades web (DAST) em Python — engine reutilizável, CLI e dashboard opcional.
