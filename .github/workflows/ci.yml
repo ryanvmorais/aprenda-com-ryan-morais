@@ -49,12 +49,14 @@ jobs:
       - name: Checkout do repositorio
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      # O cache usa o uv.lock de cada projeto (o padrao da Action busca **/uv.lock).
+      # A chave padrao do cache hasheia todos os uv.lock e seria igual nos 4 projetos (so um
+      # conseguiria salvar); o sufixo separa um cache por projeto.
       - name: Instala o uv
         uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           python-version: ${{ matrix.python-version }}
           enable-cache: true
+          cache-suffix: ${{ matrix.projeto }}
 
       - name: Sincroniza o ambiente (runtime + grupo dev)
         run: uv sync --frozen
