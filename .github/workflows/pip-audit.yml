@@ -45,8 +45,11 @@ jobs:
       - name: Checkout do repositorio
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      # Mesmo motivo do ci.yml: sem o sufixo, os 4 jobs disputam a mesma chave de cache.
       - name: Instala o uv
         uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          cache-suffix: ${{ matrix.projeto }}
 
       - name: Exporta o uv.lock para requirements
         run: uv export --frozen --no-emit-project --no-hashes --all-groups --all-extras -o requirements-audit.txt
