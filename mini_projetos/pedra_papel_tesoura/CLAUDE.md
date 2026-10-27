@@ -57,13 +57,7 @@ LICENSE               # licença MIT
 CONTRIBUTING.md       # guia de contribuição (fork, Conventional Commits, portão de qualidade)
 CODE_OF_CONDUCT.md    # Contributor Covenant 2.1 (pt-BR); contato: contato@ryanmorais.com.br
 SECURITY.md           # política de segurança; relatos pelo Private Vulnerability Reporting
-.github/
-  workflows/ci.yml         # ruff -> black --check -> mypy -> pytest, em push/PR; Actions fixadas por SHA
-  workflows/codeql.yml     # CodeQL (Python): push/PR na main e 1x por semana
-  workflows/pip-audit.yml  # pip-audit sobre o uv.lock: segunda 09:00 (São Paulo) e à mão
-  dependabot.yml           # PRs aos domingos, agrupados por ecossistema (uv + github-actions), cooldown de 7 dias
-  ISSUE_TEMPLATE/          # formulário de dúvida, erro ou sugestão (+ config.yml sem issue em branco)
-  pull_request_template.md # corpo padrão do PR: o quê/por quê e "Closes #N"
+../../.github/   # CI, CodeQL, pip-audit, Dependabot e templates: ficam na raiz do repositório
 ```
 
 ### `PedraPapelTesoura` (em `main.py`)
@@ -88,7 +82,7 @@ completo (RF-NN, ADRs) em
 ## Qualidade e automação
 
 Sequência do portão, sempre nesta ordem: `ruff check .` → `black --check .`
-→ `mypy` → `pytest`. O `.github/workflows/ci.yml` roda exatamente essa
+→ `mypy` → `pytest`. O `../../.github/workflows/ci.yml` roda exatamente essa
 sequência (Python 3.12, o piso, 3.14 e 3.15) em todo push na `main` e em todo PR — um
 check verde no PR significa o mesmo que um clone limpo passando.
 

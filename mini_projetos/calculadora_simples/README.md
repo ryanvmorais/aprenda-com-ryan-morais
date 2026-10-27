@@ -4,13 +4,13 @@
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
 ![deps](https://img.shields.io/badge/deps-uv-DE5FE9)
-[![CI](https://github.com/ryanvmorais/python-calculadora-simples/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanvmorais/python-calculadora-simples/actions/workflows/ci.yml)
+[![CI](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
 ![Lint](https://img.shields.io/badge/lint-ruff-261230)
 ![Format](https://img.shields.io/badge/style-black-000000)
 ![Types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Este repositório contém uma **Calculadora Simples em Python**, criada como material de estudo para quem está iniciando na programação. O foco principal é demonstrar como organizar **menus interativos** e **realizar operações matemáticas básicas** de forma limpa.
+Esta pasta contém uma **Calculadora Simples em Python**, criada como material de estudo para quem está iniciando na programação. O foco principal é demonstrar como organizar **menus interativos** e **realizar operações matemáticas básicas** de forma limpa.
 
 ### 🎯 Objetivo do Projeto:
 
@@ -60,8 +60,8 @@ As ferramentas de qualidade (Ruff, Black, Mypy e Pytest) estão em [Qualidade e 
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/ryanvmorais/python-calculadora-simples.git
-    cd python-calculadora-simples
+    git clone https://github.com/ryanvmorais/aprenda-com-ryan-morais.git
+    cd aprenda-com-ryan-morais/mini_projetos/calculadora_simples
     ```
 2.  **Execute o programa:** no terminal (CMD, PowerShell ou o do VS Code/PyCharm), dentro da pasta do projeto. O `uv` cria o ambiente virtual sozinho na primeira execução.
     ```bash
@@ -106,8 +106,8 @@ Para exercitar o que aprendeu, tente modificar o código e implementar estas nov
 
 Este projeto faz parte de uma trilha de exercícios de lógica de programação em Python. Depois deste, experimente:
 
-- **[Pedra, Papel e Tesoura em Python](https://github.com/ryanvmorais/python-pedra-papel-tesoura):** dicionários e Programação Orientada a Objetos.
-- **[Jogo da Velha em Python](https://github.com/ryanvmorais/python-jogo-da-velha):** matrizes e Programação Orientada a Objetos.
+- **[Pedra, Papel e Tesoura em Python](../pedra_papel_tesoura/):** dicionários e Programação Orientada a Objetos.
+- **[Jogo da Velha em Python](../jogo_da_velha/):** matrizes e Programação Orientada a Objetos.
 
 Veja todos os projetos e vídeos do canal em [aprenda-com-ryan-morais](https://github.com/ryanvmorais/aprenda-com-ryan-morais).
 
@@ -117,7 +117,7 @@ Veja todos os projetos e vídeos do canal em [aprenda-com-ryan-morais](https://g
 
 Aprender algo novo tem seus desafios, mas estou aqui para caminharmos juntos! Se você encontrou algum erro, teve dificuldade em rodar o projeto ou pensou numa melhoria que tornaria este material ainda mais didático:
 
-- **Abra uma [Issue](https://github.com/ryanvmorais/python-calculadora-simples/issues):** descreva sua dúvida ou sugestão. É a melhor forma de trocarmos conhecimento e ajudarmos outras pessoas que tenham a mesma dúvida.
+- **Abra uma [Issue](https://github.com/ryanvmorais/aprenda-com-ryan-morais/issues):** descreva sua dúvida ou sugestão. É a melhor forma de trocarmos conhecimento e ajudarmos outras pessoas que tenham a mesma dúvida.
 - **Contribua com código:** quer propor uma melhoria? Veja o passo a passo no [CONTRIBUTING.md](CONTRIBUTING.md).
 - **Me mande um e-mail:** se preferir algo mais privado, escreva para [**contato@ryanmorais.com.br**](mailto:contato@ryanmorais.com.br).
 

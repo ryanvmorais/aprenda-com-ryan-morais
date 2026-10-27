@@ -152,7 +152,7 @@ nova espera 7 dias (`cooldown`) antes de virar PR.
 **Por que esta:** é integrado ao GitHub e entende o `uv.lock`. O cooldown evita
 adotar uma release que quebrou no dia da publicação.
 
-**Estudar:** `.github/dependabot.yml` (`groups`, `cooldown`, `schedule`), e como
+**Estudar:** `../../.github/dependabot.yml` (`groups`, `cooldown`, `schedule`), e como
 revisar um PR de bump (changelog, CI verde).
 
 ### pip-audit (semanal)
