@@ -1,5 +1,7 @@
 # 🚀 Aprenda Python, IA e Cibersegurança | Material de apoio do canal Ryan Morais
 
+[English](README.en.md) · **Português (Brasil)**
+
 Código, exercícios e ferramentas que acompanham o canal. Eu explico programação, inteligência artificial e cibersegurança mostrando o porquê, não só o comando, e construo em público o que ensino.
 
 ▶️ [Inscreva-se no YouTube](https://www.youtube.com/@ryanvmorais?sub_confirmation=1) · 🎙️ [Podcast](https://open.spotify.com/show/6zBFi3plnkSIMmT4bDY7i1) · ✉️ [Newsletter][newsletter] · 📝 [Blog](https://ryanmorais.com.br/blog/) · 🌐 [Site](https://ryanmorais.com.br/)
