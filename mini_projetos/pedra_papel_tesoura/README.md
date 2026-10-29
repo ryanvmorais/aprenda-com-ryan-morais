@@ -2,6 +2,8 @@
 
 # ✂️ Pedra, Papel e Tesoura em Python | Exercício de Lógica de Programação
 
+[English](README.en.md) · **Português (Brasil)**
+
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
 ![deps](https://img.shields.io/badge/deps-uv-DE5FE9)
 [![CI](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
@@ -81,11 +83,20 @@ As ferramentas de qualidade (Ruff, Black, Mypy e Pytest) estão em [Qualidade e 
 O projeto tem uma suíte de testes automatizados (`pytest`) e um portão de qualidade que roda no CI a cada push e a cada PR:
 
 ```bash
-uv sync                 # instala as dependências de desenvolvimento
-uv run ruff check .     # lint + ordem de imports
-uv run black --check .  # formatação
-uv run mypy             # checagem de tipos
-uv run pytest           # testes
+# Instala as dependências de desenvolvimento
+uv sync
+
+# Lint + ordem de imports
+uv run ruff check .
+
+# Formatação
+uv run black --check .
+
+# Checagem de tipos
+uv run mypy
+
+# Testes
+uv run pytest
 ```
 
 Para o mapa de cada tecnologia da stack (o que é, por que foi escolhida, o que estudar), veja [docs/stack.md](docs/stack.md). Para o comportamento esperado do jogo e o histórico de decisões, veja [specs/](specs/). Para o detalhamento de arquitetura e convenções, veja [CLAUDE.md](CLAUDE.md).

@@ -36,6 +36,8 @@ main.py                       # único módulo de produção
   realizar_calculo(...)        # motor de cálculo puro; levanta exceção no erro
   calculadora()                # loop principal (I/O, validação, replay/saída)
 tests/test_main.py             # suíte pytest (ver "Qualidade e automação")
+tests/test_readme_en.py        # confere que README.en.md segue a estrutura do README.md
+README.en.md                   # versão em inglês do README (mesmas seções, mesma ordem)
 pyproject.toml                 # manifesto uv (deps de dev, ruff/black/mypy/pytest)
 uv.lock                        # lockfile — commitado
 docs/stack.md                  # mapa da stack: o que é, por que, o que estudar
@@ -71,6 +73,10 @@ exercício no README) não exige tocar em mais nenhum lugar além de
 Idioma do código: português (projeto educacional PT-BR) — ver `/idioma`.
 Formatação, docstrings, type hints e comentários seguem `/estilo-arquivos`
 (seções `.py`, `.toml`, `.yaml`, `.md`); não repetido aqui.
+
+README bilíngue: o português fica em `README.md` e o inglês em `README.en.md`, com
+as mesmas seções na mesma ordem. Mudou um, muda o outro no mesmo PR; o
+`tests/test_readme_en.py` pega o desalinhamento de estrutura.
 
 ## Qualidade e automação
 
