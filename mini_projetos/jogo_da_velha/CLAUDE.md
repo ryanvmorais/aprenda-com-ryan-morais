@@ -42,6 +42,8 @@ uv lock --upgrade-package <pacote>
 ```
 main.py              # classe JogoDaVelha + função main() (ponto de entrada)
 tests/test_main.py   # suíte pytest (20 casos)
+tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
+README.en.md         # versão em inglês do README (mesmas seções, mesma ordem)
 docs/stack.md         # o que cada peça da stack faz e por quê
 assets/               # captura do terminal (SVG) usada no cabeçalho do README
 specs/                # spec-driven development (ver specs/README.md)
@@ -77,6 +79,9 @@ partidas e o prompt de replay. Detalhamento completo (RF-NN, ADRs) em
   linguagem, termos técnicos universais (`int`, `str`, `bool`).
 - **Estilo de construção de arquivos** (docstrings, type hints, comentários,
   réguas de seção): ver a skill `/estilo-arquivos` — não repetido aqui.
+- **README bilíngue:** o português fica em `README.md` e o inglês em
+  `README.en.md`, com as mesmas seções na mesma ordem. Mudou um, muda o outro
+  no mesmo PR; o `tests/test_readme_en.py` pega o desalinhamento de estrutura.
 
 ## Qualidade e automação
 
