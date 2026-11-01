@@ -122,8 +122,8 @@ To exercise what you learned, try changing the code and implementing these new f
 
 This project is part of a Python study trail. After this one, the next step is to leave the terminal and build web applications with Django:
 
-- **[Dynamic Portfolio with Django](https://github.com/ryanvmorais/django-fullstack-portfolio):** advanced security (honeypot, rate limit, CSP) and query optimization.
-- **[Culinary Blog in Django](https://github.com/ryanvmorais/django-blog-culinario):** domain modeling, authentication, admin and security.
+- **[Dynamic Portfolio with Django](https://github.com/ryanvmorais/portfolio-dinamico):** advanced security (honeypot, rate limit, CSP) and query optimization.
+- **[Culinary Blog in Django](https://github.com/ryanvmorais/blog-culinario):** domain modeling, authentication, admin and security.
 
 See all the channel's projects and videos at [aprenda-com-ryan-morais](https://github.com/ryanvmorais/aprenda-com-ryan-morais).
 

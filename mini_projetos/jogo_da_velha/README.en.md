@@ -122,7 +122,7 @@ To exercise what you learned, try changing the code and implementing these new f
 This project is part of a trail of programming logic exercises in Python. After this one, try:
 
 - **[Snake Game in Python](../jogo_da_cobrinha/README.en.md):** dynamic lists and a game loop with `curses`.
-- **[Dynamic Portfolio with Django](https://github.com/ryanvmorais/django-fullstack-portfolio):** the first step outside the terminal, with advanced security and query optimization.
+- **[Dynamic Portfolio with Django](https://github.com/ryanvmorais/portfolio-dinamico):** the first step outside the terminal, with advanced security and query optimization.
 
 See all the channel's projects and videos at [aprenda-com-ryan-morais](https://github.com/ryanvmorais/aprenda-com-ryan-morais).
 

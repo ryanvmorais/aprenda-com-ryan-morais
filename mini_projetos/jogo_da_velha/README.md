@@ -122,7 +122,7 @@ Para exercitar o que aprendeu, tente modificar o código e implementar estas nov
 Este projeto faz parte de uma trilha de exercícios de lógica de programação em Python. Depois deste, experimente:
 
 - **[Jogo da Cobrinha em Python](../jogo_da_cobrinha/):** listas dinâmicas e game loop com `curses`.
-- **[Portfólio Dinâmico com Django](https://github.com/ryanvmorais/django-fullstack-portfolio):** o primeiro passo fora do terminal, com segurança avançada e otimização de consultas.
+- **[Portfólio Dinâmico com Django](https://github.com/ryanvmorais/portfolio-dinamico):** o primeiro passo fora do terminal, com segurança avançada e otimização de consultas.
 
 Veja todos os projetos e vídeos do canal em [aprenda-com-ryan-morais](https://github.com/ryanvmorais/aprenda-com-ryan-morais).
 
