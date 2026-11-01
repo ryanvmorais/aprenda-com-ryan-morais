@@ -24,8 +24,6 @@ Código, exercícios e ferramentas que acompanham o canal. Eu explico programaç
 | [mini_projetos](mini_projetos/) | Programas pequenos de terminal para praticar lógica de programação. Comece por aqui se você está começando. |
 | Repositórios próprios | Projetos maiores e ferramentas open source, cada um com README, testes e, quando faz sentido, demo ao vivo. |
 
-Tutoriais de um vídeo só e cursos em sequência ganham pasta aqui quando forem publicados.
-
 ---
 
 ## 🔎 Encontre os projetos

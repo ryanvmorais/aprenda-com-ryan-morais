@@ -23,10 +23,8 @@ main.py  ──►  curses (stdlib no Linux/macOS; windows-curses no Windows)
 
 ### Python 3.12+
 
-A única linguagem do projeto. 3.12 é o piso porque é a versão mínima usada
-nos outros projetos do Ryan (`site-ryan-morais`, `webvigil`,
-`pedra-papel-tesoura`) — manter o mesmo piso evita "funciona num projeto e
-não no outro" por causa de sintaxe.
+A única linguagem do projeto. 3.12 é o piso (`requires-python`): já tem a
+sintaxe moderna de tipos (`X | None`, `list[X]`) usada no código.
 
 **Por que esta:** o projeto é puramente didático (lógica de movimento,
 listas dinâmicas, coordenadas) — qualquer linguagem serviria, mas Python
@@ -47,8 +45,7 @@ de runtime e o grupo de desenvolvimento a partir do `uv.lock`; `uv run
 plataforma (`windows-curses`) além das ferramentas de qualidade — `uv`
 resolve o marcador `sys_platform` automaticamente, é uma ordem de magnitude
 mais rápido que `pip`/`venv`, usa o `pyproject.toml` padrão (PEP 621) e
-gera um lockfile real (`uv.lock`) — o mesmo gerenciador usado nos outros
-projetos Python do Ryan.
+gera um lockfile real (`uv.lock`) — hoje o fluxo padrão em projetos Python novos.
 
 **Estudar:** `uv sync`, `uv run <comando>`, `uv add <pacote>`, `uv lock`, a
 sintaxe de marcador de ambiente (`; sys_platform == 'win32'`) no
@@ -87,7 +84,7 @@ O linter — substitui Flake8 + isort + pyupgrade num binário só, quase
 instantâneo. Aqui verifica erros óbvios (`F`), estilo `pycodestyle`
 (`E`/`W`), ordena imports (`I`) e sugere sintaxe moderna (`UP`).
 
-**Por que esta:** é o linter padrão em todos os projetos Python do Ryan; um
+**Por que esta:** é um dos linters Python mais usados hoje; um
 só comando (`ruff check .`) substitui o que antes precisava de 3-4
 ferramentas separadas.
 
@@ -101,8 +98,7 @@ O formatador — sem configuração para discutir (mesma filosofia do
 `gofmt`). Reescreve o arquivo no estilo canônico do Black; ninguém revisa
 espaçamento em code review.
 
-**Por que esta:** padrão de-facto do ecossistema Python; usado sem exceção
-nos outros projetos do Ryan.
+**Por que esta:** padrão de-facto do ecossistema Python; usado em larga escala.
 
 **Estudar:** `uv run black .` (reformata), `uv run black --check .` (só
 verifica, usado no CI).
@@ -113,10 +109,10 @@ O verificador de tipos estáticos, em modo `strict`. Lê as anotações de
 tipo (`-> None`, `list[list[int]]`, `int | None`) e garante que elas sejam
 consistentes antes mesmo de rodar o código.
 
-**Por que esta:** o projeto é pequeno, mas tipar tudo desde o início é a
-prática que os outros projetos do Ryan seguem — evita o hábito de "só ligo
-o mypy quando o projeto crescer" (nunca liga). `curses.window`, o tipo da
-janela, existe na stdlib e é anotável normalmente.
+**Por que esta:** o projeto é pequeno, mas tipar tudo desde o início é uma boa
+prática — evita o hábito de "só ligo o mypy quando o projeto crescer" (nunca
+liga). `curses.window`, o tipo da janela, existe na stdlib e é anotável
+normalmente.
 
 **Estudar:** sintaxe `X | None` / `list[X]` (não `Optional`/`List`),
 `-> None` explícito em função que não retorna nada, `uv run mypy`.

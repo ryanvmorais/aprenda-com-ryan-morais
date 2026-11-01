@@ -22,9 +22,8 @@ main.py  ──►  biblioteca padrão do Python (random, os, sys)
 
 ### Python 3.12+
 
-A única linguagem do projeto. 3.12 é o piso porque é a versão mínima usada nos
-outros projetos do Ryan (`site-ryan-morais`, `webvigil`) — manter o mesmo piso
-evita "funciona num projeto e não no outro" por causa de sintaxe.
+A única linguagem do projeto. 3.12 é o piso (`requires-python`): já tem a
+sintaxe moderna de tipos (`X | None`, `list[X]`) usada no código.
 
 **Por que esta:** o projeto é puramente didático (lógica, dicionários, POO) —
 qualquer linguagem serviria, mas Python tem a sintaxe mais direta para quem
@@ -44,7 +43,7 @@ ambiente sem precisar ativá-lo.
 ferramentas de qualidade (ruff, black, mypy, pytest) precisam de um ambiente
 isolado e reprodutível. `uv` é uma ordem de magnitude mais rápido que
 `pip`/`venv`, usa o `pyproject.toml` padrão (PEP 621) e gera um lockfile real
-(`uv.lock`) — o mesmo gerenciador usado no `site-ryan-morais` e no `webvigil`.
+(`uv.lock`) — hoje o fluxo padrão em projetos Python novos.
 
 **Estudar:** `uv sync`, `uv run <comando>`, `uv add --dev <pacote>`, `uv lock`,
 a diferença entre `[project.dependencies]` (runtime, vazio aqui) e
@@ -60,7 +59,7 @@ O linter — substitui Flake8 + isort + pyupgrade num binário só, quase
 instantâneo. Aqui verifica erros óbvios (`F`), estilo `pycodestyle` (`E`/`W`),
 ordena imports (`I`) e sugere sintaxe moderna (`UP`).
 
-**Por que esta:** é o linter padrão em todos os projetos Python do Ryan; um só
+**Por que esta:** é um dos linters Python mais usados hoje; um só
 comando (`ruff check .`) substitui o que antes precisava de 3-4 ferramentas
 separadas.
 
@@ -74,8 +73,7 @@ O formatador — sem configuração para discutir (mesma filosofia do `gofmt`).
 Reescreve o arquivo no estilo canônico do Black; ninguém revisa espaçamento em
 code review.
 
-**Por que esta:** padrão de-facto do ecossistema Python; usado sem exceção nos
-outros projetos do Ryan.
+**Por que esta:** padrão de-facto do ecossistema Python; usado em larga escala.
 
 **Estudar:** `uv run black .` (reformata), `uv run black --check .` (só
 verifica, usado no CI).
@@ -86,9 +84,9 @@ O verificador de tipos estáticos, em modo `strict`. Lê as anotações de tipo
 (`-> None`, `list[str]`, `str | None`) e garante que elas sejam consistentes
 antes mesmo de rodar o código.
 
-**Por que esta:** o projeto é pequeno, mas tipar tudo desde o início é a
-prática que os outros projetos do Ryan seguem — evita o hábito de "só ligo o
-mypy quando o projeto crescer" (nunca liga).
+**Por que esta:** o projeto é pequeno, mas tipar tudo desde o início é uma boa
+prática — evita o hábito de "só ligo o mypy quando o projeto crescer" (nunca
+liga).
 
 **Estudar:** sintaxe `X | None` / `list[X]` (não `Optional`/`List`),
 `-> None` explícito em método que não retorna nada, `uv run mypy`.

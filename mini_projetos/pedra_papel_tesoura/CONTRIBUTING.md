@@ -27,7 +27,3 @@ Este repositório é um espaço dedicado ao aprendizado de Python, Dicionários 
 - Mantenha a **coerência na nomenclatura** das variáveis (sempre em português e seguindo o padrão snake_case).
 - O objetivo principal é a **didática**: prefira um código legível e bem comentado a um código excessivamente complexo.
 - Toda mudança de comportamento deve vir com o teste correspondente em `tests/test_main.py`.
-
----
-Atenciosamente,  
-**Ryan Morais**

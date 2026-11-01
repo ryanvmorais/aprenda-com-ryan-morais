@@ -29,7 +29,3 @@ Este repositório é um espaço dedicado ao aprendizado de Python, Manipulação
 - Mantenha a **coerência na nomenclatura** das variáveis (sempre em português e seguindo o padrão snake_case).
 - O objetivo principal é a **didática**: o uso da biblioteca `curses` pode ser desafiador para iniciantes, então mantenha os comentários claros e simples.
 - Toda mudança de comportamento deve vir com o teste correspondente em `tests/test_main.py`.
-
----
-Atenciosamente,  
-**Ryan Morais**
