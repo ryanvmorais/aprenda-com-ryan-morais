@@ -70,9 +70,12 @@ exercício no README) não exige tocar em mais nenhum lugar além de
 
 ## Convenções
 
-Idioma do código: português (projeto educacional PT-BR) — ver `/idioma`.
-Formatação, docstrings, type hints e comentários seguem `/estilo-arquivos`
-(seções `.py`, `.toml`, `.yaml`, `.md`); não repetido aqui.
+Idioma do código: português (projeto educacional PT-BR). Exceções: keywords da
+linguagem e termos técnicos universais (`int`, `str`, `bool`).
+
+Estilo de código: docstrings em português nas funções e módulos públicos, type
+hints completos (`mypy` em modo `strict`), comentários que explicam o *porquê* e
+não o *quê*, linhas de até 88 caracteres (`black`).
 
 README bilíngue: o português fica em `README.md` e o inglês em `README.en.md`, com
 as mesmas seções na mesma ordem. Mudou um, muda o outro no mesmo PR; o
@@ -80,9 +83,9 @@ as mesmas seções na mesma ordem. Mudou um, muda o outro no mesmo PR; o
 
 ## Qualidade e automação
 
-Sequência: `ruff check --fix` → `black` → `mypy` → `pytest` (skill
-`/qualidade-python`). CI (`../../.github/workflows/ci.yml`) roda a mesma sequência
-em Python 3.12 (o piso), 3.14 e 3.15 a cada push/PR. Sem hooks locais configurados.
+Sequência: `ruff check --fix` → `black` → `mypy` → `pytest`. CI
+(`../../.github/workflows/ci.yml`) roda a mesma sequência em Python 3.12 (o
+piso), 3.14 e 3.15 a cada push/PR. Sem hooks locais configurados.
 
 Estratégia de teste de `calculadora()` (loop interativo): `limpar_tela` é
 sempre mockada via `monkeypatch` (evita `os.system` real); `builtins.input` é
@@ -98,8 +101,8 @@ frontmatter idêntico nos três). Ver `specs/README.md` para convenções e
 reversa o comportamento atual e os ADRs das correções feitas na
 modernização — é a spec-ouro de formato para as próximas.
 
-Ao fim de uma sessão que mudou comportamento ou documentação: `/atualizar-docs`
-e depois `/fechar-sessao`.
+Antes de abrir o PR, atualize o `README.md` (e o `README.en.md`) e a spec se o
+comportamento ou a documentação mudou, e rode o portão de qualidade.
 
 ## Gestão de dependências
 
@@ -108,4 +111,4 @@ tem dependências de runtime (`dependencies = []`); só o grupo `dev`
 (ruff, black, mypy, pytest). `[tool.uv] package = false`: é um script, não
 uma biblioteca instalável — não crie `src/` nem um `[build-system]` para ele.
 Dependabot (`../../.github/dependabot.yml`) abre, aos domingos, um PR agrupado por ecossistema (um major vem em PR próprio); revise
-com a skill `/revisar-dependabot`.
+cada PR conferindo as notas de versão e o resultado do CI.
