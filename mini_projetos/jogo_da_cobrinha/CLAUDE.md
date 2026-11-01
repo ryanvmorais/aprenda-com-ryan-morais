@@ -8,8 +8,8 @@ repositório.
 Jogo da Cobrinha (Snake) em Python, via terminal com `curses` — material
 de estudo para prática de lógica de movimento, manipulação de listas
 dinâmicas e coordenadas. Um único arquivo (`main.py`), com uma dependência
-de runtime condicional (`windows-curses`, só no Windows). Repositório
-pessoal/educacional, público no GitHub.
+de runtime condicional (`windows-curses`, só no Windows). Projeto
+educacional, público no GitHub.
 
 ## Comandos comuns
 
@@ -78,12 +78,12 @@ Detalhamento completo (RF-NN, ADRs) em
 
 ## Convenções
 
-- **Idioma do código:** português — projeto pessoal/educacional (regra do
-  `CLAUDE.md` global: "Pessoal solo → Português"). Exceções: keywords da
-  linguagem, termos técnicos universais (`int`, `str`, `bool`).
-- **Estilo de construção de arquivos** (docstrings, type hints,
-  comentários, réguas de seção): ver a skill `/estilo-arquivos` — não
-  repetido aqui.
+- **Idioma do código:** português — projeto educacional em português do Brasil.
+  Exceções: keywords da linguagem, termos técnicos universais (`int`, `str`,
+  `bool`).
+- **Estilo de código:** docstrings em português nas funções, classes e módulos
+  públicos, type hints completos (`mypy` em modo `strict`), comentários que
+  explicam o *porquê* e não o *quê*, linhas de até 88 caracteres (`black`).
 - **README bilíngue:** o português fica em `README.md` e o inglês em
   `README.en.md`, com as mesmas seções na mesma ordem. Mudou um, muda o outro
   no mesmo PR; o `tests/test_readme_en.py` pega o desalinhamento de estrutura.
@@ -102,7 +102,7 @@ commitar.
 
 > **Cuidado:** o jogo abre uma janela `curses` de verdade — não tem como
 > rodar `ciclo_do_jogo` de ponta a ponta num terminal não interativo (CI,
-> pipe, este próprio agente). A suíte de testes cobre cada peça isolada
+> pipe, um agente automatizado). A suíte de testes cobre cada peça isolada
 > via `_FakeJanela`; qualquer mudança de comportamento do loop principal
 > merece um teste manual, rodando `uv run main.py` num terminal de
 > verdade.
@@ -110,14 +110,13 @@ commitar.
 ## Spec-driven development
 
 Specs em `specs/NNN-nome/` (`requirements.md` → `design.md` → `tasks.md`),
-conduzidas pela skill `/spec`. A spec `001-jogo-da-cobrinha` foi escrita
+com aprovação de cada fase antes da seguinte. A spec `001-jogo-da-cobrinha` foi escrita
 por **engenharia reversa** (o jogo já estava pronto) e é o padrão-ouro de
 formato para specs futuras neste repositório — ver
 [`specs/README.md`](specs/README.md).
 
-Ao fim de cada sessão: `/atualizar-docs` e depois `/fechar-sessao` (agrupa
-as mudanças, commita em Conventional Commits numa branch, dá push, abre/
-atualiza o PR — para antes do merge).
+Antes de abrir o PR, atualize o `README.md` (e o `README.en.md`) e a spec se o
+comportamento ou a documentação mudou, e rode o portão de qualidade.
 
 ## Gestão de dependências (uv)
 

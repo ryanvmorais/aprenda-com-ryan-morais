@@ -26,8 +26,6 @@ The channel, podcast, newsletter, blog and website are in Portuguese (Brazil).
 | [mini_projetos](mini_projetos/README.en.md) | Small terminal programs to practice programming logic. Start here if you are a beginner. |
 | Their own repositories | Larger projects and open source tools, each with its own README, tests and, when it makes sense, a live demo. |
 
-Single-video tutorials and step-by-step courses get a folder here once they are published.
-
 ---
 
 ## 🔎 Find the projects

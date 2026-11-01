@@ -39,10 +39,9 @@ O que é/faz: gerenciador de projetos Python — cria e mantém o ambiente
 virtual (`.venv`), resolve e fixa versões (`uv.lock`), e roda comandos dentro
 do ambiente certo sem precisar ativá-lo manualmente (`uv run`).
 
-Por que esta: substitui `pip` + `venv` manuais (o que o projeto usava antes,
-via `requirements.txt`) por um fluxo único, rápido e reprodutível — o mesmo
-padrão já adotado nos outros projetos Python do Ryan (site-ryan-morais,
-webvigil).
+Por que esta: substitui `pip` + `venv` manuais (o que o projeto usava antes, via
+`requirements.txt`) por um fluxo único, rápido e reprodutível — hoje o fluxo
+padrão em projetos Python novos.
 
 O que estudar:
 - `uv sync` (instala exatamente o que está no lock) vs `uv lock` (recalcula o lock).
@@ -61,9 +60,9 @@ Docs: https://docs.astral.sh/uv/
 O que é/faz: lint e organização de imports num binário só (substitui
 flake8 + isort + várias outras ferramentas de uma vez).
 
-Por que esta: é o linter Python mais rápido hoje e já é o padrão nos outros
-projetos do Ryan — mesma regra (`select = ["E", "F", "I", "UP", "B", "SIM", "C4", "RUF"]`)
-que webvigil e site-ryan-morais usam.
+Por que esta: é o linter Python mais rápido hoje e já é o padrão em projetos
+Python novos — regra deste projeto: `select = ["E", "F", "I", "UP", "B", "SIM",
+"C4", "RUF"]`.
 
 O que estudar:
 - `uv run ruff check --fix .` — como o autofix decide o que mudar sozinho.

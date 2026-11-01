@@ -25,8 +25,3 @@ Este repositório é um espaco para aprendizado de Python, Matrizes e Orientaç�
 - Utilize apenas a **Biblioteca Padrão do Python**, a menos que a nova funcionalidade exija algo muito específico (como cores).
 - O foco é sempre a **clareza para o iniciante**.
 - Toda mudança de comportamento deve vir com o teste correspondente em `tests/test_main.py`.
-
----
-Atenciosamente,  
-**Ryan Morais**
-
