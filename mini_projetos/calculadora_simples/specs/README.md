@@ -3,8 +3,7 @@
 Este projeto usa spec-driven development: cada funcionalidade é documentada em
 `specs/NNN-nome/`, com três arquivos — `requirements.md` (o quê e porquê),
 `design.md` (como) e `tasks.md` (quebra executável). O formato é Markdown
-agnóstico de ferramenta; a skill `/spec` conduz o fluxo de escrita e os
-portões de aprovação, mas os documentos valem por si, mesmo fora do Claude Code.
+agnóstico de ferramenta, e os documentos valem por si.
 
 ## Convenções
 
@@ -33,14 +32,6 @@ cada fase com aprovação humana antes de avançar. Engenharia reversa é a
 exceção — usada só para documentar retroativamente um projeto já finalizado
 (como este, na modernização inicial); nesse caso tudo nasce com
 `status: concluído` e as tarefas já marcadas `[x]`.
-
-| Comando | Fase |
-|---|---|
-| `/spec nova <nome>` | Abre `requirements.md` em rascunho |
-| `/spec design` | Escreve `design.md` |
-| `/spec tasks` | Escreve `tasks.md` |
-| `/spec implementar` | Executa as tarefas, uma a uma |
-| `/spec status` | Panorama de todas as specs |
 
 ## Índice
 

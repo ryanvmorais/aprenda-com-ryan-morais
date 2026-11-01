@@ -5,7 +5,7 @@ Este projeto usa spec-driven development: cada feature é documentada em
 `requirements.md` (o quê/porquê), `design.md` (como) e `tasks.md` (quebra
 executável e rastreável). O fluxo de 4 fases (`requirements → design →
 tasks → implementação`), com portão de aprovação humana em cada uma, é
-conduzido pela skill `/spec`.
+o fluxo de toda spec deste projeto.
 
 ## Convenções
 
@@ -27,7 +27,7 @@ conduzido pela skill `/spec`.
 - **Rastreabilidade:** toda tarefa em `tasks.md` cita o(s) requisito(s)
   e/ou ADR que satisfaz (`— RF-01, ADR-2`); a última tarefa de cada etapa
   é o portão de qualidade, com o resultado real anotado ao executar.
-- **Idioma:** português — projeto pessoal/educacional (ver `CLAUDE.md`).
+- **Idioma:** português — projeto educacional (ver `CLAUDE.md`).
 
 ## Workflow
 
@@ -43,10 +43,6 @@ tasks.md (aprovado) --[aprovação]--> em andamento
         v
 implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 ```
-
-Comandos da skill `/spec`: `nova <nome>` (abre requirements) · `design`
-(projeta) · `tasks` (quebra) · `implementar` (executa) · `status`
-(panorama de todas as specs).
 
 ## Índice / Roadmap
 
