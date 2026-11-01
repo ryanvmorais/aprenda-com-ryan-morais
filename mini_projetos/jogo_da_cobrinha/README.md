@@ -122,8 +122,8 @@ Para exercitar o que aprendeu, tente modificar o código e implementar estas nov
 
 Este projeto faz parte de uma trilha de estudos em Python. Depois deste, o próximo passo é sair do terminal e construir aplicações web com Django:
 
-- **[Portfólio Dinâmico com Django](https://github.com/ryanvmorais/django-fullstack-portfolio):** segurança avançada (honeypot, rate limit, CSP) e otimização de consultas.
-- **[Blog Culinário em Django](https://github.com/ryanvmorais/django-blog-culinario):** modelagem de domínio, autenticação, admin e segurança.
+- **[Portfólio Dinâmico com Django](https://github.com/ryanvmorais/portfolio-dinamico):** segurança avançada (honeypot, rate limit, CSP) e otimização de consultas.
+- **[Blog Culinário em Django](https://github.com/ryanvmorais/blog-culinario):** modelagem de domínio, autenticação, admin e segurança.
 
 Veja todos os projetos e vídeos do canal em [aprenda-com-ryan-morais](https://github.com/ryanvmorais/aprenda-com-ryan-morais).
 
