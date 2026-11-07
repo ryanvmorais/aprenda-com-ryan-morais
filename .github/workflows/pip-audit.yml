@@ -44,6 +44,9 @@ jobs:
     steps:
       - name: Checkout do repositorio
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Nenhum passo seguinte precisa do token do GitHub; ele não fica no disco.
+          persist-credentials: false
 
       # Mesmo motivo do ci.yml: sem o sufixo, os 4 jobs disputam a mesma chave de cache.
       - name: Instala o uv
