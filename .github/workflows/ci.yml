@@ -48,6 +48,9 @@ jobs:
     steps:
       - name: Checkout do repositorio
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Nenhum passo seguinte precisa do token do GitHub; ele não fica no disco.
+          persist-credentials: false
 
       # A chave padrao do cache hasheia todos os uv.lock e seria igual nos 4 projetos (so um
       # conseguiria salvar); o sufixo separa um cache por projeto.
