@@ -5,12 +5,12 @@
 **English** · [Português (Brasil)](README.md)
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
-![deps](https://img.shields.io/badge/deps-uv-DE5FE9)
-[![CI](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
-![Lint](https://img.shields.io/badge/lint-ruff-261230)
-![Format](https://img.shields.io/badge/style-black-000000)
-![Types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
-![License](https://img.shields.io/badge/license-MIT-green)
+![deps](https://img.shields.io/badge/deps-uv-DE5FE9?logo=uv&logoColor=white)
+[![CI](https://img.shields.io/github/actions/workflow/status/ryanvmorais/aprenda-com-ryan-morais/ci.yml?label=CI&logo=githubactions&logoColor=white)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
+![lint](https://img.shields.io/badge/lint-ruff-261230?logo=ruff&logoColor=white)
+![style](https://img.shields.io/badge/style-black-000000?logo=black&logoColor=white)
+![types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
+![license](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white)
 
 This folder holds a **Simple Calculator in Python**, built as study material for people who are just starting to program. The main goal is to show how to organize **interactive menus** and **run basic math operations** cleanly. The program's on-screen text is in Brazilian Portuguese, and so are the identifiers in the code.
 
