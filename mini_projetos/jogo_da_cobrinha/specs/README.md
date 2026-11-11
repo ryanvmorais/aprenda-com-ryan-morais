@@ -16,10 +16,10 @@ o fluxo de toda spec deste projeto.
   ---
   feature: <título legível>
   status: rascunho | aprovado | em andamento | concluído
-  data: AAAA-MM-DD
-  relacionado:
+  date: AAAA-MM-DD
+  related:
     - NNN-outra/requirements.md
-  origem: concepção | engenharia reversa
+  origin: concepção | engenharia reversa
   ---
   ```
 - **Critério de aceite:** Given/When/Then, um `### RF-NN` (heading,
@@ -52,7 +52,7 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 ## Notas de manutenção
 
-Nenhuma pegadinha registrada ainda — projeto pequeno. Ao adicionar uma
+Sem armadilhas entre specs — projeto pequeno. Ao adicionar uma
 feature nova (ex.: recorde persistido, fruta dourada, atravessar paredes —
 ver "Atividades para praticar" no `README.md`), abra uma spec nova em vez
 de estender `001` diretamente.

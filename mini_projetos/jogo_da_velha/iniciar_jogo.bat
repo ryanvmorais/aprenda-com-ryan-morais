@@ -1,4 +1,5 @@
 @echo off
+REM Inicia o Jogo da Velha com o uv ou, sem ele, com o Python. Pre-requisito: um dos dois.
 title Iniciando Jogo da Velha...
 cls
 

@@ -1,9 +1,9 @@
 ---
 feature: Jogo de Pedra, Papel e Tesoura (Jokenpô) via terminal
 status: concluído
-data: 2026-09-11
-relacionado: []
-origem: engenharia reversa
+date: 2026-09-11
+related: []
+origin: engenharia reversa
 ---
 
 # 001 — Jogo de Pedra, Papel e Tesoura
@@ -137,7 +137,7 @@ console UTF-8 (saída redirecionada para arquivo, pipe, ou executor de CI).
 ## Perguntas em aberto
 
 Nenhuma — feature pequena e já finalizada; ver "Atividades para praticar" no
-`README.md` para extensões futuras propostas (melhor-de-3, placar persistido,
+`README.md`, com exercícios de extensão (melhor-de-3, placar persistido,
 efeito de suspense).
 
 ## Testes

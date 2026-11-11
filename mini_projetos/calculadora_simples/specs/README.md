@@ -41,7 +41,7 @@ exceção — usada só para documentar retroativamente um projeto já finalizad
 
 ## Notas de manutenção
 
-- Nenhuma landmine conhecida entre specs ainda (projeto de uma spec só).
+- Sem armadilhas entre specs (projeto de uma spec só).
 
 ## Padrão-ouro de formato
 

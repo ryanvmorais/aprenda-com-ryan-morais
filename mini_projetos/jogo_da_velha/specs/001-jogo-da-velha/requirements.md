@@ -1,9 +1,9 @@
 ---
 feature: Jogo da Velha (Tic Tac Toe) via terminal
 status: concluído
-data: 2026-09-11
-relacionado: []
-origem: engenharia reversa
+date: 2026-09-11
+related: []
+origin: engenharia reversa
 ---
 
 # 001 — Jogo da Velha
@@ -137,7 +137,7 @@ console UTF-8 (saída redirecionada para arquivo, pipe, ou executor de CI).
 ## Perguntas em aberto
 
 Nenhuma — feature pequena e já finalizada; ver "Atividade para praticar" no
-`README.md` para extensões futuras propostas (placar acumulado, máquina que
+`README.md`, com exercícios de extensão (placar acumulado, máquina que
 bloqueia, cores no terminal).
 
 ## Testes

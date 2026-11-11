@@ -12,7 +12,7 @@ educacional em `0.x`, sem versões antigas mantidas.
 
 ## Como reportar uma vulnerabilidade
 
-Reporte **em privado**, pelos avisos de segurança do GitHub: abra a aba **Security** do
+Reporte **em privado**, pelos avisos de segurança do GitHub: abra a aba **Security and quality** do
 repositório e escolha **Report a vulnerability**, ou use o
 [link direto](https://github.com/ryanvmorais/aprenda-com-ryan-morais/security/advisories/new). Não abra
 issue nem pull request públicos para isso.

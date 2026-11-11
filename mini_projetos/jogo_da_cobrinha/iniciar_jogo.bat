@@ -1,4 +1,5 @@
 @echo off
+REM Inicia o Jogo da Cobrinha com o uv ou, sem ele, com o Python. Pre-requisito: um dos dois.
 title Iniciando Jogo da Cobrinha (Snake Game)...
 cls
 

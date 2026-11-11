@@ -35,11 +35,13 @@ _NOME_PERMITIDO_POR_ARQUIVO = {"LICENSE", "pyproject.toml"}
 _NOME_PERMITIDO_POR_CAMINHO = {"README.md", "README.en.md"}
 
 # Skills do mantenedor: um comando `/nome` delas em `CLAUDE.md` ou `.claude/` não
-# funciona para quem clonou. O lookbehind evita casar caminhos (`docs/stack.md`).
+# funciona para quem clonou. As famílias (`atualizar-*`, `auditoria-*`) vão por
+# padrão, para a skill nova da família não passar. O lookbehind evita casar
+# caminhos (`docs/stack.md`).
 _SKILL_PESSOAL = re.compile(
-    r"(?<![\w./-])/(idioma|spec|estilo-arquivos|fechar-sessao|atualizar-docs"
-    r"|atualizar-dependencias|revisar-dependabot|nova-interface|stack"
-    r"|novo-projeto|qualidade-python)\b"
+    r"(?<![\w./-])/(idioma|spec|estilo-arquivos|fechar-sessao|atualizar-[a-z]+"
+    r"|auditoria-[a-z]+|revisar-dependabot|nova-interface|stack|novo-projeto"
+    r"|qualidade-python|limpar-branches|preparar-release|enxugar-memoria)\b"
 )
 
 # Extensões binárias, sem texto para conferir.

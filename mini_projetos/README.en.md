@@ -21,7 +21,7 @@ This folder gathers the channel's **Python mini projects**: small programs that 
 
 A mini project is a **small, self-contained** program that runs on plain Python (or close to it), with no deploy and no external services.
 
-Larger projects, with their own dependencies, CI and deploy, live in separate repositories. They are listed in the [root README](../README.md).
+Larger projects, with their own dependencies, CI and deploy, live in separate repositories. They are listed in the [root README](../README.en.md).
 
 ---
 
