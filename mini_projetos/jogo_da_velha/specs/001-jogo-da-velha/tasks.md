@@ -1,11 +1,11 @@
 ---
 feature: Jogo da Velha (Tic Tac Toe) via terminal
 status: concluído
-data: 2026-09-11
-relacionado:
+date: 2026-09-11
+related:
   - 001-jogo-da-velha/requirements.md
   - 001-jogo-da-velha/design.md
-origem: engenharia reversa
+origin: engenharia reversa
 ---
 
 # 001 — Jogo da Velha — Tasks

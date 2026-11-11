@@ -1,10 +1,10 @@
 ---
 feature: Jogo da Cobrinha (Snake) via terminal com curses
 status: concluído
-data: 2026-09-11
-relacionado:
+date: 2026-09-11
+related:
   - 001-jogo-da-cobrinha/requirements.md
-origem: engenharia reversa
+origin: engenharia reversa
 ---
 
 # 001 — Jogo da Cobrinha — design

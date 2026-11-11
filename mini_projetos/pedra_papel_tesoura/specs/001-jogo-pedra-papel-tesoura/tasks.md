@@ -1,11 +1,11 @@
 ---
 feature: Jogo de Pedra, Papel e Tesoura (Jokenpô) via terminal
 status: concluído
-data: 2026-09-11
-relacionado:
+date: 2026-09-11
+related:
   - 001-jogo-pedra-papel-tesoura/requirements.md
   - 001-jogo-pedra-papel-tesoura/design.md
-origem: engenharia reversa
+origin: engenharia reversa
 ---
 
 # 001 — Jogo de Pedra, Papel e Tesoura — Tasks

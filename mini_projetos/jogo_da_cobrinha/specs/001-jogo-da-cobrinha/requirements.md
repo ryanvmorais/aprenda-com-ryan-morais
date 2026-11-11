@@ -1,9 +1,9 @@
 ---
 feature: Jogo da Cobrinha (Snake) via terminal com curses
 status: concluído
-data: 2026-09-11
-relacionado: []
-origem: engenharia reversa
+date: 2026-09-11
+related: []
+origin: engenharia reversa
 ---
 
 # 001 — Jogo da Cobrinha
@@ -129,7 +129,7 @@ terminal.
 ## Perguntas em aberto
 
 Nenhuma — feature pequena e já finalizada; ver "Atividades para praticar"
-no `README.md` para extensões futuras propostas (recorde persistido,
+no `README.md`, com exercícios de extensão (recorde persistido,
 fruta dourada, atravessar paredes).
 
 ## Testes
