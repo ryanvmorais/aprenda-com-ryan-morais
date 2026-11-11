@@ -1,4 +1,5 @@
 @echo off
+REM Inicia o Pedra, Papel e Tesoura com o uv ou, sem ele, com o Python. Pre-requisito: um dos dois.
 title Iniciando Pedra, Papel e Tesoura...
 cls
 

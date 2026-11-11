@@ -1,4 +1,5 @@
 #!/bin/bash
+# Inicia a calculadora com o uv. Pré-requisito: uv instalado.
 
 # Limpa o terminal antes de iniciar
 clear

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Inicia o Pedra, Papel e Tesoura com o uv ou, sem ele, com o Python 3.
 set -euo pipefail
 
 clear

@@ -1,4 +1,5 @@
 @echo off
+REM Inicia a calculadora com o uv. Pre-requisito: uv instalado.
 title Calculadora Simples em Python
 cls
 
