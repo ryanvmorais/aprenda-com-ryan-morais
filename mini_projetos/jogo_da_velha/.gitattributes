@@ -2,3 +2,8 @@
 # no Windows com core.autocrlf=true. Com CRLF o shebang vira "bash\r" e o script
 # falha ("bad interpreter" ou "$'\r': command not found").
 *.sh text eol=lf
+
+# Lançadores do Windows: o cmd.exe espera CRLF, e com LF puro o `goto` e o
+# `call :rótulo` podem falhar. O repositório guarda LF; o checkout converte.
+*.bat text eol=crlf
+*.cmd text eol=crlf
