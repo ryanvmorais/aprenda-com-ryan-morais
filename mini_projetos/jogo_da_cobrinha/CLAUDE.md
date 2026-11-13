@@ -54,6 +54,7 @@ iniciar_jogo.sh       # atalho Linux/macOS: uv run main.py (fallback: python3 ma
 pyproject.toml        # gerenciado por uv — windows-curses (win32) + grupo dev
                        # com ruff/black/mypy/pytest
 uv.lock               # lock do grafo de dependências — nunca editar à mão
+.python-version       # fixa o Python 3.14 no uv (o windows-curses não tem wheel para o 3.15)
 .gitattributes        # LF fixo nos atalhos .sh (com CRLF o shebang quebra no Linux/macOS)
 .gitignore            # ignora .venv, caches de ferramentas e __pycache__
 assets/               # jogo-da-cobrinha-python-terminal.svg, a captura de tela do topo do README
@@ -126,6 +127,14 @@ não existe na stdlib do Windows). O `uv` resolve o marcador de plataforma
 sozinho — instala só onde faz sentido. O grupo `dev` (`ruff`, `black`,
 `mypy`, `pytest`) é travado junto no `uv.lock`. Commite `pyproject.toml`
 **e** `uv.lock` juntos; nunca edite o lock à mão.
+
+> **Cuidado:** o `.python-version` fixa o Python **3.14** porque o
+> `windows-curses` 2.4.2 só publica wheels para o 3.12, o 3.13 e o 3.14.
+> Sem ele, o `uv` no Windows escolhe o Python mais novo instalado (3.15) e o
+> `uv sync` falha sem wheel compatível. O arquivo é versionado só neste
+> mini-projeto (o `.gitignore` reverte o da raiz com `!.python-version`). A
+> CI não é afetada: o `setup-uv` recebe a versão da matriz e define
+> `UV_PYTHON`, que tem precedência sobre o `.python-version`.
 
 > **Cuidado:** `iniciar_jogo.bat`/`.sh` preferem `uv run main.py`, mas
 > caem para `python`/`python3 main.py` puro se o `uv` não estiver
