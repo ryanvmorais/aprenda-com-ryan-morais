@@ -5,7 +5,8 @@ venv/
 env/
 __pycache__/
 *.py[cod]
-.python-version
+# Versionado aqui, ao contrário da raiz: fixa o Python 3.14 (ver CLAUDE.md).
+!.python-version
 
 # JavaScript / Node.js
 node_modules/
