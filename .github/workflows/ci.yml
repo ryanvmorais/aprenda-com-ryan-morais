@@ -3,9 +3,11 @@
 # signifique o mesmo que um clone limpo passando. Um job por projeto x versao do Python.
 #
 # Cada projeto de mini_projetos/ e um projeto uv independente (pyproject.toml e uv.lock
-# proprios); por isso os comandos rodam dentro da pasta dele. O filtro de `paths` poupa
-# minutos em PRs que so mexem no README, e nenhum check deste workflow e exigido no
-# ruleset (um check com filtro de paths que nunca roda travaria o PR).
+# proprios); por isso os comandos rodam dentro da pasta dele.
+#
+# O ruleset da main exige o check "CI concluída" (job final), por isso o gatilho de PR
+# nao tem filtro de `paths`: um check exigido que nunca roda deixaria o PR travado. O push
+# na main mantem o filtro, porque ali nenhum check e exigido.
 #
 # As Actions ficam fixadas pelo SHA do commit, com a versao no comentario: uma tag
 # pode ser movida depois de publicada, o SHA nao. O Dependabot atualiza os dois juntos.
@@ -18,9 +20,6 @@ on:
       - "mini_projetos/**"
       - ".github/workflows/ci.yml"
   pull_request:
-    paths:
-      - "mini_projetos/**"
-      - ".github/workflows/ci.yml"
 
 # Cancela runs obsoletos do mesmo ref: um push novo no PR mata o run anterior.
 concurrency:
@@ -77,3 +76,19 @@ jobs:
       # em sys_platform == 'win32' (pyproject.toml), sem efeito neste runner.
       - name: Pytest (suite completa)
         run: uv run pytest
+
+  # Check unico exigido pelo ruleset: resume a matriz num nome estavel, para que trocar uma
+  # versao do Python ou acrescentar um projeto nao quebre a regra. O `always()` e
+  # obrigatorio: sem ele, uma falha na matriz pula este job, e job pulado conta como
+  # aprovado para o ruleset.
+  ci-concluida:
+    name: CI concluída
+    if: always()
+    needs: qualidade
+    runs-on: ubuntu-26.04
+    timeout-minutes: 5
+    steps:
+      - name: Confere o resultado da matriz
+        env:
+          RESULTADO: ${{ needs.qualidade.result }}
+        run: test "$RESULTADO" = "success"
