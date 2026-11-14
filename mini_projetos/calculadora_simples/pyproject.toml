@@ -30,6 +30,9 @@ dev = [
 
 [tool.uv]
 package = false  # é um script, não uma lib instalável
+# Carência de 7 dias para versões novas (mesmo prazo do cooldown do Dependabot):
+# um pacote sequestrado costuma ser retirado do PyPI antes disso.
+exclude-newer = "7 days"
 
 # --- Lint (substitui flake8 + isort) ---
 [tool.ruff]

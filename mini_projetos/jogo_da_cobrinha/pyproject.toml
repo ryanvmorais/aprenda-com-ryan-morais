@@ -34,6 +34,9 @@ dev = [
 [tool.uv]
 # Script educacional, não uma lib a ser empacotada/instalada como pacote.
 package = false
+# Carência de 7 dias para versões novas (mesmo prazo do cooldown do Dependabot):
+# um pacote sequestrado costuma ser retirado do PyPI antes disso.
+exclude-newer = "7 days"
 
 # --- Linter (substitui o flake8 + isort, lê o pyproject nativamente) ---
 [tool.ruff]
