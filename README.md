@@ -42,6 +42,14 @@ Código, exercícios e ferramentas que acompanham o canal. Eu explico programaç
 
 ---
 
+## 📄 Licença
+
+- **Código** (programas, scripts e exemplos): [MIT](LICENSE). Cada mini projeto traz a própria cópia.
+- **Textos e material didático** (READMEs, explicações e roteiros): [CC BY 4.0](LICENSE-CC-BY-4.0). Você pode copiar, adaptar e redistribuir, inclusive para uso comercial, desde que cite a fonte.
+- O nome e a identidade visual do canal (logotipo, capas e fotos) ficam fora das duas licenças.
+
+---
+
 > ⭐ **Gostou do conteúdo?** Deixe uma estrela nos repositórios, isso ajuda outras pessoas a encontrá-los. E assine a [newsletter][newsletter] para saber dos próximos lançamentos.
 
 [newsletter]: https://ryanmorais.com.br/newsletter/

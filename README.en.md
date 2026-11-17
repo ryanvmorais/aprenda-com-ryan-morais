@@ -44,6 +44,14 @@ The channel, podcast, newsletter, blog and website are in Portuguese (Brazil).
 
 ---
 
+## 📄 License
+
+- **Code** (programs, scripts and examples): [MIT](LICENSE). Each mini project carries its own copy.
+- **Text and teaching material** (READMEs, explanations and scripts for the videos): [CC BY 4.0](LICENSE-CC-BY-4.0). You may copy, adapt and redistribute it, including for commercial use, as long as you credit the source.
+- The channel's name and visual identity (logo, cover images and photos) are not covered by either license.
+
+---
+
 > ⭐ **Enjoying the content?** Leave a star on the repositories, it helps other people find them. And subscribe to the [newsletter][newsletter] to hear about upcoming releases.
 
 [newsletter]: https://ryanmorais.com.br/newsletter/
