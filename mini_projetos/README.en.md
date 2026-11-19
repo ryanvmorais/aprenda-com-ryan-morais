@@ -10,10 +10,10 @@ This folder gathers the channel's **Python mini projects**: small programs that 
 
 | Project | What you practice |
 |---|---|
-| [Simple Calculator](calculadora_simples/) | Dictionaries, loops and error handling |
-| [Tic-Tac-Toe](jogo_da_velha/) | Matrices, conditionals and OOP |
-| [Snake Game](jogo_da_cobrinha/) | Dynamic lists and a game loop with the `curses` library |
-| [Rock, Paper, Scissors](pedra_papel_tesoura/) | Dictionaries and Object-Oriented Programming |
+| [Simple Calculator](calculadora_simples/README.en.md) | Dictionaries, loops and error handling |
+| [Rock, Paper, Scissors](pedra_papel_tesoura/README.en.md) | Dictionaries and Object-Oriented Programming |
+| [Tic-Tac-Toe](jogo_da_velha/README.en.md) | Matrices, conditionals and OOP |
+| [Snake Game](jogo_da_cobrinha/README.en.md) | Dynamic lists and a game loop with the `curses` library |
 
 ---
 
@@ -21,7 +21,7 @@ This folder gathers the channel's **Python mini projects**: small programs that 
 
 A mini project is a **small, self-contained** program that runs on plain Python (or close to it), with no deploy and no external services.
 
-Larger projects, with their own dependencies, CI and deploy, live in separate repositories. They are listed in the [root README](../README.en.md).
+Larger projects, with their own dependencies, CI and deploy, live in separate repositories. You can find them all in the [search for the channel's projects](https://github.com/search?q=user%3Aryanvmorais+topic%3Aaprenda-com-ryan-morais&type=repositories).
 
 ---
 

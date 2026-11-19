@@ -5,12 +5,10 @@
 **English** · [Português (Brasil)](README.md)
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
-![deps](https://img.shields.io/badge/deps-uv-DE5FE9?logo=uv&logoColor=white)
 [![CI](https://img.shields.io/github/actions/workflow/status/ryanvmorais/aprenda-com-ryan-morais/ci.yml?label=CI&logo=githubactions&logoColor=white)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
-![lint](https://img.shields.io/badge/lint-ruff-261230?logo=ruff&logoColor=white)
-![style](https://img.shields.io/badge/style-black-000000?logo=black&logoColor=white)
-![types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white)
+
+**Run it now:** with [uv](https://docs.astral.sh/uv/) installed, clone the repository and, inside `mini_projetos/jogo_da_cobrinha`, run `uv run main.py`. Pick a difficulty from 1 to 5 and steer the snake (`@`) with the arrow keys to the fruit (`*`).
 
 This folder holds the classic **Snake Game (Jogo da Cobrinha) in Python**, designed as study material for beginner developers. The main goal is the hands-on use of **movement logic**, dynamic list handling and the `curses` library for terminal interfaces. The game's on-screen text is in Brazilian Portuguese, and so are the identifiers in the code.
 
@@ -28,7 +26,7 @@ This exercise was designed to consolidate essential algorithm concepts:
 - **Flow and time control:** managing the game speed and reading keys without halting execution (`timeout`).
 - **Coordinate logic:** how to manage `[y, x]` positions inside a Cartesian plane limited by borders.
 - **The curses library:** advanced terminal handling to create windows, borders and draw characters at specific positions.
-- **Modularization:** organizing the code into functions with single responsibilities (S.O.L.I.D. for beginners).
+- **Modularization:** organizing the code into functions with single responsibilities (the single-responsibility principle).
 
 ---
 
@@ -38,7 +36,7 @@ For beginners, the biggest challenge is not the syntax but **building the reason
 
 1. **Dynamic body modeling:** the snake is not a single object but a **list of coordinates** `[[y, x], [y, x]]`. The "head" is always the first item (index `0`), and the rest of the list forms the trail we call the body.
 2. **The math of movement:** instead of "pushing" each segment of the snake, we use a logic trick: on every turn, we compute and insert a **new head** in the chosen direction. If the snake eats nothing, we remove the last item of the list (the tail). This constant swap creates the illusion of movement.
-3. **Collision detection:** the system watches the head's coordinate in real time. If it equals the border limits (`y <= 0` or `x >= width`) or matches any coordinate already in the body list, the game detects the impact and ends the match.
+3. **Collision detection:** the system watches the head's coordinate in real time. If it equals the border limits (row `0` or `height - 1`, column `0` or `width - 1`) or matches any coordinate already in the body list, the game detects the impact and ends the match.
 4. **Ecosystem and feeding:** we use the `random` library to draw positions for the fruit. When the head occupies the same position as the fruit, the system increments the score and **does not remove the tail** on that turn, so the snake grows naturally.
 5. **Preventing opposite movement:** to avoid "logical suicide", we implement a lock that keeps the snake from turning 180° instantly (e.g. trying to go up when it is already going down). The command is only accepted if it is a side turn.
 6. **The heart of the game (game loop):** a `while True` loop coordinates the game's time. It clears the screen, draws the actors (`ASCII` characters), reads the keyboard input and waits a few milliseconds before repeating everything, so the game does not run too fast for the human eye.

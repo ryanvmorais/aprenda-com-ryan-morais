@@ -5,12 +5,10 @@
 [English](README.en.md) · **Português (Brasil)**
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
-![deps](https://img.shields.io/badge/deps-uv-DE5FE9?logo=uv&logoColor=white)
 [![CI](https://img.shields.io/github/actions/workflow/status/ryanvmorais/aprenda-com-ryan-morais/ci.yml?label=CI&logo=githubactions&logoColor=white)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
-![lint](https://img.shields.io/badge/lint-ruff-261230?logo=ruff&logoColor=white)
-![style](https://img.shields.io/badge/style-black-000000?logo=black&logoColor=white)
-![types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white)
+
+**Rodar agora:** com o [uv](https://docs.astral.sh/uv/) instalado, clone o repositório e, dentro de `mini_projetos/jogo_da_cobrinha`, rode `uv run main.py`. Escolha a dificuldade, de 1 a 5, e guie a cobra (`@`) com as setas até a fruta (`*`).
 
 Esta pasta contém o clássico **Jogo da Cobrinha (Snake Game) em Python**, projetado como material de estudo para desenvolvedores iniciantes. O foco principal é a aplicação de **lógica de movimento**, manipulação de listas dinâmicas e o uso da biblioteca `curses` para interfaces de terminal.
 
@@ -28,7 +26,7 @@ Este exercício foi estruturado para consolidar conceitos essenciais de algoritm
 - **Controle de Fluxo e Tempo:** gerenciamento da velocidade do jogo e captura de teclas sem interromper a execução (`timeout`).
 - **Lógica de Coordenadas:** como gerenciar posições `[y, x]` dentro de um plano cartesiano delimitado por bordas.
 - **Biblioteca Curses:** manipulação avançada do terminal para criar janelas, bordas e desenhar caracteres em posições específicas.
-- **Modularização:** organização do código em funções com responsabilidades únicas (S.O.L.I.D. para iniciantes).
+- **Modularização:** organização do código em funções com responsabilidades únicas (o princípio da responsabilidade única).
 
 ---
 
@@ -38,7 +36,7 @@ Para quem está começando, o maior desafio não é a sintaxe, mas a **montagem 
 
 1. **Modelagem Dinâmica do Corpo:** a cobra não é um objeto único, mas uma **lista de coordenadas** `[[y, x], [y, x]]`. A "cabeça" é sempre o primeiro item (índice `0`), e o restante da lista forma o rastro que chamamos de corpo.
 2. **A Matemática do Movimento:** em vez de "empurrar" cada gomo da cobra, usamos um truque lógico: em cada turno, calculamos e inserimos uma **nova cabeça** na direção escolhida. Se a cobra não comer nada, removemos o último item da lista (a cauda). Essa troca constante cria a ilusão de movimento.
-3. **Detecção de Colisões:** o sistema monitora a coordenada da cabeça em tempo real. Se ela for igual aos limites da borda (`y <= 0` ou `x >= largura`) ou se coincidir com qualquer coordenada que já exista na lista do corpo, o jogo identifica o impacto e encerra a partida.
+3. **Detecção de Colisões:** o sistema monitora a coordenada da cabeça em tempo real. Se ela for igual aos limites da borda (linha `0` ou `altura - 1`, coluna `0` ou `largura - 1`) ou se coincidir com qualquer coordenada que já exista na lista do corpo, o jogo identifica o impacto e encerra a partida.
 4. **Ecossistema e Alimentação:** utilizamos a biblioteca `random` para sortear posições para a fruta. Quando a cabeça ocupa a mesma posição da fruta, o sistema incrementa a pontuação e **não remove a cauda** naquele turno, resultando no crescimento natural da cobra.
 5. **Prevenção de Movimento Oposto:** para evitar o "suicídio lógico", implementamos uma trava que impede a cobra de virar 180° instantaneamente (ex.: tentar ir para cima quando já está indo para baixo). O comando só é aceito se for uma curva lateral.
 6. **O Coração do Jogo (Game Loop):** um loop `while True` coordena o tempo do jogo. Ele limpa a tela, desenha os atores (caracteres `ASCII`), processa a entrada do teclado e aguarda alguns milissegundos antes de repetir tudo, garantindo que o jogo não rode rápido demais para o olho humano.

@@ -5,12 +5,10 @@
 **English** · [Português (Brasil)](README.md)
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
-![deps](https://img.shields.io/badge/deps-uv-DE5FE9?logo=uv&logoColor=white)
 [![CI](https://img.shields.io/github/actions/workflow/status/ryanvmorais/aprenda-com-ryan-morais/ci.yml?label=CI&logo=githubactions&logoColor=white)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
-![lint](https://img.shields.io/badge/lint-ruff-261230?logo=ruff&logoColor=white)
-![style](https://img.shields.io/badge/style-black-000000?logo=black&logoColor=white)
-![types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white)
+
+**Run it now:** with [uv](https://docs.astral.sh/uv/) installed, clone the repository and, inside `mini_projetos/jogo_da_velha`, run `uv run main.py`. You play X and the machine plays O; type the row and then the column, from 0 to 2.
 
 This folder holds a **Tic Tac Toe game (Jogo da Velha) in Python**, designed as study material for beginner developers. The main goal is the hands-on use of **programming fundamentals** and matrix handling in the terminal. The game's on-screen text is in Brazilian Portuguese, and so are the identifiers in the code.
 
@@ -110,7 +108,7 @@ To exercise what you learned, try changing the code and implementing these new f
 
 1. **🏆 Running Scoreboard:** create a counter that does not reset when a match restarts. Add control variables (e.g. `vitorias_x` and `vitorias_o`) that persist while the program is open: every time a winner is detected, update the scoreboard and show it on the next turn.
    - **What you learn:** telling variables that control the **round** apart from those that control the **player's history**, keeping data consistent in applications with several execution cycles.
-2. **🤖 Single Player Mode:** make the machine block your moves instead of just playing at random.
+2. **🤖 Smarter Machine:** make the machine block your moves instead of just playing at random.
    - **What you learn:** turning a strategy rule ("if the opponent is about to win, block") into conditions over the 8 winning lines you already scan in the code.
 3. **🎨 Terminal Colors:** use the `colorama` library to color the **"X"** red and the **"O"** blue.
    - **What you learn:** installing an external dependency with `uv add` and using it without breaking the rest of the program.

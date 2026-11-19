@@ -5,12 +5,10 @@
 [English](README.en.md) · **Português (Brasil)**
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
-![deps](https://img.shields.io/badge/deps-uv-DE5FE9?logo=uv&logoColor=white)
 [![CI](https://img.shields.io/github/actions/workflow/status/ryanvmorais/aprenda-com-ryan-morais/ci.yml?label=CI&logo=githubactions&logoColor=white)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
-![lint](https://img.shields.io/badge/lint-ruff-261230?logo=ruff&logoColor=white)
-![style](https://img.shields.io/badge/style-black-000000?logo=black&logoColor=white)
-![types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white)
+
+**Rodar agora:** com o [uv](https://docs.astral.sh/uv/) instalado, clone o repositório e, dentro de `mini_projetos/calculadora_simples`, rode `uv run main.py`.
 
 Esta pasta contém uma **Calculadora Simples em Python**, criada como material de estudo para quem está iniciando na programação. O foco principal é demonstrar como organizar **menus interativos** e **realizar operações matemáticas básicas** de forma limpa.
 
@@ -24,7 +22,7 @@ Praticar o uso de **Dicionários**, **Loops de repetição** e **Tratamento de E
 
 Este exercício foi estruturado para consolidar conceitos essenciais de algoritmos:
 
-- **Dicionários (Mapping):** como mapear símbolos matemáticos (`+`, `-`, `*`, `/`) para nomes legíveis.
+- **Dicionários (Mapping):** como mapear símbolos matemáticos (`+`, `-`, `*`, `/`, `^`) para nomes legíveis.
 - **Tratamento de Erros (Try/Except):** como evitar que o programa feche ao tentar dividir por zero ou digitar letras.
 - **Manipulação de Listas:** transformar chaves de dicionários em listas para acessar opções por números (índices).
 - **UX no Terminal:** uso do módulo `os` para limpar a tela e criar uma interface dinâmica.
@@ -119,6 +117,7 @@ Este projeto faz parte de uma trilha de exercícios de lógica de programação 
 
 - **[Pedra, Papel e Tesoura em Python](../pedra_papel_tesoura/):** dicionários e Programação Orientada a Objetos.
 - **[Jogo da Velha em Python](../jogo_da_velha/):** matrizes e Programação Orientada a Objetos.
+- **[Jogo da Cobrinha em Python](../jogo_da_cobrinha/):** listas dinâmicas e game loop com a biblioteca `curses`.
 
 Veja todos os projetos e vídeos do canal em [aprenda-com-ryan-morais](https://github.com/ryanvmorais/aprenda-com-ryan-morais).
 
