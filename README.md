@@ -1,3 +1,5 @@
+![Aprenda Python, IA e Cibersegurança: capa do canal Ryan Morais, com a frase "Vem aprender tecnologia comigo" entre um monitor com código e outro com um cadeado](assets/aprenda-com-ryan-morais-python-ia-ciberseguranca-capa.jpg)
+
 # 🚀 Aprenda Python, IA e Cibersegurança | Material de apoio do canal Ryan Morais
 
 [English](README.en.md) · **Português (Brasil)**
