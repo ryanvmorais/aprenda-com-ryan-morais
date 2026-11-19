@@ -1,4 +1,4 @@
-![Rock, Paper, Scissors in Python: real terminal capture with the scoreboard and the round result](assets/pedra-papel-tesoura-python-terminal.svg)
+![Rock, Paper, Scissors in Python: animation of three rounds in the terminal, with the scoreboard and each result, until the session ends 2 x 1](assets/pedra-papel-tesoura-python-terminal-sessao.svg)
 
 # ✂️ Rock, Paper, Scissors in Python | Programming Logic Exercise
 

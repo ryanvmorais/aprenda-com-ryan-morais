@@ -1,4 +1,4 @@
-![Pedra, Papel e Tesoura em Python: captura real do terminal com o placar e o resultado da rodada](assets/pedra-papel-tesoura-python-terminal.svg)
+![Pedra, Papel e Tesoura em Python: animação de três rodadas no terminal, com o placar e o resultado de cada uma, até a sessão terminar em 2 x 1](assets/pedra-papel-tesoura-python-terminal-sessao.svg)
 
 # ✂️ Pedra, Papel e Tesoura em Python | Exercício de Lógica de Programação
 

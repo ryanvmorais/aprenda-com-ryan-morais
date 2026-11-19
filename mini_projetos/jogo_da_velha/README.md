@@ -1,4 +1,4 @@
-![Jogo da Velha em Python: captura real do terminal com uma partida vencida por X](assets/jogo-da-velha-python-terminal.svg)
+![Jogo da Velha em Python: animação de uma partida no terminal contra a máquina, em que o tabuleiro enche jogada a jogada e X vence na diagonal](assets/jogo-da-velha-python-terminal-sessao.svg)
 
 # ⭕ Jogo da Velha em Python | Exercício de Lógica de Programação
 
