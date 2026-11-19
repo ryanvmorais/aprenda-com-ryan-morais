@@ -1,4 +1,4 @@
-![Tic Tac Toe in Python: real terminal capture of a match won by X](assets/jogo-da-velha-python-terminal.svg)
+![Tic Tac Toe in Python: animation of a terminal match against the machine, where the board fills move by move and X wins on the diagonal](assets/jogo-da-velha-python-terminal-sessao.svg)
 
 # ⭕ Tic Tac Toe in Python | Programming Logic Exercise
 

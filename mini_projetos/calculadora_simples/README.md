@@ -1,4 +1,4 @@
-![Calculadora Simples em Python: captura real do terminal calculando 42 + 8](assets/calculadora-simples-python-terminal.svg)
+![Calculadora Simples em Python: animação de uma sessão no terminal, que calcula 42 + 8 = 50.0, volta ao menu, calcula 2 ^ 10 = 1024.0 e encerra](assets/calculadora-simples-python-terminal-sessao.svg)
 
 # 🧮 Calculadora Simples em Python | Exercício de Lógica e Dicionários
 

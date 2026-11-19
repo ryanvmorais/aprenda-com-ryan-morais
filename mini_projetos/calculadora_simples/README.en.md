@@ -1,4 +1,4 @@
-![Simple Calculator in Python: real terminal capture calculating 42 + 8](assets/calculadora-simples-python-terminal.svg)
+![Simple Calculator in Python: animation of a terminal session that calculates 42 + 8 = 50.0, goes back to the menu, calculates 2 ^ 10 = 1024.0 and exits](assets/calculadora-simples-python-terminal-sessao.svg)
 
 # 🧮 Simple Calculator in Python | Logic and Dictionaries Exercise
 
