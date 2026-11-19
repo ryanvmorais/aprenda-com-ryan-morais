@@ -45,7 +45,7 @@ tests/test_main.py   # suíte pytest (20 casos)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
 README.en.md         # versão em inglês do README (mesmas seções, mesma ordem)
 docs/stack.md         # o que cada peça da stack faz e por quê
-assets/               # captura do terminal (SVG) usada no cabeçalho do README
+assets/               # animação (SVG) de uma partida real do main.py, no topo do README
 specs/                # spec-driven development (ver specs/README.md)
   001-jogo-da-velha/
 iniciar_jogo.bat      # atalho Windows: uv run main.py (fallback: python main.py)

@@ -48,7 +48,7 @@ iniciar_calculadora.sh         # atalho Linux/macOS (uv run main.py)
 CODE_OF_CONDUCT.md             # Contributor Covenant 2.1 (pt-BR); contato: contato@ryanmorais.com.br
 SECURITY.md                    # política de segurança; relatos pelo Private Vulnerability Reporting
 CONTRIBUTING.md                # guia de contribuição (fork, Conventional Commits, PR)
-assets/                        # captura do terminal usada no topo do README
+assets/                        # animação (SVG) de uma sessão real do main.py, no topo do README
 ../../.github/   # CI, CodeQL, pip-audit, Dependabot e templates: ficam na raiz do repositório
 ```
 
