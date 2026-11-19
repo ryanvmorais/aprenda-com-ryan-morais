@@ -11,9 +11,9 @@ Esta pasta reúne os **mini projetos em Python** do canal: programas pequenos, q
 | Projeto | O que você pratica |
 |---|---|
 | [Calculadora Simples](calculadora_simples/) | Dicionários, loops e tratamento de erros |
+| [Pedra, Papel e Tesoura](pedra_papel_tesoura/) | Dicionários e Programação Orientada a Objetos |
 | [Jogo da Velha](jogo_da_velha/) | Matrizes, estruturas condicionais e POO |
 | [Jogo da Cobrinha](jogo_da_cobrinha/) | Listas dinâmicas e game loop com a biblioteca `curses` |
-| [Pedra, Papel e Tesoura](pedra_papel_tesoura/) | Dicionários e Programação Orientada a Objetos |
 
 ---
 
@@ -21,7 +21,7 @@ Esta pasta reúne os **mini projetos em Python** do canal: programas pequenos, q
 
 Um mini projeto é um programa **pequeno e autocontido**, que roda com Python puro ou quase, sem deploy e sem depender de serviços externos.
 
-Projetos maiores, com dependências, CI e deploy próprios, ficam em repositório separado. Eles estão listados no [README da raiz](../README.md).
+Projetos maiores, com dependências, CI e deploy próprios, ficam em repositório separado. Você encontra todos na [busca pelos projetos do canal](https://github.com/search?q=user%3Aryanvmorais+topic%3Aaprenda-com-ryan-morais&type=repositories).
 
 ---
 

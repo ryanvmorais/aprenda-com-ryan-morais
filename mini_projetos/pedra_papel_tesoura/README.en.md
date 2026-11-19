@@ -5,14 +5,12 @@
 **English** · [Português (Brasil)](README.md)
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
-![deps](https://img.shields.io/badge/deps-uv-DE5FE9?logo=uv&logoColor=white)
 [![CI](https://img.shields.io/github/actions/workflow/status/ryanvmorais/aprenda-com-ryan-morais/ci.yml?label=CI&logo=githubactions&logoColor=white)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
-![lint](https://img.shields.io/badge/lint-ruff-261230?logo=ruff&logoColor=white)
-![style](https://img.shields.io/badge/style-black-000000?logo=black&logoColor=white)
-![types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white)
 
-This folder holds the classic **Rock, Paper, Scissors game (Jokenpô) in Python**, designed as study material for beginner developers. The main goal is the hands-on use of **programming fundamentals** and of dictionaries to map business rules in the terminal. The game's on-screen text is in Brazilian Portuguese, and so are the identifiers in the code.
+**Run it now:** with [uv](https://docs.astral.sh/uv/) installed, clone the repository and, inside `mini_projetos/pedra_papel_tesoura`, run `uv run main.py`.
+
+This folder holds the classic **Rock, Paper, Scissors game (Jokenpô) in Python**, designed as study material for beginner developers. The main goal is the hands-on use of **programming fundamentals** and of dictionaries to map the game rules in the terminal. The game's on-screen text is in Brazilian Portuguese, and so are the identifiers in the code.
 
 ### 🎯 Project goal:
 
@@ -107,8 +105,8 @@ For the map of each technology in the stack (what it is, why it was chosen, what
 
 To exercise what you learned, try changing the code and implementing these new features:
 
-1. **🏆 Running Scoreboard:** create a counter that does not reset when a match restarts. Add control variables (e.g. `pontos_usuario` and `pontos_computador`) inside the class's `__init__` method and make sure that, when the move loop restarts, they persist and are shown on the scoreboard every new turn.
-   - **What you learn:** telling variables that control the **current round** apart from those that control the **user's global history**, keeping data consistent in applications with several execution cycles (game loops).
+1. **🏆 Round History:** the scoreboard already exists (`pontos_usuario` and `pontos_computador`, in `__init__`). Now store the result of each round in a list and, on exit, show the last five.
+   - **What you learn:** using a list as the program's memory, adding one item per cycle and reading only its end with slices (`[-5:]`).
 2. **🤖 "Best of 3" Mode:** make the game end and declare a Grand Champion as soon as the user or the computer reaches 2 wins.
    - **What you learn:** using the state stored in the object (`self`) to decide when the loop ends, instead of relying only on the "play again?" answer.
 3. **⏲️ Suspense Effect:** use the `time` module and the `time.sleep(1)` function to show "Pedra...", "Papel..." and "Tesoura!" with pauses before revealing the machine's move.

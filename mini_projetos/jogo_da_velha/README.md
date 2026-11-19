@@ -5,12 +5,10 @@
 [English](README.en.md) · **Português (Brasil)**
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
-![deps](https://img.shields.io/badge/deps-uv-DE5FE9?logo=uv&logoColor=white)
 [![CI](https://img.shields.io/github/actions/workflow/status/ryanvmorais/aprenda-com-ryan-morais/ci.yml?label=CI&logo=githubactions&logoColor=white)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
-![lint](https://img.shields.io/badge/lint-ruff-261230?logo=ruff&logoColor=white)
-![style](https://img.shields.io/badge/style-black-000000?logo=black&logoColor=white)
-![types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white)
+
+**Rodar agora:** com o [uv](https://docs.astral.sh/uv/) instalado, clone o repositório e, dentro de `mini_projetos/jogo_da_velha`, rode `uv run main.py`. Você joga com X e a máquina com O; digite a linha e a coluna, de 0 a 2.
 
 Esta pasta contém um **Jogo da Velha (Tic Tac Toe) em Python**, projetado como material de estudo para desenvolvedores iniciantes. O foco principal é a aplicação prática de **fundamentos da programação** e manipulação de matrizes no terminal.
 
@@ -110,7 +108,7 @@ Para exercitar o que aprendeu, tente modificar o código e implementar estas nov
 
 1. **🏆 Placar Acumulado:** crie um contador que não zere ao reiniciar uma partida. Implemente variáveis de controle (ex.: `vitorias_x` e `vitorias_o`) que persistam enquanto o programa estiver aberto: toda vez que um vencedor for detectado, atualize o placar e exiba-o no próximo turno.
    - **O Aprendizado:** diferenciar variáveis que controlam a **rodada** das que controlam o **histórico do jogador**, mantendo dados consistentes em aplicações com vários ciclos de execução.
-2. **🤖 Modo Single Player:** faça a máquina bloquear suas jogadas em vez de apenas jogar aleatoriamente.
+2. **🤖 Máquina Estratégica:** faça a máquina bloquear suas jogadas em vez de apenas jogar aleatoriamente.
    - **O Aprendizado:** transformar uma regra de estratégia ("se o adversário está para ganhar, bloqueie") em condições sobre as 8 linhas de vitória que você já varre no código.
 3. **🎨 Cores no Terminal:** use a biblioteca `colorama` para colorir o **"X"** de vermelho e o **"O"** de azul.
    - **O Aprendizado:** instalar uma dependência externa com `uv add` e usá-la sem quebrar o resto do programa.

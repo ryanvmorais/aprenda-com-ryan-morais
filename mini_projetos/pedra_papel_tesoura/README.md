@@ -5,14 +5,12 @@
 [English](README.en.md) · **Português (Brasil)**
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
-![deps](https://img.shields.io/badge/deps-uv-DE5FE9?logo=uv&logoColor=white)
 [![CI](https://img.shields.io/github/actions/workflow/status/ryanvmorais/aprenda-com-ryan-morais/ci.yml?label=CI&logo=githubactions&logoColor=white)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
-![lint](https://img.shields.io/badge/lint-ruff-261230?logo=ruff&logoColor=white)
-![style](https://img.shields.io/badge/style-black-000000?logo=black&logoColor=white)
-![types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white)
 
-Esta pasta contém o clássico jogo **Pedra, Papel e Tesoura (Jokenpô) em Python**, projetado como material de estudo para desenvolvedores iniciantes. O foco principal é a aplicação prática de **fundamentos da programação** e o uso de dicionários para mapear regras de negócio no terminal.
+**Rodar agora:** com o [uv](https://docs.astral.sh/uv/) instalado, clone o repositório e, dentro de `mini_projetos/pedra_papel_tesoura`, rode `uv run main.py`.
+
+Esta pasta contém o clássico jogo **Pedra, Papel e Tesoura (Jokenpô) em Python**, projetado como material de estudo para desenvolvedores iniciantes. O foco principal é a aplicação prática de **fundamentos da programação** e o uso de dicionários para mapear regras do jogo no terminal.
 
 ### 🎯 Objetivo do Projeto:
 
@@ -107,8 +105,8 @@ Para o mapa de cada tecnologia da stack (o que é, por que foi escolhida, o que 
 
 Para exercitar o que aprendeu, tente modificar o código e implementar estas novas funcionalidades:
 
-1. **🏆 Placar Acumulado:** crie um contador que não zere ao reiniciar uma partida. Implemente variáveis de controle (ex.: `pontos_usuario` e `pontos_computador`) dentro do método `__init__` da classe e garanta que, ao reiniciar o loop de jogadas, elas persistam e sejam exibidas no placar a cada novo turno.
-   - **O Aprendizado:** diferenciar variáveis que controlam a **rodada atual** das que controlam o **histórico global do usuário**, mantendo dados consistentes em aplicações com vários ciclos de execução (Game Loops).
+1. **🏆 Histórico das Rodadas:** o placar já existe (`pontos_usuario` e `pontos_computador`, no `__init__`). Agora guarde o resultado de cada rodada numa lista e, ao sair, mostre as últimas cinco.
+   - **O Aprendizado:** usar uma lista como memória do programa, acrescentando um item a cada ciclo e lendo só o fim dela com fatias (`[-5:]`).
 2. **🤖 Modo "Melhor de 3":** faça o jogo encerrar e declarar um Grande Campeão assim que o usuário ou o computador atingir 2 vitórias.
    - **O Aprendizado:** usar o estado guardado no objeto (`self`) para decidir quando o loop termina, em vez de depender só da resposta "jogar de novo?".
 3. **⏲️ Efeito de Suspense:** use o módulo `time` e a função `time.sleep(1)` para exibir "Pedra...", "Papel..." e "Tesoura!" com pausas antes de revelar a jogada da máquina.

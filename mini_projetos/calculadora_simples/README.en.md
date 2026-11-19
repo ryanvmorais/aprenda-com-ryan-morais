@@ -5,12 +5,10 @@
 **English** · [Português (Brasil)](README.md)
 
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)
-![deps](https://img.shields.io/badge/deps-uv-DE5FE9?logo=uv&logoColor=white)
 [![CI](https://img.shields.io/github/actions/workflow/status/ryanvmorais/aprenda-com-ryan-morais/ci.yml?label=CI&logo=githubactions&logoColor=white)](https://github.com/ryanvmorais/aprenda-com-ryan-morais/actions/workflows/ci.yml)
-![lint](https://img.shields.io/badge/lint-ruff-261230?logo=ruff&logoColor=white)
-![style](https://img.shields.io/badge/style-black-000000?logo=black&logoColor=white)
-![types](https://img.shields.io/badge/types-mypy%20strict-2A6DB2)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white)
+
+**Run it now:** with [uv](https://docs.astral.sh/uv/) installed, clone the repository and, inside `mini_projetos/calculadora_simples`, run `uv run main.py`.
 
 This folder holds a **Simple Calculator in Python**, built as study material for people who are just starting to program. The main goal is to show how to organize **interactive menus** and **run basic math operations** cleanly. The program's on-screen text is in Brazilian Portuguese, and so are the identifiers in the code.
 
@@ -24,7 +22,7 @@ Practice **dictionaries**, **loops** and **error handling**. It is the ideal pro
 
 This exercise was designed to consolidate essential algorithm concepts:
 
-- **Dictionaries (mapping):** how to map math symbols (`+`, `-`, `*`, `/`) to readable names.
+- **Dictionaries (mapping):** how to map math symbols (`+`, `-`, `*`, `/`, `^`) to readable names.
 - **Error handling (try/except):** how to keep the program from closing when you divide by zero or type letters.
 - **List handling:** turning dictionary keys into lists so options can be picked by number (index).
 - **Terminal UX:** using the `os` module to clear the screen and build a dynamic interface.
@@ -119,6 +117,7 @@ This project is part of a trail of programming logic exercises in Python. After 
 
 - **[Rock, Paper, Scissors in Python](../pedra_papel_tesoura/README.en.md):** dictionaries and Object-Oriented Programming.
 - **[Tic Tac Toe in Python](../jogo_da_velha/README.en.md):** matrices and Object-Oriented Programming.
+- **[Snake Game in Python](../jogo_da_cobrinha/README.en.md):** dynamic lists and a game loop with the `curses` library.
 
 See all the channel's projects and videos at [aprenda-com-ryan-morais](https://github.com/ryanvmorais/aprenda-com-ryan-morais).
 
