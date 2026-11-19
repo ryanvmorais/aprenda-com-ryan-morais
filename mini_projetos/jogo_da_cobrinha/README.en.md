@@ -1,4 +1,4 @@
-![Snake Game in Python: real terminal capture with the snake moving](assets/jogo-da-cobrinha-python-terminal.svg)
+![Snake Game in Python: animation of a game in the terminal, where the snake eats four fruits, grows, hits the border and the game shows "Fim de Jogo! Frutas coletadas: 4" (game over, fruits collected: 4)](assets/jogo-da-cobrinha-python-terminal-partida.svg)
 
 # 🐍 Snake Game in Python | Programming Logic Exercise
 

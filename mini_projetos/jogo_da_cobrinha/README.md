@@ -1,4 +1,4 @@
-![Jogo da Cobrinha em Python: captura real do terminal com a cobra em movimento](assets/jogo-da-cobrinha-python-terminal.svg)
+![Jogo da Cobrinha em Python: animação de uma partida no terminal, em que a cobra come quatro frutas, cresce, bate na borda e aparece "Fim de Jogo! Frutas coletadas: 4"](assets/jogo-da-cobrinha-python-terminal-partida.svg)
 
 # 🐍 Jogo da Cobrinha em Python | Exercício de Lógica de Programação
 
