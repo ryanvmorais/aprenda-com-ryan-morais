@@ -1,3 +1,5 @@
+![Learn Python, AI and Cybersecurity: cover of the Ryan Morais channel, which is in Portuguese, with the phrase "Vem aprender tecnologia comigo" (come learn tech with me) between a monitor with code and another with a padlock](assets/aprenda-com-ryan-morais-python-ia-ciberseguranca-capa.jpg)
+
 # 🚀 Learn Python, AI and Cybersecurity | Companion material for the Ryan Morais channel
 
 **English** · [Português (Brasil)](README.md)
