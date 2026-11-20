@@ -1,6 +1,6 @@
 ---
 feature: Jogo Adivinhe o Número via terminal
-status: aprovado
+status: em andamento
 date: 2026-11-20
 related:
   - 001-adivinhe-o-numero/requirements.md
@@ -284,3 +284,34 @@ com o `capsys`. `limpar_tela` é substituída por uma fixture `autouse` com `mon
 testes de `main()` não chamarem `os.system`: é o único `monkeypatch` da suíte (RF-08). Os testes
 de `main()` também cobrem o Ctrl+C e o fim da entrada, com um leitor que lança `KeyboardInterrupt`
 ou `EOFError` (RNF-04). Ver `tests/test_main.py` e a seção "Testes" do `requirements.md`.
+
+## Desvios
+
+1. **Texto das mensagens (RF-04, RF-05, RF-06, RF-07).** A sessão ilustrativa de "Interfaces"
+   usa "Restam 7 tentativas" e "você usou 3 tentativas". No `main.py`, a dica diz "Tentativas
+   restantes: 7.", a vitória diz "Acertou na tentativa 3! O número era 63.", o recorde no início
+   da partida diz "acerto na tentativa 3", e o resumo final mostra só o número, com "(menor número
+   de tentativas)" no título. Assim nenhuma frase precisa concordar com o número ("1 tentativas",
+   "Restam 1"), sem uma função de plural a mais. O comportamento de cada RF não muda.
+2. **Leitor e sorteador falsos (RNF-06).** A estratégia de testes previa um `lambda` sobre um
+   iterador. Os testes usam pequenas classes com `__call__` (`LeitorFalso`, `SorteadorFalso` e
+   `LeitorQueInterrompe`), porque elas também guardam os pedidos e os extremos recebidos, e o
+   teste confere que a entrada inválida repete o mesmo número de tentativa e que o sorteio usou a
+   faixa do nível. Continua sem `monkeypatch` em `input` ou `random`.
+3. **Pisos do grupo `dev` (RNF-01).** Os mini-projetos não tinham os mesmos pisos (dois em
+   `ruff>=0.17.1`, `mypy>=2.4.0` e `pytest>=9.1.1`, dois em `ruff>=0.17.4`, `mypy>=2.4.1` e
+   `pytest>=9.2.0`). Este projeto nasce com os mais novos.
+4. **Apelidos de tipo (ADR-3).** O "Modelo de dados" mostra `Leitor = Callable[[str], str]`;
+   no `main.py`, os dois apelidos usam a instrução `type` (PEP 695, Python 3.12), a forma
+   explícita de declarar um apelido de tipo. O uso nas assinaturas não muda.
+
+## Notas de implementação
+
+- **Testes:** 45 casos em `tests/test_main.py` (30 na etapa 1, 15 na etapa 2); ruff, black e
+  mypy strict verdes.
+- **Matriz do CI:** com cinco projetos, a lista em linha de `projeto` passava de 100 colunas, e
+  virou lista em bloco no `ci.yml` e no `pip-audit.yml`.
+- **Conferido à mão:** uma partida por nível com o sorteio real, a limpeza de tela antes de cada
+  menu (o `cls` devolve 0 no Windows e, com a saída redirecionada, deixa o caractere de limpar a
+  tela no arquivo) e o `uv run main.py` com a entrada por pipe e a saída redirecionada para
+  arquivo: os emojis saem sem `UnicodeEncodeError`, e o fim da entrada encerra com a despedida.
