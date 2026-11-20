@@ -12,6 +12,7 @@ Esta pasta reúne os **mini projetos em Python** do canal: programas pequenos, q
 |---|---|
 | [Calculadora Simples](calculadora_simples/) | Dicionários, loops e tratamento de erros |
 | [Adivinhe o Número](adivinhe_o_numero/) | Sorteio com `random`, laço `while` e validação de entrada |
+| [Jogo da Forca](jogo_da_forca/) | Strings, conjuntos e acentos com `unicodedata` |
 | [Pedra, Papel e Tesoura](pedra_papel_tesoura/) | Dicionários e Programação Orientada a Objetos |
 | [Jogo da Velha](jogo_da_velha/) | Matrizes, estruturas condicionais e POO |
 | [Jogo da Cobrinha](jogo_da_cobrinha/) | Listas dinâmicas e game loop com a biblioteca `curses` |
