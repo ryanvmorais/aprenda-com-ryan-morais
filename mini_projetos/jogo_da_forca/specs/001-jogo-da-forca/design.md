@@ -378,8 +378,10 @@ lança `KeyboardInterrupt` ou `EOFError` (RNF-04). Ver `tests/test_main.py` e a 
 - **Testes:** 58 casos em `tests/test_main.py` (45 na etapa 1, 13 na etapa 2); com o
   `test_impessoalidade.py` e o `test_readme_en.py`, cópias dos do `adivinhe_o_numero`, a suíte
   tem 66. Ruff, black e mypy strict verdes.
-- **Conferido à mão:** uma vitória e uma derrota no terminal, a limpeza de tela a cada jogada e a
-  saída redirecionada para arquivo, com os acentos e os emojis sem `UnicodeEncodeError`.
+- **Conferido à mão:** uma vitória e uma derrota com a entrada roteirizada por stdin e a saída
+  redirecionada para arquivo, não num terminal interativo: os acentos e os emojis saem sem
+  `UnicodeEncodeError`, e a limpeza de tela a cada jogada aparece no arquivo como o caractere que
+  o `cls` emite (`^L`).
 - **Animação do README:** gravada rodando o `main()` de verdade, com o sorteio fixo em
   ("frutas", "maçã") e o roteiro de entradas `e` (erro), `a` (revela o A e o Ã), `ab` (recusada
   sem contar erro), `c` (revela o Ç), `r` (erro), `M` (maiúscula, fecha a palavra com 2 erros) e
