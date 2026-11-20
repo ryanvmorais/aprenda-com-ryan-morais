@@ -48,7 +48,7 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 | Spec | Escopo | Entrega | Status |
 |---|---|---|---|
-| [001-lista-de-tarefas](001-lista-de-tarefas/requirements.md) | O programa completo: adicionar, concluir ou reabrir, editar e remover tarefas com a data de criação, lista sempre à vista, gravação atômica em JSON a cada alteração, cópia do arquivo corrompido, limpeza de tela multiplataforma | — | aprovado |
+| [001-lista-de-tarefas](001-lista-de-tarefas/requirements.md) | O programa completo: adicionar, concluir ou reabrir, editar e remover tarefas com a data de criação, lista sempre à vista, gravação atômica em JSON a cada alteração, cópia do arquivo corrompido, limpeza de tela multiplataforma | — | em andamento |
 
 ## Notas de manutenção
 
