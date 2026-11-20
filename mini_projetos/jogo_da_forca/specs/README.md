@@ -48,7 +48,7 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 | Spec | Escopo | Entrega | Status |
 |---|---|---|---|
-| [001-jogo-da-forca](001-jogo-da-forca/requirements.md) | O jogo completo: palavras por tema, letras sem acento, desenho da forca, placar da sessão sem repetir palavra, jogar de novo, limpeza de tela multiplataforma | — | em andamento |
+| [001-jogo-da-forca](001-jogo-da-forca/requirements.md) | O jogo completo: palavras por tema, letras sem acento, desenho da forca, placar da sessão sem repetir palavra, jogar de novo, limpeza de tela multiplataforma | — | concluído |
 
 ## Notas de manutenção
 

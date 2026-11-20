@@ -1,6 +1,6 @@
 ---
 feature: Jogo da Forca via terminal
-status: em andamento
+status: concluído
 date: 2026-11-20
 related:
   - 001-jogo-da-forca/requirements.md
@@ -81,29 +81,30 @@ O portão de qualidade de cada etapa roda, dentro de `mini_projetos/jogo_da_forc
 
 ## Etapa 3 — Documentação do projeto
 
-- [ ] `tests/test_impessoalidade.py` e `tests/test_readme_en.py`: cópias dos do
+- [x] `tests/test_impessoalidade.py` e `tests/test_readme_en.py`: cópias dos do
       `adivinhe_o_numero`. — RNF-07
-- [ ] `assets/jogo-da-forca-python-terminal-sessao.svg`: animação de uma sessão real do
+- [x] `assets/jogo-da-forca-python-terminal-sessao.svg`: animação de uma sessão real do
       `main.py`, com as entradas de um roteiro e o sorteio fixo, no visual das outras animações e
       na largura de 52 colunas (ou na menor acima disso em que a linha mais longa caiba sem
       quebrar); quem pede movimento reduzido vê a última tela parada. — RNF-07
-- [ ] `README.md`: mesmas seções e na mesma ordem do `README.md` do `adivinhe_o_numero`, abrindo
+- [x] `README.md`: mesmas seções e na mesma ordem do `README.md` do `adivinhe_o_numero`, abrindo
       com a animação e os badges, com "Atividades para praticar" e "Continue praticando", que
       aponta para os outros mini-projetos. — RF-01 a RF-08
-- [ ] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem. — RNF-07
-- [ ] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `adivinhe_o_numero` (visão geral, comandos,
+- [x] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem. — RNF-07
+- [x] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `adivinhe_o_numero` (visão geral, comandos,
       arquitetura e convenções). — RNF-07
-- [ ] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
+- [x] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
       outros mini-projetos. — RNF-07
-- [ ] `LICENSE`, `CODE_OF_CONDUCT.md` e `SECURITY.md`: cópias dos do `adivinhe_o_numero`.
+- [x] `LICENSE`, `CODE_OF_CONDUCT.md` e `SECURITY.md`: cópias dos do `adivinhe_o_numero`.
       `CONTRIBUTING.md`: no formato do `adivinhe_o_numero`, com o nome deste projeto. — RNF-07
-- [ ] Portão de qualidade. —
+- [x] Portão de qualidade. — 66 passed (58 + 6 do README em inglês + 2 de impessoalidade);
+      ruff, black e mypy verdes.
 
 ## Etapa 4 — Integração na pasta `mini_projetos/` e fechamento da spec
 
-- [ ] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
+- [x] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
       (strings, conjuntos e acentos com `unicodedata`). — RNF-07
-- [ ] `specs/001-jogo-da-forca/`: `Desvios` e `Notas de implementação` no `design.md`, se houver
+- [x] `specs/001-jogo-da-forca/`: `Desvios` e `Notas de implementação` no `design.md`, se houver
       o que registrar; `status: concluído` nos três arquivos e na linha do índice do
       `specs/README.md`. — RNF-07
-- [ ] Portão de qualidade. —
+- [x] Portão de qualidade. — 66 passed; ruff, black e mypy verdes.
