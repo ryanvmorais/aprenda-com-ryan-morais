@@ -1,6 +1,6 @@
 ---
 feature: Lista de Tarefas via terminal com arquivo JSON
-status: em andamento
+status: concluído
 date: 2026-11-20
 related:
   - 001-lista-de-tarefas/requirements.md
@@ -196,7 +196,7 @@ hoje passada a `adicionar` sai de `agora().date()`.
 ### O arquivo `tarefas.json`
 
 Uma lista JSON no topo, um objeto por tarefa, com as três chaves do `Tarefa`, em UTF-8, com os
-acentos escritos como letras (não como `ã`) e indentação de 2 espaços, para o arquivo se ler
+acentos escritos como letras (não como `\u00e3`) e indentação de 2 espaços, para o arquivo se ler
 num editor (ADR-3):
 
 ```json
@@ -487,8 +487,12 @@ com um leitor que lança `KeyboardInterrupt` ou `EOFError`, e conferem que o arq
 
 ## Notas de implementação
 
-- **Testes:** 89 casos em `tests/test_main.py` (59 na etapa 1, 30 na etapa 2). Ruff, black e
-  mypy strict verdes.
+- **Testes:** 97 casos: 89 em `tests/test_main.py` (59 na etapa 1, 30 na etapa 2), 6 em
+  `tests/test_readme_en.py` e 2 em `tests/test_impessoalidade.py` (etapa 3). Ruff, black e mypy
+  strict verdes.
+- **Animação do README:** a sessão abre uma lista com duas tarefas de dias anteriores, adiciona
+  uma, tem um número recusado, conclui uma, remove outra com `s` e sai. A linha mais longa tem
+  48 colunas, então o terminal fica nas 52 de sempre (viewBox de 682 px), num ciclo de 16 s.
 - **Conferido à mão:** uma sessão com a entrada roteirizada por stdin e a saída redirecionada
   para arquivo, não num terminal interativo, adicionando três tarefas, concluindo duas,
   reabrindo uma, editando uma e removendo uma depois de um `n`. O `tarefas.json` ficou com as
