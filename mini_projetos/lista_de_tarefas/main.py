@@ -235,7 +235,7 @@ def salvar_tarefas(tarefas: list[Tarefa], arquivo: Path) -> None:
         tarefas (list[Tarefa]): A lista a gravar.
         arquivo (Path): O arquivo da lista.
     """
-    # `ensure_ascii=False` grava "pão" em vez de "pão", e `indent=2` põe
+    # `ensure_ascii=False` grava "pão" em vez de "p\u00e3o", e `indent=2` põe
     # uma chave por linha: o arquivo se lê num editor qualquer.
     texto = json.dumps(tarefas, ensure_ascii=False, indent=2) + "\n"
     temporario = arquivo.with_name(f"{arquivo.name}.tmp")
