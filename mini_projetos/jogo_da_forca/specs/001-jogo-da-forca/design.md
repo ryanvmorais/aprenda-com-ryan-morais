@@ -1,6 +1,6 @@
 ---
 feature: Jogo da Forca via terminal
-status: aprovado
+status: em andamento
 date: 2026-11-20
 related:
   - 001-jogo-da-forca/requirements.md
