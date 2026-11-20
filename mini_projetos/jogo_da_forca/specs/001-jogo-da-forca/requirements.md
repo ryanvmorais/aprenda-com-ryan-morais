@@ -165,6 +165,15 @@ O sorteio da palavra e a leitura do teclado entram nas funções do jogo por par
 suíte de testes ser determinística: o teste escolhe a palavra e a sequência de entradas sem
 `monkeypatch` em `random` ou `input`.
 
+### RNF-07 — Projeto pronto para estudo
+
+Quem chega pelo vídeo encontra o projeto documentado e conferido: o `README.md` e o
+`README.en.md`, com as mesmas seções e abertos por uma animação de uma sessão no terminal, que
+fica parada na última tela para quem pede movimento reduzido; o `CLAUDE.md`, com os comandos e a
+arquitetura; o `docs/stack.md`, com o mapa da stack; e o `LICENSE`, o `CONTRIBUTING.md`, o
+`CODE_OF_CONDUCT.md` e o `SECURITY.md`. O portão de qualidade (ruff, black, mypy strict e pytest)
+roda no CI, e o Dependabot propõe as atualizações das ferramentas de desenvolvimento.
+
 ## Perguntas em aberto / decisões resolvidas
 
 Nenhuma pergunta em aberto. Decisões tomadas na revisão dos requisitos:
@@ -225,3 +234,10 @@ sem stack trace. A codificação da saída é conferida rodando o jogo com a sa�
 Não tem teste automatizado direto: `limpar_tela()` chama `os.system`, um efeito de terminal, e não
 devolve nada. Fica coberta pela verificação manual ao rodar o jogo e é substituída nos testes dos
 outros requisitos.
+
+### RNF-07 — Projeto pronto para estudo
+
+`tests/test_readme_en.py` confere que o `README.en.md` acompanha a estrutura do `README.md`
+(títulos, tabelas, blocos de código e links), e `tests/test_impessoalidade.py`, que os arquivos
+versionados não citam o mantenedor nem apontam para ferramentas que quem clona não tem. A animação
+e os arquivos da comunidade são conferidos na revisão do pull request.

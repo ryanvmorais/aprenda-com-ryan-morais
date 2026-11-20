@@ -46,9 +46,9 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 ## Índice / Roadmap
 
-| Spec | Escopo | Status |
-|---|---|---|
-| [001-jogo-da-forca](001-jogo-da-forca/requirements.md) | O jogo completo: palavras por tema, letras sem acento, desenho da forca, placar da sessão sem repetir palavra, jogar de novo, limpeza de tela multiplataforma | aprovado |
+| Spec | Escopo | Entrega | Status |
+|---|---|---|---|
+| [001-jogo-da-forca](001-jogo-da-forca/requirements.md) | O jogo completo: palavras por tema, letras sem acento, desenho da forca, placar da sessão sem repetir palavra, jogar de novo, limpeza de tela multiplataforma | — | aprovado |
 
 ## Notas de manutenção
 
