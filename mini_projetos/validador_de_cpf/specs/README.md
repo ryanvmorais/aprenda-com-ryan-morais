@@ -48,7 +48,7 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 | Spec | Escopo | Entrega | Status |
 |---|---|---|---|
-| [001-validador-de-cpf](001-validador-de-cpf/requirements.md) | O programa completo: validar o CPF com ou sem pontuação pelos dígitos verificadores, recusar as sequências repetidas, mostrar o número formatado e a região fiscal, modo didático com a conta passo a passo, gerador de CPF válido para teste, limpeza de tela multiplataforma | — | em andamento |
+| [001-validador-de-cpf](001-validador-de-cpf/requirements.md) | O programa completo: validar o CPF com ou sem pontuação pelos dígitos verificadores, recusar as sequências repetidas, mostrar o número formatado e a região fiscal, modo didático com a conta passo a passo, gerador de CPF válido para teste, limpeza de tela multiplataforma | — | concluído |
 
 ## Notas de manutenção
 
