@@ -1,6 +1,6 @@
 ---
 feature: Jogo da Forca via terminal
-status: em andamento
+status: concluído
 date: 2026-11-20
 related:
   - 001-jogo-da-forca/requirements.md
@@ -372,3 +372,21 @@ parametrizados. A saída se confere com o `capsys`. `limpar_tela` é substituíd
 suíte (RF-08). Os testes de `main()` também cobrem o Ctrl+C e o fim da entrada, com um leitor que
 lança `KeyboardInterrupt` ou `EOFError` (RNF-04). Ver `tests/test_main.py` e a seção "Testes" do
 `requirements.md`.
+
+## Notas de implementação
+
+- **Testes:** 58 casos em `tests/test_main.py` (45 na etapa 1, 13 na etapa 2); com o
+  `test_impessoalidade.py` e o `test_readme_en.py`, cópias dos do `adivinhe_o_numero`, a suíte
+  tem 66. Ruff, black e mypy strict verdes.
+- **Conferido à mão:** uma vitória e uma derrota no terminal, a limpeza de tela a cada jogada e a
+  saída redirecionada para arquivo, com os acentos e os emojis sem `UnicodeEncodeError`.
+- **Animação do README:** gravada rodando o `main()` de verdade, com o sorteio fixo em
+  ("frutas", "maçã") e o roteiro de entradas `e` (erro), `a` (revela o A e o Ã), `ab` (recusada
+  sem contar erro), `c` (revela o Ç), `r` (erro), `M` (maiúscula, fecha a palavra com 2 erros) e
+  `n`, até o placar da sessão. A linha mais longa é a da vitória ("🎉 Você descobriu a palavra:
+  MAÇÃ! Erros cometidos: 2."), com 54 colunas: a animação usa 54, como a do
+  `adivinhe_o_numero`. São 16 quadros em 12,4 s.
+- **README:** nas seções do `adivinhe_o_numero`, o Guia de Implementação fecha com uma dica de
+  estratégia (começar pelas vogais). As atividades para praticar partem de decisões deste
+  projeto: a dica que custa um erro, o menu de temas (a partida começa direto, sem menu, ver as
+  decisões do `requirements.md`) e as palavras compostas (fora da forma de `PALAVRAS`, RF-01).
