@@ -44,7 +44,7 @@ docs/stack.md                  # mapa da stack: o que é, por que, o que estudar
 specs/001-calculadora-simples/ # spec por engenharia reversa do comportamento atual
 iniciar_calculadora.bat        # atalho Windows (uv run main.py)
 iniciar_calculadora.sh         # atalho Linux/macOS (uv run main.py)
-.gitattributes                 # LF fixo nos atalhos .sh (com CRLF o shebang quebra no Linux/macOS)
+../../.gitattributes           # LF fixo nos atalhos .sh e CRLF nos .bat; vale para o repositório inteiro, na raiz
 ../../CONTRIBUTING.md          # com CODE_OF_CONDUCT.md e SECURITY.md: valem para o repositório inteiro, na raiz
 assets/                        # animação (SVG) de uma sessão real do main.py, no topo do README
 ../../.github/   # CI, CodeQL, pip-audit, Dependabot, templates e o script de impessoalidade
