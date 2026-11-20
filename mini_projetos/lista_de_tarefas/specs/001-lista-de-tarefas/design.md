@@ -1,6 +1,6 @@
 ---
 feature: Lista de Tarefas via terminal com arquivo JSON
-status: aprovado
+status: em andamento
 date: 2026-11-20
 related:
   - 001-lista-de-tarefas/requirements.md
@@ -473,3 +473,30 @@ fixture `autouse` com `monkeypatch`, para os testes não chamarem `os.system`: �
 `monkeypatch` da suíte (RF-04). Os testes de `main()` também cobrem o Ctrl+C e o fim da entrada,
 com um leitor que lança `KeyboardInterrupt` ou `EOFError`, e conferem que o arquivo não mudou
 (RNF-04). Ver `tests/test_main.py` e a seção "Testes" do `requirements.md`.
+
+## Desvios
+
+1. **ADR-8:** só `main()` tem os padrões reais (`ler = input`, `agora = datetime.now`,
+   `arquivo = ARQUIVO_PADRAO`), e também `carregar_tarefas` e `guardar_corrompido`
+   (`agora = datetime.now`). Nas outras funções que leem o teclado, o `ler` vem antes de um
+   parâmetro obrigatório (`ler_texto(ler, pedido)`, `adicionar(tarefas, arquivo, ler, hoje)`), na
+   ordem das assinaturas deste design, e por isso não tem padrão: `main()` repassa o leitor
+   recebido. Quem usa o programa não percebe diferença.
+2. **Ações:** a mensagem da lista vazia, que concluir, editar e remover devolvem (RF-07), é a
+   constante `SEM_TAREFAS`, para o texto ser um só nas três ações e nos testes.
+
+## Notas de implementação
+
+- **Testes:** 89 casos em `tests/test_main.py` (59 na etapa 1, 30 na etapa 2). Ruff, black e
+  mypy strict verdes.
+- **Conferido à mão:** uma sessão com a entrada roteirizada por stdin e a saída redirecionada
+  para arquivo, não num terminal interativo, adicionando três tarefas, concluindo duas,
+  reabrindo uma, editando uma e removendo uma depois de um `n`. O `tarefas.json` ficou com as
+  duas tarefas esperadas e os acentos legíveis, e a saída não teve `UnicodeEncodeError`. A
+  limpeza de tela aparece no arquivo como o caractere que o `cls` emite (`^L`), uma vez por
+  volta do menu. Chamado da raiz do repositório
+  (`python mini_projetos/lista_de_tarefas/main.py`), o programa abriu a mesma lista, sem criar
+  um `tarefas.json` na raiz. Um `tarefas.json` estragado à mão virou
+  `tarefas.corrompido-AAAAMMDD-HHMMSS.json`, com o aviso na primeira tela e a lista vazia; o
+  `git check-ignore` confirma que o arquivo, a cópia e o `tarefas.json.tmp` ficam fora do Git.
+  Os dois atalhos abrem o programa pelo `uv`.
