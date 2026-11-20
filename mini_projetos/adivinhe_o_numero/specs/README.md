@@ -46,9 +46,9 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 ## Índice / Roadmap
 
-| Spec | Escopo | Status |
-|---|---|---|
-| [001-adivinhe-o-numero](001-adivinhe-o-numero/requirements.md) | O jogo completo: níveis, palpites validados, dicas, recorde por nível, jogar de novo, limpeza de tela multiplataforma | concluído |
+| Spec | Escopo | Entrega | Status |
+|---|---|---|---|
+| [001-adivinhe-o-numero](001-adivinhe-o-numero/requirements.md) | O jogo completo: níveis, palpites validados, dicas, recorde por nível, jogar de novo, limpeza de tela multiplataforma | — | concluído |
 
 ## Notas de manutenção
 

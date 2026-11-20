@@ -21,7 +21,7 @@ ordem: `uv run ruff check .`, `uv run black --check .`, `uv run mypy` e `uv run 
       dos outros mini-projetos. `uv lock` gera o `uv.lock`. — RNF-01
 - [x] `.gitignore` e `.gitattributes`: cópias dos do `pedra_papel_tesoura` (LF fixo no `.sh`).
       — RNF-02
-- [x] `tests/__init__.py`: vazio, como nos outros mini-projetos.
+- [x] `tests/__init__.py`: vazio, como nos outros mini-projetos. — RNF-07
 - [x] `main.py`: docstring do módulo com a estrutura do código, reconfiguração de `sys.stdout`
       para UTF-8 no import, apelidos `Leitor` e `Sorteador`, `Nivel` (`NamedTuple`) e a constante
       `NIVEIS`. — RNF-05, RNF-06, ADR-2, ADR-3, ADR-6
@@ -69,28 +69,28 @@ ordem: `uv run ruff check .`, `uv run black --check .`, `uv run mypy` e `uv run 
 ## Etapa 3 — Documentação do projeto
 
 - [x] `tests/test_impessoalidade.py` e `tests/test_readme_en.py`: cópias dos do
-      `pedra_papel_tesoura`.
+      `pedra_papel_tesoura`. — RNF-07
 - [x] `assets/adivinhe-o-numero-python-terminal-sessao.svg`: animação de uma sessão real do
       `main.py`, com as entradas de um roteiro e o sorteio fixo, no visual e na largura de 52
       colunas das outras animações (54 nesta, ver o desvio 5 do `design.md`); quem pede
-      movimento reduzido vê a última tela parada.
+      movimento reduzido vê a última tela parada. — RNF-07
 - [x] `README.md`: mesmas seções e na mesma ordem do `README.md` do `pedra_papel_tesoura`,
       abrindo com a animação e os badges, com "Atividades para praticar" e "Continue
       praticando". — RF-01 a RF-08
-- [x] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem.
+- [x] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem. — RNF-07
 - [x] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `pedra_papel_tesoura` (visão geral,
-      comandos, arquitetura e convenções).
+      comandos, arquitetura e convenções). — RNF-07
 - [x] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
-      outros mini-projetos.
+      outros mini-projetos. — RNF-07
 - [x] `LICENSE`, `CODE_OF_CONDUCT.md` e `SECURITY.md`: cópias dos do `pedra_papel_tesoura`.
-      `CONTRIBUTING.md`: no formato do `pedra_papel_tesoura`, com o nome deste projeto.
+      `CONTRIBUTING.md`: no formato do `pedra_papel_tesoura`, com o nome deste projeto. — RNF-07
 - [x] Portão de qualidade. — 53 passed; ruff/black/mypy verdes
 
 ## Etapa 4 — Integração na pasta `mini_projetos/` e fechamento da spec
 
 - [x] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
-      (`random`, laço `while` e validação de entrada).
+      (`random`, laço `while` e validação de entrada). — RNF-07
 - [x] `specs/001-adivinhe-o-numero/`: `Desvios` e `Notas de implementação` no `design.md`, se
       houver o que registrar; `status: concluído` nos três arquivos e na linha do índice do
-      `specs/README.md`.
+      `specs/README.md`. — RNF-07
 - [x] Portão de qualidade. — 53 passed; ruff/black/mypy verdes

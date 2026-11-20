@@ -46,9 +46,9 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 ## Índice / Roadmap
 
-| Spec | Escopo | Status |
-|---|---|---|
-| [001-jogo-da-cobrinha](001-jogo-da-cobrinha/requirements.md) | O jogo completo: dificuldade, movimento, colisão, pontuação, tela final | concluído |
+| Spec | Escopo | Entrega | Status |
+|---|---|---|---|
+| [001-jogo-da-cobrinha](001-jogo-da-cobrinha/requirements.md) | O jogo completo: dificuldade, movimento, colisão, pontuação, tela final | — | concluído |
 
 ## Notas de manutenção
 

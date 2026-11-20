@@ -126,6 +126,15 @@ está preso a um console UTF-8 (saída redirecionada para arquivo, pipe, ou
 executor de CI) — etapa que roda antes do `curses.wrapper` assumir o
 terminal.
 
+### RNF-04 — Projeto pronto para estudo
+
+Quem abre o projeto o encontra documentado e conferido: o `README.md` e o
+`README.en.md`, com as mesmas seções e abertos por uma animação de uma sessão no terminal, que
+fica parada na última tela para quem pede movimento reduzido; o `CLAUDE.md`, com os comandos e a
+arquitetura; o `docs/stack.md`, com o mapa da stack; e o `LICENSE`, o `CONTRIBUTING.md`, o
+`CODE_OF_CONDUCT.md` e o `SECURITY.md`. O portão de qualidade (ruff, black, mypy strict e pytest)
+roda no CI, e o Dependabot propõe as atualizações das ferramentas de desenvolvimento.
+
 ## Perguntas em aberto
 
 Nenhuma — feature pequena e já finalizada; ver "Atividades para praticar"
@@ -177,3 +186,10 @@ atributo `curses.A_REVERSE` e a chamada a `refresh`.
 O loop principal depende de um terminal real (`curses.wrapper`); não tem
 teste automatizado, mas cada peça que ele orquestra é coberta
 isoladamente acima. Verificado manualmente ao rodar o jogo.
+
+### RNF-04 — Documentação conferida
+
+`tests/test_readme_en.py` confere que o `README.en.md` acompanha a estrutura do `README.md`
+(títulos, tabelas, blocos de código e links), e `tests/test_impessoalidade.py`, que os arquivos
+versionados não citam o mantenedor nem apontam para ferramentas que quem clona não tem. A
+animação e os arquivos da comunidade são conferidos à mão, antes de cada pull request.

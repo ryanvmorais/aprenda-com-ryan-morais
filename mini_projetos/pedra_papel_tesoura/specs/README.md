@@ -46,9 +46,9 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 ## Índice / Roadmap
 
-| Spec | Escopo | Status |
-|---|---|---|
-| [001-jogo-pedra-papel-tesoura](001-jogo-pedra-papel-tesoura/requirements.md) | O jogo completo: jogadas, placar, replay, limpeza de tela multiplataforma | concluído |
+| Spec | Escopo | Entrega | Status |
+|---|---|---|---|
+| [001-jogo-pedra-papel-tesoura](001-jogo-pedra-papel-tesoura/requirements.md) | O jogo completo: jogadas, placar, replay, limpeza de tela multiplataforma | — | concluído |
 
 ## Notas de manutenção
 

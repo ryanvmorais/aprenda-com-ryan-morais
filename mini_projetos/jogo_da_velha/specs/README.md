@@ -46,9 +46,9 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 ## Índice / Roadmap
 
-| Spec | Escopo | Status |
-|---|---|---|
-| [001-jogo-da-velha](001-jogo-da-velha/requirements.md) | O jogo completo: jogadas em matriz 3x3, vitória/empate, replay, limpeza de tela multiplataforma | concluído |
+| Spec | Escopo | Entrega | Status |
+|---|---|---|---|
+| [001-jogo-da-velha](001-jogo-da-velha/requirements.md) | O jogo completo: jogadas em matriz 3x3, vitória/empate, replay, limpeza de tela multiplataforma | — | concluído |
 
 ## Notas de manutenção
 
