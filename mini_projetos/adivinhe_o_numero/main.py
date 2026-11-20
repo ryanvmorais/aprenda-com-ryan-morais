@@ -172,7 +172,7 @@ def jogar_partida(
     Returns:
         int | None: As tentativas usadas na vitória, ou None na derrota.
     """
-    secreto = sortear(nivel.minimo, nivel.maximo)
+    numero_sorteado = sortear(nivel.minimo, nivel.maximo)
     print(
         f"\nPensei num número de {nivel.minimo} a {nivel.maximo}. "
         f"Você tem {nivel.limite} tentativas."
@@ -186,12 +186,14 @@ def jogar_partida(
     # com `return`.
     while tentativa <= nivel.limite:
         palpite = ler_palpite(nivel, tentativa, ler)
-        if palpite == secreto:
-            print(f"🎉 Acertou na tentativa {tentativa}! O número era {secreto}.")
+        if palpite == numero_sorteado:
+            print(
+                f"🎉 Acertou na tentativa {tentativa}! O número era {numero_sorteado}."
+            )
             return tentativa
 
         restantes = nivel.limite - tentativa
-        if palpite < secreto:
+        if palpite < numero_sorteado:
             print(
                 f"⬆️  O número é maior que {palpite}. Tentativas restantes: {restantes}."
             )
@@ -201,7 +203,7 @@ def jogar_partida(
             )
         tentativa += 1
 
-    print(f"😢 Suas tentativas acabaram. O número era {secreto}.")
+    print(f"😢 Suas tentativas acabaram. O número era {numero_sorteado}.")
     return None
 
 
