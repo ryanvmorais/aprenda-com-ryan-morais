@@ -1,6 +1,6 @@
 ---
 feature: Validador de CPF via terminal, com a conta passo a passo
-status: aprovado
+status: em andamento
 date: 2026-11-20
 related: []
 origin: concepção
