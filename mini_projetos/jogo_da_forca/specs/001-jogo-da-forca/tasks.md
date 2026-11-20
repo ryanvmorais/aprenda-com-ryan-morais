@@ -1,6 +1,6 @@
 ---
 feature: Jogo da Forca via terminal
-status: aprovado
+status: em andamento
 date: 2026-11-20
 related:
   - 001-jogo-da-forca/requirements.md
@@ -15,27 +15,27 @@ O portão de qualidade de cada etapa roda, dentro de `mini_projetos/jogo_da_forc
 
 ## Etapa 1 — Ambiente, palavras e funções puras
 
-- [ ] `pyproject.toml`: manifesto gerenciado pelo `uv`, no formato do `adivinhe_o_numero`
+- [x] `pyproject.toml`: manifesto gerenciado pelo `uv`, no formato do `adivinhe_o_numero`
       (`requires-python = ">=3.12"`, `package = false`, `exclude-newer = "7 days"`), sem
       dependência de execução e com o grupo `dev` (ruff, black, mypy, pytest) nos mesmos pisos
       dele. `uv lock` gera o `uv.lock`. — RNF-01
-- [ ] `.gitignore` e `.gitattributes`: cópias dos do `adivinhe_o_numero` (LF fixo no `.sh`).
+- [x] `.gitignore` e `.gitattributes`: cópias dos do `adivinhe_o_numero` (LF fixo no `.sh`).
       — RNF-02
-- [ ] `tests/__init__.py`: vazio, como nos outros mini-projetos. — RNF-07
-- [ ] `main.py`: docstring do módulo com a estrutura do código, reconfiguração de `sys.stdout`
+- [x] `tests/__init__.py`: vazio, como nos outros mini-projetos. — RNF-07
+- [x] `main.py`: docstring do módulo com a estrutura do código, reconfiguração de `sys.stdout`
       para UTF-8 no import, apelidos `Leitor` e `Sorteador` e as constantes `PALAVRAS`,
       `ERROS_MAXIMOS`, `FORCA` e `ALFABETO`. — RF-01, RNF-05, RNF-06, ADR-2, ADR-6, ADR-9
-- [ ] `main.py`: `sortear_palavra(ja_sorteadas, sortear)`, sem repetir palavra e recomeçando a
+- [x] `main.py`: `sortear_palavra(ja_sorteadas, sortear)`, sem repetir palavra e recomeçando a
       lista quando ela acaba. — RF-01, RF-02, ADR-4, ADR-6
-- [ ] `main.py`: `remover_acentos(texto)`, com `unicodedata.normalize("NFD", ...)` e
+- [x] `main.py`: `remover_acentos(texto)`, com `unicodedata.normalize("NFD", ...)` e
       `unicodedata.combining`. — RF-04, ADR-3
-- [ ] `main.py`: `mascarar_palavra(palavra, tentadas)` e `contar_erros(letras_da_palavra,
+- [x] `main.py`: `mascarar_palavra(palavra, tentadas)` e `contar_erros(letras_da_palavra,
       tentadas)`. — RF-04, RF-05, ADR-4
-- [ ] `main.py`: `Conferencia` (`NamedTuple`) e `conferir_entrada(entrada, tentadas)`, com o
+- [x] `main.py`: `Conferencia` (`NamedTuple`) e `conferir_entrada(entrada, tentadas)`, com o
       tamanho conferido antes do `in ALFABETO`. — RF-03, RNF-03, ADR-5
-- [ ] `main.py`: `perguntar_jogar_de_novo(ler)`, com `s`/`n` sem diferenciar maiúscula e
+- [x] `main.py`: `perguntar_jogar_de_novo(ler)`, com `s`/`n` sem diferenciar maiúscula e
       minúscula, e `exibir_placar(placar)`. — RF-07, RNF-03
-- [ ] `tests/test_main.py`: casos da forma de `PALAVRAS` (5 temas, 8 palavras por tema, só letras
+- [x] `tests/test_main.py`: casos da forma de `PALAVRAS` (5 temas, 8 palavras por tema, só letras
       minúsculas depois de tirar o acento, sem palavra repetida, com acento e com "ç") e de
       `FORCA` (7 desenhos), de `sortear_palavra` (a palavra sorteada entra em `ja_sorteadas` e
       sai das opções seguintes, a lista recomeça quando acaba), de `remover_acentos` (vogais
@@ -45,39 +45,39 @@ O portão de qualidade de cada etapa roda, dentro de `mini_projetos/jogo_da_forc
       sem acento), de `perguntar_jogar_de_novo` (`s`, `S`, `n`, `N`, inválida) e de
       `exibir_placar`, com leitor e sorteador falsos por parâmetro. — RF-01, RF-02, RF-03, RF-04,
       RF-05, RF-07, RNF-03, RNF-06
-- [ ] `../../.github/workflows/ci.yml` e `../../.github/workflows/pip-audit.yml`: acrescenta
+- [x] `../../.github/workflows/ci.yml` e `../../.github/workflows/pip-audit.yml`: acrescenta
       `jogo_da_forca` à matriz `projeto` e atualiza a contagem de projetos citada no comentário
       do cache. `../../.github/dependabot.yml`: entrada `uv` para `/mini_projetos/jogo_da_forca`,
       no formato das outras. — RNF-01
-- [ ] Portão de qualidade. —
+- [x] Portão de qualidade. — 45 passed; ruff, black e mypy verdes.
 
 ## Etapa 2 — Partida, laço principal e atalhos
 
-- [ ] `main.py`: `limpar_tela()` com `os.system` (`cls` no Windows, `clear` nos outros).
+- [x] `main.py`: `limpar_tela()` com `os.system` (`cls` no Windows, `clear` nos outros).
       — RF-08, ADR-7
-- [ ] `main.py`: `exibir_jogo(tema, palavra, tentadas, mensagem)`, com o tema, o desenho, a
+- [x] `main.py`: `exibir_jogo(tema, palavra, tentadas, mensagem)`, com o tema, o desenho, a
       palavra mascarada, as letras tentadas em ordem alfabética, os erros restantes e a mensagem
       da tentativa anterior. — RF-05, RF-08
-- [ ] `main.py`: `jogar_partida(tema, palavra, ler)`, com o laço `while` que limpa a tela,
+- [x] `main.py`: `jogar_partida(tema, palavra, ler)`, com o laço `while` que limpa a tela,
       redesenha, lê e confere a entrada, e o último quadro com a vitória ou a derrota que revela
       a palavra. — RF-03, RF-04, RF-06, RF-08, ADR-4
-- [ ] `main.py`: `main(sortear, ler)`, com o conjunto das palavras sorteadas, o placar, o "jogar
+- [x] `main.py`: `main(sortear, ler)`, com o conjunto das palavras sorteadas, o placar, o "jogar
       de novo", o placar final e o `try`/`except (KeyboardInterrupt, EOFError)` com a despedida.
       Guard `if __name__ == "__main__"` chamando `main()`. — RF-02, RF-07, RNF-04, ADR-1, ADR-8,
       ADR-10
-- [ ] `tests/test_main.py`: fixture `autouse` que substitui `limpar_tela`; casos de
+- [x] `tests/test_main.py`: fixture `autouse` que substitui `limpar_tela`; casos de
       `exibir_jogo` (sem tentativa, com letras tentadas fora de ordem, com mensagem) e de
       `jogar_partida` (vitória sem erro, vitória com erros, derrota no sexto erro que revela a
       palavra, letra repetida e entrada inválida que não contam como erro, letra sem acento que
       revela a acentuada, "c" que revela o "ç") e de `main()` (sessão de duas partidas sem
       repetir palavra, placar final, saída por `KeyboardInterrupt` e por `EOFError` sem stack
       trace). — RF-02, RF-03, RF-04, RF-05, RF-06, RF-07, RF-08, RNF-04
-- [ ] `iniciar_jogo.bat` e `iniciar_jogo.sh`: atalhos no formato dos do `adivinhe_o_numero`
+- [x] `iniciar_jogo.bat` e `iniciar_jogo.sh`: atalhos no formato dos do `adivinhe_o_numero`
       (`uv run main.py`, com `python`/`python3` como alternativa). — RNF-02
-- [ ] Conferência manual: duas partidas no terminal (uma vitória e uma derrota), a limpeza de
+- [x] Conferência manual: duas partidas no terminal (uma vitória e uma derrota), a limpeza de
       tela a cada jogada e a saída redirecionada para arquivo sem `UnicodeEncodeError`. — RF-08,
       RNF-05
-- [ ] Portão de qualidade. —
+- [x] Portão de qualidade. — 58 passed; ruff, black e mypy verdes.
 
 ## Etapa 3 — Documentação do projeto
 

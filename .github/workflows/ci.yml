@@ -45,6 +45,7 @@ jobs:
           - adivinhe_o_numero
           - calculadora_simples
           - jogo_da_cobrinha
+          - jogo_da_forca
           - jogo_da_velha
           - pedra_papel_tesoura
         # 3.12 e o piso (requires-python); 3.14 e 3.15 sao as estaveis mais novas.
@@ -56,7 +57,7 @@ jobs:
           # Nenhum passo seguinte precisa do token do GitHub; ele não fica no disco.
           persist-credentials: false
 
-      # A chave padrao do cache hasheia todos os uv.lock e seria igual nos 5 projetos (so um
+      # A chave padrao do cache hasheia todos os uv.lock e seria igual nos 6 projetos (so um
       # conseguiria salvar); o sufixo separa um cache por projeto.
       - name: Instala o uv
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
