@@ -15,6 +15,7 @@ This folder gathers the channel's **Python mini projects**: small programs that 
 | [Hangman](jogo_da_forca/README.en.md) | Strings, sets and accents with `unicodedata` |
 | [Rock, Paper, Scissors](pedra_papel_tesoura/README.en.md) | Dictionaries and Object-Oriented Programming |
 | [Tic-Tac-Toe](jogo_da_velha/README.en.md) | Matrices, conditionals and OOP |
+| [To-Do List](lista_de_tarefas/README.en.md) | JSON files, `pathlib` and atomic writes |
 | [Snake Game](jogo_da_cobrinha/README.en.md) | Dynamic lists and a game loop with the `curses` library |
 
 ---
