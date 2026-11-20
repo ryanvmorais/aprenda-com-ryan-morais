@@ -10,6 +10,28 @@
 # pode quebrar o projeto no dia da publicacao); as security updates ignoram o cooldown.
 version: 2
 updates:
+  # adivinhe_o_numero: ferramentas de dev do pyproject.toml, grafo travado no uv.lock.
+  - package-ecosystem: "uv"
+    directory: "/mini_projetos/adivinhe_o_numero"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+    labels:
+      - "dependencies"
+    cooldown:
+      default-days: 7
+    groups:
+      uv-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
   # calculadora_simples: ferramentas de dev do pyproject.toml, grafo travado no uv.lock.
   - package-ecosystem: "uv"
     directory: "/mini_projetos/calculadora_simples"
