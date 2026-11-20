@@ -47,7 +47,6 @@ uv lock --upgrade-package <pacote>
 main.py              # funções do programa + main() (ponto de entrada)
 tests/test_main.py   # suíte pytest (117 casos)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
-tests/test_impessoalidade.py # confere que os arquivos versionados não têm nada pessoal
 README.en.md         # versão em inglês do README (mesmas seções, mesma ordem)
 tests/__init__.py    # torna tests/ um pacote (vazio)
 docs/stack.md         # o que cada peça da stack faz e por quê
@@ -65,7 +64,8 @@ LICENSE               # licença MIT
 CONTRIBUTING.md       # guia de contribuição (fork, Conventional Commits, portão de qualidade)
 CODE_OF_CONDUCT.md    # Contributor Covenant 2.1 (pt-BR); contato: contato@ryanmorais.com.br
 SECURITY.md           # política de segurança; relatos pelo Private Vulnerability Reporting
-../../.github/   # CI, CodeQL, pip-audit, Dependabot e templates: ficam na raiz do repositório
+../../.github/   # CI, CodeQL, pip-audit, Dependabot, templates e o script de impessoalidade
+                 # (scripts/conferir_impessoalidade.py, para o repositório inteiro): ficam na raiz
 ```
 
 ### Funções (em `main.py`)

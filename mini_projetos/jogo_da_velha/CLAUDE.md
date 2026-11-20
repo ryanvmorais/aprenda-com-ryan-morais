@@ -58,7 +58,8 @@ LICENSE               # MIT
 CONTRIBUTING.md       # como contribuir: fork, Conventional Commits, portão de qualidade
 CODE_OF_CONDUCT.md    # Contributor Covenant 2.1 (pt-BR); contato: contato@ryanmorais.com.br
 SECURITY.md           # política de segurança; relatos pelo Private Vulnerability Reporting
-../../.github/   # CI, CodeQL, pip-audit, Dependabot e templates: ficam na raiz do repositório
+../../.github/   # CI, CodeQL, pip-audit, Dependabot, templates e o script de impessoalidade
+                 # (scripts/conferir_impessoalidade.py, para o repositório inteiro): ficam na raiz
 ```
 
 ### `JogoDaVelha` (em `main.py`)
