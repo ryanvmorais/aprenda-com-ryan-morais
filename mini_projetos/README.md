@@ -15,6 +15,7 @@ Esta pasta reúne os **mini projetos em Python** do canal: programas pequenos, q
 | [Jogo da Forca](jogo_da_forca/) | Strings, conjuntos e acentos com `unicodedata` |
 | [Pedra, Papel e Tesoura](pedra_papel_tesoura/) | Dicionários e Programação Orientada a Objetos |
 | [Jogo da Velha](jogo_da_velha/) | Matrizes, estruturas condicionais e POO |
+| [Lista de Tarefas](lista_de_tarefas/) | Arquivo JSON, `pathlib` e gravação atômica |
 | [Jogo da Cobrinha](jogo_da_cobrinha/) | Listas dinâmicas e game loop com a biblioteca `curses` |
 
 ---

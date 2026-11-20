@@ -1,6 +1,6 @@
 ---
 feature: Lista de Tarefas via terminal com arquivo JSON
-status: em andamento
+status: concluído
 date: 2026-11-20
 related: []
 origin: concepção
