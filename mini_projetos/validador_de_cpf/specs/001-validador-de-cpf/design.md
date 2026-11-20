@@ -1,6 +1,6 @@
 ---
 feature: Validador de CPF via terminal, com a conta passo a passo
-status: aprovado
+status: em andamento
 date: 2026-11-20
 related:
   - 001-validador-de-cpf/requirements.md
@@ -429,3 +429,28 @@ o único `monkeypatch` da suíte (RF-01).
 O RNF-07 tem um teste com o módulo `ast`: ele lê o `main.py`, confere que os `import` ficam em
 `__future__`, `collections.abc`, `os`, `random`, `sys` e `typing`, e que nenhuma chamada a `open`
 aparece. Ver `tests/test_main.py` e a seção "Testes" do `requirements.md`.
+
+## Desvios
+
+1. **RF-07:** a linha do dígito digitado leva a marca e a palavra (`Digitado: 3 ✅ confere` e
+   `Digitado: 4 ❌ não confere`), e não só o emoji do quadro ilustrativo, para o resultado não
+   depender da cor nem do desenho do emoji. Quando o resto é 10, a linha da soma acaba em
+   `(10 vale 0)`, que explica por que o dígito não é o resto.
+
+## Notas de implementação
+
+- **Testes:** 117 casos em `tests/test_main.py` (67 na etapa 1, 50 na etapa 2). Ruff, black e
+  mypy strict verdes.
+- **Largura:** a linha mais longa do programa é a da sequência repetida, com 54 colunas. O teste
+  mede a largura com os emojis contando duas colunas.
+- **Modo didático com o 1º dígito errado:** a conta do 2º dígito usa o 1º dígito calculado, e não
+  o digitado, como a conferência do modo simples; a linha dos algarismos da 2ª conta mostra o
+  dígito certo, e a marca do 1º dígito mostra que o digitado não confere.
+- **Conferido à mão:** uma sessão com a entrada roteirizada por stdin e a saída redirecionada
+  para arquivo, chamada da raiz do repositório
+  (`python mini_projetos/validador_de_cpf/main.py`), num console na codepage 1252: validou o
+  exemplo da Receita com e sem pontuação, um dígito errado, uma sequência repetida no modo
+  didático e uma entrada com letra, gerou dois CPFs e saiu, sem `UnicodeEncodeError`. Depois, uma
+  sessão interativa aberta pelo `iniciar_validador.bat` (pelo `uv`): a tela limpa a cada volta do
+  menu, e o Ctrl+C no pedido do CPF sai com a despedida, sem stack trace. O `git status` não
+  mostrou nenhum arquivo criado pelo programa.

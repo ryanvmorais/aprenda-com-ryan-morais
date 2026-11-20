@@ -1,6 +1,6 @@
 ---
 feature: Validador de CPF via terminal, com a conta passo a passo
-status: aprovado
+status: em andamento
 date: 2026-11-20
 related:
   - 001-validador-de-cpf/requirements.md
@@ -15,29 +15,29 @@ ordem: `uv run ruff check .`, `uv run black --check .`, `uv run mypy` e `uv run 
 
 ## Etapa 1 — Ambiente, cálculo e conferência
 
-- [ ] `pyproject.toml`: manifesto gerenciado pelo `uv`, no formato do `lista_de_tarefas`
+- [x] `pyproject.toml`: manifesto gerenciado pelo `uv`, no formato do `lista_de_tarefas`
       (`requires-python = ">=3.12"`, `package = false`, `exclude-newer = "7 days"`), sem
       dependência de execução e com o grupo `dev` (ruff, black, mypy, pytest) nos mesmos pisos
       dele. `uv lock` gera o `uv.lock`. — RNF-01
-- [ ] `.gitignore` e `.gitattributes`: cópias dos do `lista_de_tarefas` (LF fixo no `.sh`), sem a
+- [x] `.gitignore` e `.gitattributes`: cópias dos do `lista_de_tarefas` (LF fixo no `.sh`), sem a
       seção dos arquivos da lista, porque este programa não cria arquivo. — RNF-02, RNF-07
-- [ ] `tests/__init__.py`: vazio, como nos outros mini-projetos. — RNF-08
-- [ ] `main.py`: docstring do módulo com a estrutura do código, reconfiguração de `sys.stdout`
+- [x] `tests/__init__.py`: vazio, como nos outros mini-projetos. — RNF-08
+- [x] `main.py`: docstring do módulo com a estrutura do código, reconfiguração de `sys.stdout`
       para UTF-8 no import, as `NamedTuple` `Conta` e `Conferencia`, os apelidos `Leitor` e
       `Sorteador` e as constantes `SEPARADORES`, `TAMANHO_CPF`, `REGIOES_FISCAIS`, `AVISO_GERADO` e
       `OPCOES`. — RF-06, RF-08, RNF-05, RNF-06, ADR-4, ADR-9
-- [ ] `main.py`: `calcular_digito(algarismos)`, com os pesos de `range(10 - len(algarismos), 10)`,
+- [x] `main.py`: `calcular_digito(algarismos)`, com os pesos de `range(10 - len(algarismos), 10)`,
       os produtos por list comprehension, o resto e o 10 valendo 0 (e o comentário que mostra a
       equivalência com a forma mais divulgada), e `calcular_digitos(base)`. — RF-04, ADR-2, ADR-3,
       ADR-4
-- [ ] `main.py`: `limpar_cpf(entrada)`, com os `SEPARADORES` descartados, o `isascii()` e o
+- [x] `main.py`: `limpar_cpf(entrada)`, com os `SEPARADORES` descartados, o `isascii()` e o
       `isdigit()` (e o comentário com os exemplos `²` e `٣`), e as recusas na ordem do design, e
       `eh_sequencia_repetida(cpf)`. — RF-03, RF-05, RNF-03, ADR-5
-- [ ] `main.py`: `conferir_cpf(entrada)`, `formatar_cpf(cpf)` e `descrever_regiao(cpf)`. — RF-04,
+- [x] `main.py`: `conferir_cpf(entrada)`, `formatar_cpf(cpf)` e `descrever_regiao(cpf)`. — RF-04,
       RF-05, RF-06, ADR-2
-- [ ] `main.py`: `gerar_cpf(sortear)`, com a base sorteada de novo quando os 9 algarismos saem
+- [x] `main.py`: `gerar_cpf(sortear)`, com a base sorteada de novo quando os 9 algarismos saem
       iguais. — RF-08, ADR-6
-- [ ] `tests/test_main.py`: casos de `calcular_digito` e `calcular_digitos` (o exemplo da Receita
+- [x] `tests/test_main.py`: casos de `calcular_digito` e `calcular_digitos` (o exemplo da Receita
       Federal, com a base `280012389` e os dígitos `38`; restos 0, 1 e 10), da equivalência com a
       forma mais divulgada em 10.000 bases de `random.Random(2026)`, de `limpar_cpf` (com e sem
       pontuação, com espaços, letra, barra, `²`, `٣`, 10 e 12 algarismos, vazio e só pontuação, com
@@ -46,28 +46,28 @@ ordem: `uv run ruff check .`, `uv run black --check .`, `uv run mypy` e `uv run 
       de `descrever_regiao` (os 10 valores do 9º dígito) e de `gerar_cpf` (cada CPF gerado passa
       em `conferir_cpf`; um sorteador falso com nove `7` seguidos de outra base exercita o novo
       sorteio). — RF-03, RF-04, RF-05, RF-06, RF-08, RNF-03, RNF-06
-- [ ] `../../.github/workflows/ci.yml` e `../../.github/workflows/pip-audit.yml`: acrescenta
+- [x] `../../.github/workflows/ci.yml` e `../../.github/workflows/pip-audit.yml`: acrescenta
       `validador_de_cpf` à matriz `projeto` e atualiza a contagem de projetos citada no comentário
       do cache. `../../.github/dependabot.yml`: entrada `uv` para `/mini_projetos/validador_de_cpf`,
       no formato das outras. — RNF-01, RNF-08
-- [ ] Portão de qualidade.
+- [x] Portão de qualidade. — 67 passed; ruff/black/mypy verdes.
 
 ## Etapa 2 — Textos, tela, laço principal e atalhos
 
-- [ ] `main.py`: `descrever_resultado(entrada)` e `descrever_gerado(cpf)`, com o CPF válido em
+- [x] `main.py`: `descrever_resultado(entrada)` e `descrever_gerado(cpf)`, com o CPF válido em
       uma linha e a região na seguinte, o inválido em duas linhas (o resultado e o motivo) e o
       `AVISO_GERADO`, sem nenhuma linha acima de 54 colunas. — RF-05, RF-06, RF-08
-- [ ] `main.py`: `descrever_conta(conta, digitado, ordem)` e `explicar_validacao(entrada)`, com as
+- [x] `main.py`: `descrever_conta(conta, digitado, ordem)` e `explicar_validacao(entrada)`, com as
       colunas de largura fixa, a linha da soma, da divisão, do resto e do dígito, a marca de que o
       dígito digitado confere ou não e a entrada recusada sem conta. — RF-05, RF-07, ADR-4
-- [ ] `main.py`: `limpar_tela()` com `os.system` (`cls` no Windows, `clear` nos outros),
+- [x] `main.py`: `limpar_tela()` com `os.system` (`cls` no Windows, `clear` nos outros),
       `exibir_tela(resultado)`, com o título, o resultado da ação anterior e o menu numerado, e
       `conferir_opcao(entrada)`, com `isdecimal()` antes do `int()`. — RF-01, RF-02, ADR-7
-- [ ] `main.py`: `main(ler, sortear)`, com o laço do menu, o `if`/`elif` das opções, a opção
+- [x] `main.py`: `main(ler, sortear)`, com o laço do menu, o `if`/`elif` das opções, a opção
       inválida, o Sair e o `try`/`except (KeyboardInterrupt, EOFError)` com a despedida. Guard
       `if __name__ == "__main__"` chamando `main()`. — RF-01, RF-02, RF-09, RNF-04, RNF-07, ADR-1,
       ADR-8, ADR-10
-- [ ] `tests/test_main.py`: fixture `autouse` que substitui `limpar_tela`; casos de
+- [x] `tests/test_main.py`: fixture `autouse` que substitui `limpar_tela`; casos de
       `descrever_resultado` (válido com a região, cada motivo de recusa), de `descrever_conta` e
       `explicar_validacao` (as linhas da conta no exemplo da Receita Federal, o dígito que confere e
       o que não confere, a sequência repetida com a conta e a recusa, a entrada recusada sem conta),
@@ -78,15 +78,15 @@ ordem: `uv run ruff check .`, `uv run black --check .`, `uv run mypy` e `uv run 
       que o `main.py` só importa `__future__`, `collections.abc`, `os`, `random`, `sys` e `typing`
       e não chama `open`. — RF-01, RF-02, RF-05, RF-06, RF-07, RF-08, RF-09, RNF-03, RNF-04, RNF-06,
       RNF-07
-- [ ] `iniciar_validador.bat` e `iniciar_validador.sh`: atalhos no formato dos do
+- [x] `iniciar_validador.bat` e `iniciar_validador.sh`: atalhos no formato dos do
       `lista_de_tarefas` (`uv run main.py`, com `python`/`python3` como alternativa). — RNF-02
-- [ ] Conferência manual: uma sessão no terminal que valida o exemplo da Receita Federal com e sem
+- [x] Conferência manual: uma sessão no terminal que valida o exemplo da Receita Federal com e sem
       pontuação, um CPF com o dígito errado, uma sequência repetida no modo didático e uma entrada
       com letra, gera dois CPFs e sai; a limpeza de tela a cada volta do menu; o programa chamado de
       outra pasta (`python mini_projetos/validador_de_cpf/main.py`); a saída redirecionada para
       arquivo sem `UnicodeEncodeError`; e o `git status` limpo depois da sessão, sem arquivo criado.
       — RF-01, RF-03, RF-07, RF-08, RNF-02, RNF-05, RNF-07
-- [ ] Portão de qualidade.
+- [x] Portão de qualidade. — 117 passed; ruff/black/mypy verdes.
 
 ## Etapa 3 — Documentação do projeto
 
