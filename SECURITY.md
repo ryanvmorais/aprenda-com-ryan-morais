@@ -32,6 +32,6 @@ correção ficar pronta. O relator recebe o crédito no aviso, a menos que prefi
 
 Este repositório reúne material didático: programas de terminal que rodam localmente, sem
 servidor, contas ou dados pessoais. O que cabe aqui é uma falha em dependência, em workflow do
-GitHub Actions, no código dos programas ou nos atalhos de execução (`.sh` e `.bat`). Cada mini
-projeto traz a mesma política no próprio `SECURITY.md`. Dúvidas e sugestões comuns vão pelas
+GitHub Actions, no código dos programas ou nos atalhos de execução (`.sh` e `.bat`). Esta política
+vale para todas as pastas do repositório. Dúvidas e sugestões comuns vão pelas
 [issues](https://github.com/ryanvmorais/aprenda-com-ryan-morais/issues), como o README convida.

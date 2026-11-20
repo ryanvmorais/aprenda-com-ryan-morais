@@ -59,9 +59,7 @@ uv.lock               # lock do grafo de dependências — nunca editar à mão
 .gitignore            # ignora .venv, caches de ferramentas e __pycache__
 assets/               # jogo-da-cobrinha-python-terminal-partida.svg, a animação de uma partida no topo do README
 LICENSE               # licença MIT
-CONTRIBUTING.md       # guia de contribuição (fork, branch, Conventional Commits)
-CODE_OF_CONDUCT.md    # Contributor Covenant 2.1 (pt-BR); contato: contato@ryanmorais.com.br
-SECURITY.md           # política de segurança; relatos pelo Private Vulnerability Reporting
+../../CONTRIBUTING.md # com CODE_OF_CONDUCT.md e SECURITY.md: valem para o repositório inteiro, na raiz
 ../../.github/   # CI, CodeQL, pip-audit, Dependabot, templates e o script de impessoalidade
                  # (scripts/conferir_impessoalidade.py, para o repositório inteiro): ficam na raiz
 ```
