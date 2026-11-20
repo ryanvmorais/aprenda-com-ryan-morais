@@ -44,6 +44,7 @@ jobs:
           - adivinhe_o_numero
           - calculadora_simples
           - jogo_da_cobrinha
+          - jogo_da_forca
           - jogo_da_velha
           - pedra_papel_tesoura
     steps:
