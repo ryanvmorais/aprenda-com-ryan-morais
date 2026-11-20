@@ -167,7 +167,7 @@ suíte de testes ser determinística: o teste escolhe a palavra e a sequência d
 
 ### RNF-07 — Projeto pronto para estudo
 
-Quem chega pelo vídeo encontra o projeto documentado e conferido: o `README.md` e o
+Quem abre o projeto o encontra documentado e conferido: o `README.md` e o
 `README.en.md`, com as mesmas seções e abertos por uma animação de uma sessão no terminal, que
 fica parada na última tela para quem pede movimento reduzido; o `CLAUDE.md`, com os comandos e a
 arquitetura; o `docs/stack.md`, com o mapa da stack; e o `LICENSE`, o `CONTRIBUTING.md`, o
@@ -235,9 +235,9 @@ Não tem teste automatizado direto: `limpar_tela()` chama `os.system`, um efeito
 devolve nada. Fica coberta pela verificação manual ao rodar o jogo e é substituída nos testes dos
 outros requisitos.
 
-### RNF-07 — Projeto pronto para estudo
+### RNF-07 — Documentação conferida
 
 `tests/test_readme_en.py` confere que o `README.en.md` acompanha a estrutura do `README.md`
 (títulos, tabelas, blocos de código e links), e `tests/test_impessoalidade.py`, que os arquivos
-versionados não citam o mantenedor nem apontam para ferramentas que quem clona não tem. A animação
-e os arquivos da comunidade são conferidos na revisão do pull request.
+versionados não citam o mantenedor nem apontam para ferramentas que quem clona não tem. A
+animação e os arquivos da comunidade são conferidos à mão, antes de cada pull request.
