@@ -53,7 +53,7 @@ iniciar_jogo.sh       # atalho Linux/macOS: uv run main.py (fallback: python3 ma
 pyproject.toml        # gerenciado por uv — sem deps de runtime, grupo dev com
                        # ruff/black/mypy/pytest
 uv.lock               # lock do grupo dev — nunca editar à mão
-.gitattributes        # LF fixo nos atalhos .sh (com CRLF o shebang quebra no Linux/macOS)
+../../.gitattributes  # LF fixo nos atalhos .sh e CRLF nos .bat; vale para o repositório inteiro, na raiz
 LICENSE               # MIT
 ../../CONTRIBUTING.md # com CODE_OF_CONDUCT.md e SECURITY.md: valem para o repositório inteiro, na raiz
 ../../.github/   # CI, CodeQL, pip-audit, Dependabot, templates e o script de impessoalidade

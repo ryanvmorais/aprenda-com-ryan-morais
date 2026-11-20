@@ -55,8 +55,8 @@ pyproject.toml        # gerenciado por uv — windows-curses (win32) + grupo dev
                        # com ruff/black/mypy/pytest
 uv.lock               # lock do grafo de dependências — nunca editar à mão
 .python-version       # fixa o Python 3.14 no uv (o windows-curses não tem wheel para o 3.15)
-.gitattributes        # LF fixo nos atalhos .sh (com CRLF o shebang quebra no Linux/macOS)
-.gitignore            # ignora .venv, caches de ferramentas e __pycache__
+../../.gitattributes  # LF fixo nos atalhos .sh e CRLF nos .bat; vale para o repositório inteiro, na raiz
+.gitignore            # só a exceção deste projeto: versiona o .python-version
 assets/               # jogo-da-cobrinha-python-terminal-partida.svg, a animação de uma partida no topo do README
 LICENSE               # licença MIT
 ../../CONTRIBUTING.md # com CODE_OF_CONDUCT.md e SECURITY.md: valem para o repositório inteiro, na raiz
