@@ -1,6 +1,7 @@
-# Pipeline de CI (GitHub Actions) dos mini projetos. Espelha o portao de qualidade
-# local (ruff -> black --check -> mypy -> pytest) para que um check verde no PR
-# signifique o mesmo que um clone limpo passando. Um job por projeto x versao do Python.
+# Pipeline de CI (GitHub Actions) do repositorio. O job `qualidade` espelha o portao de
+# qualidade local dos mini projetos (ruff -> black --check -> mypy -> pytest) para que um
+# check verde no PR signifique o mesmo que um clone limpo passando, com um job por projeto
+# x versao do Python. O job `impessoalidade` confere o repositorio inteiro de uma vez.
 #
 # Cada projeto de mini_projetos/ e um projeto uv independente (pyproject.toml e uv.lock
 # proprios); por isso os comandos rodam dentro da pasta dele.
@@ -18,6 +19,7 @@ on:
     branches: [main]
     paths:
       - "mini_projetos/**"
+      - ".github/scripts/**"
       - ".github/workflows/ci.yml"
   pull_request:
 
@@ -85,18 +87,35 @@ jobs:
       - name: Pytest (suite completa)
         run: uv run pytest
 
-  # Check unico exigido pelo ruleset: resume a matriz num nome estavel, para que trocar uma
+  # Uma regra so para o repositorio inteiro (mini projetos, cursos, tutoriais e raiz): o
+  # script usa so a biblioteca padrao e roda no python3 do runner, sem uv nem pyproject.toml
+  # na raiz.
+  impessoalidade:
+    name: Impessoalidade (repositorio inteiro)
+    runs-on: ubuntu-26.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout do repositorio
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Confere nome do mantenedor e skills pessoais
+        run: python3 .github/scripts/conferir_impessoalidade.py
+
+  # Check unico exigido pelo ruleset: resume os jobs num nome estavel, para que trocar uma
   # versao do Python ou acrescentar um projeto nao quebre a regra. O `always()` e
-  # obrigatorio: sem ele, uma falha na matriz pula este job, e job pulado conta como
+  # obrigatorio: sem ele, uma falha num dos jobs pula este, e job pulado conta como
   # aprovado para o ruleset.
   ci-concluida:
     name: CI concluída
     if: always()
-    needs: qualidade
+    needs: [qualidade, impessoalidade]
     runs-on: ubuntu-26.04
     timeout-minutes: 5
     steps:
-      - name: Confere o resultado da matriz
+      - name: Confere o resultado da matriz e da impessoalidade
         env:
-          RESULTADO: ${{ needs.qualidade.result }}
-        run: test "$RESULTADO" = "success"
+          QUALIDADE: ${{ needs.qualidade.result }}
+          IMPESSOALIDADE: ${{ needs.impessoalidade.result }}
+        run: test "$QUALIDADE" = "success" && test "$IMPESSOALIDADE" = "success"

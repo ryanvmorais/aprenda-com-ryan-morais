@@ -49,7 +49,8 @@ CODE_OF_CONDUCT.md             # Contributor Covenant 2.1 (pt-BR); contato: cont
 SECURITY.md                    # política de segurança; relatos pelo Private Vulnerability Reporting
 CONTRIBUTING.md                # guia de contribuição (fork, Conventional Commits, PR)
 assets/                        # animação (SVG) de uma sessão real do main.py, no topo do README
-../../.github/   # CI, CodeQL, pip-audit, Dependabot e templates: ficam na raiz do repositório
+../../.github/   # CI, CodeQL, pip-audit, Dependabot, templates e o script de impessoalidade
+                 # (scripts/conferir_impessoalidade.py, para o repositório inteiro): ficam na raiz
 ```
 
 `operacoes` é a peça central: menu e motor de cálculo leem do mesmo
