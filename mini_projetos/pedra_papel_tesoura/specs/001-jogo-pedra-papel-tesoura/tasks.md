@@ -17,7 +17,7 @@ origin: engenharia reversa
 - [x] `main.py`: loop principal com pergunta de replay. — RF-05
 - [x] `main.py`: limpeza de tela multiplataforma (`cls`/`clear` via
       `subprocess.run(..., shell=True)`). — RF-06
-- [x] `iniciar_jogo.bat` / `iniciar_jogo.sh`: scripts de atalho por SO.
+- [x] `iniciar_jogo.bat` / `iniciar_jogo.sh`: scripts de atalho por SO. — RNF-02
 - [x] Portão de qualidade. — verificação manual (sem suíte automatizada
       nesta etapa).
 
@@ -37,27 +37,27 @@ origin: engenharia reversa
 - [x] `pyproject.toml`: cria manifesto gerenciado por `uv` — sem dependência
       de runtime, grupo `dev` com `ruff`, `black`, `mypy`, `pytest`. — RNF-01
 - [x] Remove `requirements.txt` (substituído pelo `pyproject.toml` +
-      `uv.lock`).
+      `uv.lock`). — RNF-01
 - [x] `tests/test_main.py`: suíte pytest cobrindo RF-01 a RF-04 (17 casos,
       parametrizados onde fazia sentido). — RF-01, RF-02, RF-03, RF-04
 - [x] `iniciar_jogo.bat` / `iniciar_jogo.sh`: corrige o nome de arquivo
       chamado (apontava para `PedraPapelTesoura.py`, inexistente; o arquivo
       real é `main.py`) e passa a preferir `uv run main.py`, com fallback
-      para `python`/`python3` puro.
+      para `python`/`python3` puro. — RNF-02
 - [x] Portão de qualidade. — `ruff check .`, `black --check .`, `mypy` e
       `pytest` (17 passed) verdes.
 
 ## Etapa 2 — Documentação e CI
 
-- [x] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest).
+- [x] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest). — RNF-05
 - [x] `specs/001-jogo-pedra-papel-tesoura/`: esta spec, por engenharia
-      reversa.
+      reversa. — RNF-05
 - [x] `.github/dependabot.yml`: atualização semanal de `uv` +
-      `github-actions`.
+      `github-actions`. — RNF-05
 - [x] `.github/workflows/ci.yml`: job `qualidade` (`ruff` → `black --check`
-      → `mypy` → `pytest`) em Python 3.12 e 3.13.
-- [x] `CLAUDE.md`: orientação de projeto para sessões futuras.
+      → `mypy` → `pytest`) em Python 3.12 e 3.13. — RNF-05
+- [x] `CLAUDE.md`: orientação de projeto para sessões futuras. — RNF-05
 - [x] `README.md` / `CONTRIBUTING.md`: atualizados para `uv` (em vez de
-      `pip`) e para a suíte de testes.
+      `pip`) e para a suíte de testes. — RNF-05
 - [x] Portão de qualidade. — `ruff check .`, `black --check .`, `mypy` e
       `pytest` (17 passed) verdes; CI local equivalente ao workflow.

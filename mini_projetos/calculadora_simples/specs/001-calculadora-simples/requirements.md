@@ -117,6 +117,15 @@ O programa usa exclusivamente a biblioteca padrão do Python
 O programa deve rodar sem alteração em Windows, Linux e macOS
 (`requires-python >= 3.12`).
 
+### RNF-03 — Projeto pronto para estudo
+
+Quem abre o projeto o encontra documentado e conferido: o `README.md` e o
+`README.en.md`, com as mesmas seções e abertos por uma animação de uma sessão no terminal, que
+fica parada na última tela para quem pede movimento reduzido; o `CLAUDE.md`, com os comandos e a
+arquitetura; o `docs/stack.md`, com o mapa da stack; e o `LICENSE`, o `CONTRIBUTING.md`, o
+`CODE_OF_CONDUCT.md` e o `SECURITY.md`. O portão de qualidade (ruff, black, mypy strict e pytest)
+roda no CI, e o Dependabot propõe as atualizações das ferramentas de desenvolvimento.
+
 ## Perguntas em aberto / decisões resolvidas
 
 - **Decisão resolvida 1**: erros de cálculo (divisão por zero) são
@@ -134,3 +143,10 @@ O programa deve rodar sem alteração em Windows, Linux e macOS
 - **RF-07 e RF-08** não têm teste automatizado (dependem do console real do
   SO); foram verificados manualmente rodando `uv run main.py` no Windows
   durante a modernização — ver `design.md`.
+
+### RNF-03 — Documentação conferida
+
+`tests/test_readme_en.py` confere que o `README.en.md` acompanha a estrutura do `README.md`
+(títulos, tabelas, blocos de código e links), e `tests/test_impessoalidade.py`, que os arquivos
+versionados não citam o mantenedor nem apontam para ferramentas que quem clona não tem. A
+animação e os arquivos da comunidade são conferidos à mão, antes de cada pull request.

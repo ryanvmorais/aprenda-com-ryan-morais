@@ -35,9 +35,9 @@ exceção — usada só para documentar retroativamente um projeto já finalizad
 
 ## Índice
 
-| Spec | Escopo | Status |
-|---|---|---|
-| [001-calculadora-simples](001-calculadora-simples/requirements.md) | Calculadora de terminal — menu de operações, cálculo, tratamento de erros | concluído |
+| Spec | Escopo | Entrega | Status |
+|---|---|---|---|
+| [001-calculadora-simples](001-calculadora-simples/requirements.md) | Calculadora de terminal — menu de operações, cálculo, tratamento de erros | — | concluído |
 
 ## Notas de manutenção
 

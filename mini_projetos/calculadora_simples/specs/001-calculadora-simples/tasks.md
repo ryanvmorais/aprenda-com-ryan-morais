@@ -14,7 +14,7 @@ origin: engenharia reversa
   `try/except ValueError`. — RF-01, RF-02, RF-05, RF-06
 - [x] `requirements.txt`, `iniciar_calculadora.bat`, `iniciar_calculadora.sh`,
   `README.md`, `CONTRIBUTING.md`, `LICENSE` já existentes (projeto sem
-  gerenciador de dependências, sem testes, sem CI).
+  gerenciador de dependências, sem testes, sem CI). — RNF-01, RNF-02, RNF-03
 
 ## Etapa 1 — Modernização (uv, correções, testes)
 
@@ -33,11 +33,11 @@ origin: engenharia reversa
 - [x] `main.py`: `realizar_calculo` passa a levantar `ZeroDivisionError` em
   vez de retornar uma `str` de erro; `calculadora()` ganha
   `except ZeroDivisionError`. — RF-03, RF-04, ADR-3
-- [x] `main.py`: type hints completos, docstrings no formato
-  `/estilo-arquivos`, réguas de seção, `from __future__ import annotations`.
+- [x] `main.py`: type hints completos, docstrings com `Args:` e
+  `Returns:`, réguas de seção, `from __future__ import annotations`. — RNF-03
 - [x] `iniciar_calculadora.bat` / `iniciar_calculadora.sh`: trocam a checagem
   de `python`/`python3` por checagem de `uv` e passam a rodar
-  `uv run main.py`.
+  `uv run main.py`. — RNF-02
 - [x] `tests/test_main.py`: suíte cobrindo `realizar_calculo` (uma por
   operação + exceções), `exibir_menu`, e o loop `calculadora()` (fluxo feliz,
   divisão por zero, entrada não numérica, opção inválida). — RF-01, RF-03,
@@ -51,16 +51,16 @@ origin: engenharia reversa
 
 - [x] `specs/001-calculadora-simples/`: `requirements.md`, `design.md` e
   `tasks.md` por engenharia reversa, cobrindo o comportamento real e as
-  correções da Etapa 1.
-- [x] `specs/README.md`: convenções + índice.
-- [x] `docs/stack.md`: mapa da stack (linguagem/runtime + ferramentas de dev).
+  correções da Etapa 1. — RNF-03
+- [x] `specs/README.md`: convenções + índice. — RNF-03
+- [x] `docs/stack.md`: mapa da stack (linguagem/runtime + ferramentas de dev). — RNF-03
 - [x] `.github/dependabot.yml`: bump semanal de `uv` (diretório `/`) e
-  `github-actions`.
+  `github-actions`. — RNF-03
 - [x] `.github/workflows/ci.yml`: job único espelhando o portão de qualidade,
   matriz Python 3.13/3.14.
 - [x] `CLAUDE.md`: visão geral, comandos, arquitetura, convenções, qualidade,
-  spec-driven development, dependências.
+  spec-driven development, dependências. — RNF-03
 - [x] `README.md` / `CONTRIBUTING.md`: atualizar comandos de instalação
-  (`pip` → `uv`), tabela de tecnologias e seção de testes/qualidade.
+  (`pip` → `uv`), tabela de tecnologias e seção de testes/qualidade. — RNF-03
 - [x] Portão final (clone limpo mental): `rm -rf .venv uv.lock && uv sync` do
   zero seguido da sequência `ruff → black → mypy → pytest` — todos verdes.
