@@ -165,6 +165,28 @@ updates:
           - "minor"
           - "patch"
 
+  # validador_de_cpf: ferramentas de dev do pyproject.toml, grafo travado no uv.lock.
+  - package-ecosystem: "uv"
+    directory: "/mini_projetos/validador_de_cpf"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+    labels:
+      - "dependencies"
+    cooldown:
+      default-days: 7
+    groups:
+      uv-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
   # Actions pinadas nos workflows em .github/workflows/.
   - package-ecosystem: "github-actions"
     directory: "/"
