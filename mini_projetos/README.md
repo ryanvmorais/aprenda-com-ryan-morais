@@ -16,6 +16,7 @@ Esta pasta reúne os **mini projetos em Python** do canal: programas pequenos, q
 | [Pedra, Papel e Tesoura](pedra_papel_tesoura/) | Dicionários e Programação Orientada a Objetos |
 | [Jogo da Velha](jogo_da_velha/) | Matrizes, estruturas condicionais e POO |
 | [Lista de Tarefas](lista_de_tarefas/) | Arquivo JSON, `pathlib` e gravação atômica |
+| [Validador de CPF](validador_de_cpf/) | Algoritmo dos dígitos verificadores, resto da divisão e funções puras |
 | [Jogo da Cobrinha](jogo_da_cobrinha/) | Listas dinâmicas e game loop com a biblioteca `curses` |
 
 ---

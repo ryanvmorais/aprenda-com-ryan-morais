@@ -1,6 +1,6 @@
 ---
 feature: Validador de CPF via terminal, com a conta passo a passo
-status: em andamento
+status: concluído
 date: 2026-11-20
 related:
   - 001-validador-de-cpf/requirements.md
@@ -90,37 +90,37 @@ ordem: `uv run ruff check .`, `uv run black --check .`, `uv run mypy` e `uv run 
 
 ## Etapa 3 — Documentação do projeto
 
-- [ ] `tests/test_impessoalidade.py` e `tests/test_readme_en.py`: cópias dos do
+- [x] `tests/test_impessoalidade.py` e `tests/test_readme_en.py`: cópias dos do
       `lista_de_tarefas`. — RNF-08
-- [ ] `assets/validador-de-cpf-python-terminal-sessao.svg`: animação de uma sessão real do
+- [x] `assets/validador-de-cpf-python-terminal-sessao.svg`: animação de uma sessão real do
       `main.py`, com as entradas de um roteiro e um sorteio de semente fixa, no visual das outras
       animações e na largura de 54 colunas (ou na menor acima de 52 em que a linha mais longa caiba
       sem quebrar); quem pede movimento reduzido vê a última tela parada. Os CPFs da sessão são só
       o exemplo da Receita Federal, variações inválidas dele e o gerado pela semente. — RNF-07,
       RNF-08
-- [ ] `README.md`: mesmas seções e na mesma ordem do `README.md` do `lista_de_tarefas`, abrindo
+- [x] `README.md`: mesmas seções e na mesma ordem do `README.md` do `lista_de_tarefas`, abrindo
       com a animação e os badges; o "Guia de Implementação" explica a conta dos dois dígitos pela
       forma da Receita Federal, com a fonte, a equivalência com a forma mais divulgada, a sequência
       repetida, o `isascii()` junto do `isdigit()` e a região fiscal do 9º dígito, e diz que o
       número gerado pode coincidir com o CPF de uma pessoa real e que nenhum CPF digitado é
       guardado; com "Atividades para praticar" e "Continue praticando", que aponta para os outros
       mini-projetos. — RF-01 a RF-09, RNF-07, ADR-3, ADR-5
-- [ ] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem. — RNF-08
-- [ ] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `lista_de_tarefas` (visão geral, comandos,
+- [x] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem. — RNF-08
+- [x] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `lista_de_tarefas` (visão geral, comandos,
       arquitetura e convenções), com os cuidados dos pesos que terminam em 9 (a regra que serve aos
       dois dígitos), dos exemplos que só usam o CPF da Receita Federal e da lista de `import` que o
       teste do RNF-07 confere. — RNF-07, RNF-08, ADR-3
-- [ ] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
+- [x] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
       outros mini-projetos. — RNF-08
-- [ ] `LICENSE`, `CODE_OF_CONDUCT.md` e `SECURITY.md`: cópias dos do `lista_de_tarefas`.
+- [x] `LICENSE`, `CODE_OF_CONDUCT.md` e `SECURITY.md`: cópias dos do `lista_de_tarefas`.
       `CONTRIBUTING.md`: no formato do `lista_de_tarefas`, com o nome deste projeto. — RNF-08
-- [ ] Portão de qualidade.
+- [x] Portão de qualidade. — 125 passed; ruff/black/mypy verdes.
 
 ## Etapa 4 — Integração na pasta `mini_projetos/` e fechamento da spec
 
-- [ ] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
+- [x] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
       (algoritmo dos dígitos verificadores, resto da divisão e funções puras). — RNF-08
-- [ ] `specs/001-validador-de-cpf/`: `Desvios` e `Notas de implementação` no `design.md`, se
+- [x] `specs/001-validador-de-cpf/`: `Desvios` e `Notas de implementação` no `design.md`, se
       houver o que registrar; `status: concluído` nos três arquivos e na linha do índice do
       `specs/README.md`. — RNF-08
-- [ ] Portão de qualidade.
+- [x] Portão de qualidade. — 125 passed; ruff/black/mypy verdes.

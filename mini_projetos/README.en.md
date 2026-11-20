@@ -16,6 +16,7 @@ This folder gathers the channel's **Python mini projects**: small programs that 
 | [Rock, Paper, Scissors](pedra_papel_tesoura/README.en.md) | Dictionaries and Object-Oriented Programming |
 | [Tic-Tac-Toe](jogo_da_velha/README.en.md) | Matrices, conditionals and OOP |
 | [To-Do List](lista_de_tarefas/README.en.md) | JSON files, `pathlib` and atomic writes |
+| [CPF Validator](validador_de_cpf/README.en.md) | The check digit algorithm, the remainder of a division and pure functions |
 | [Snake Game](jogo_da_cobrinha/README.en.md) | Dynamic lists and a game loop with the `curses` library |
 
 ---

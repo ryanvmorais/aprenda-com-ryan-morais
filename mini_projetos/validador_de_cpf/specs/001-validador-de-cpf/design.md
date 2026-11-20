@@ -1,6 +1,6 @@
 ---
 feature: Validador de CPF via terminal, com a conta passo a passo
-status: em andamento
+status: concluído
 date: 2026-11-20
 related:
   - 001-validador-de-cpf/requirements.md
@@ -436,11 +436,20 @@ aparece. Ver `tests/test_main.py` e a seção "Testes" do `requirements.md`.
    `Digitado: 4 ❌ não confere`), e não só o emoji do quadro ilustrativo, para o resultado não
    depender da cor nem do desenho do emoji. Quando o resto é 10, a linha da soma acaba em
    `(10 vale 0)`, que explica por que o dígito não é o resto.
+2. **RNF-08:** a animação do README fica nas 52 colunas de sempre, e não numa largura acima de 52,
+   como pedia a tarefa: a sessão não passa por uma sequência repetida (RNF-07), e a linha mais
+   longa dela, a 2ª do aviso do gerador, tem 52 colunas, que cabem sem quebrar.
 
 ## Notas de implementação
 
-- **Testes:** 117 casos em `tests/test_main.py` (67 na etapa 1, 50 na etapa 2). Ruff, black e
-  mypy strict verdes.
+- **Testes:** 125 casos: 117 em `tests/test_main.py` (67 na etapa 1, 50 na etapa 2), 6 em
+  `tests/test_readme_en.py` e 2 em `tests/test_impessoalidade.py` (etapa 3). Ruff, black e mypy
+  strict verdes.
+- **Animação do README:** a sessão valida o exemplo da Receita com pontuação, recusa o mesmo
+  número sem pontuação e com o último dígito trocado, gera um CPF com o sorteio de semente fixa,
+  mostra a conta do exemplo no modo didático e sai. A última tela, a que fica parada para quem
+  pede movimento reduzido, é a da conta. O modo didático ocupa 25 linhas, então o quadro fica
+  mais alto que o das outras animações (viewBox de 682 × 733), num ciclo de 18 s.
 - **Largura:** a linha mais longa do programa é a da sequência repetida, com 54 colunas. O teste
   mede a largura com os emojis contando duas colunas.
 - **Modo didático com o 1º dígito errado:** a conta do 2º dígito usa o 1º dígito calculado, e não
