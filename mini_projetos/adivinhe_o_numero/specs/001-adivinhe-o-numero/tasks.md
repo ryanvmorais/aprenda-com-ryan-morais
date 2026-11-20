@@ -1,6 +1,6 @@
 ---
 feature: Jogo Adivinhe o Número via terminal
-status: em andamento
+status: concluído
 date: 2026-11-20
 related:
   - 001-adivinhe-o-numero/requirements.md
@@ -68,28 +68,29 @@ ordem: `uv run ruff check .`, `uv run black --check .`, `uv run mypy` e `uv run 
 
 ## Etapa 3 — Documentação do projeto
 
-- [ ] `tests/test_impessoalidade.py` e `tests/test_readme_en.py`: cópias dos do
+- [x] `tests/test_impessoalidade.py` e `tests/test_readme_en.py`: cópias dos do
       `pedra_papel_tesoura`.
-- [ ] `assets/adivinhe-o-numero-python-terminal-sessao.svg`: animação de uma sessão real do
+- [x] `assets/adivinhe-o-numero-python-terminal-sessao.svg`: animação de uma sessão real do
       `main.py`, com as entradas de um roteiro e o sorteio fixo, no visual e na largura de 52
-      colunas das outras animações; quem pede movimento reduzido vê a última tela parada.
-- [ ] `README.md`: mesmas seções e na mesma ordem do `README.md` do `pedra_papel_tesoura`,
+      colunas das outras animações (54 nesta, ver o desvio 5 do `design.md`); quem pede
+      movimento reduzido vê a última tela parada.
+- [x] `README.md`: mesmas seções e na mesma ordem do `README.md` do `pedra_papel_tesoura`,
       abrindo com a animação e os badges, com "Atividades para praticar" e "Continue
       praticando". — RF-01 a RF-08
-- [ ] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem.
-- [ ] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `pedra_papel_tesoura` (visão geral,
+- [x] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem.
+- [x] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `pedra_papel_tesoura` (visão geral,
       comandos, arquitetura e convenções).
-- [ ] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
+- [x] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
       outros mini-projetos.
-- [ ] `LICENSE`, `CODE_OF_CONDUCT.md` e `SECURITY.md`: cópias dos do `pedra_papel_tesoura`.
+- [x] `LICENSE`, `CODE_OF_CONDUCT.md` e `SECURITY.md`: cópias dos do `pedra_papel_tesoura`.
       `CONTRIBUTING.md`: no formato do `pedra_papel_tesoura`, com o nome deste projeto.
-- [ ] Portão de qualidade. —
+- [x] Portão de qualidade. — 53 passed; ruff/black/mypy verdes
 
 ## Etapa 4 — Integração na pasta `mini_projetos/` e fechamento da spec
 
-- [ ] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
+- [x] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
       (`random`, laço `while` e validação de entrada).
-- [ ] `specs/001-adivinhe-o-numero/`: `Desvios` e `Notas de implementação` no `design.md`, se
+- [x] `specs/001-adivinhe-o-numero/`: `Desvios` e `Notas de implementação` no `design.md`, se
       houver o que registrar; `status: concluído` nos três arquivos e na linha do índice do
       `specs/README.md`.
-- [ ] Portão de qualidade. —
+- [x] Portão de qualidade. — 53 passed; ruff/black/mypy verdes
