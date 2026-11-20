@@ -131,7 +131,7 @@ See all the channel's projects and videos at [aprenda-com-ryan-morais](https://g
 Learning something new has its challenges, but I'm here to walk the path with you! If you found a mistake, had trouble running the game, or thought of an improvement that would make this material even more instructive:
 
 - **Open an [Issue](https://github.com/ryanvmorais/aprenda-com-ryan-morais/issues):** describe your question or suggestion. It is the best way for us to exchange knowledge and help other people who have the same question.
-- **Contribute code:** want to propose an improvement? See the step-by-step guide in [CONTRIBUTING.md](CONTRIBUTING.md) (in Portuguese).
+- **Contribute code:** want to propose an improvement? See the step-by-step guide in the repository's [CONTRIBUTING.md](../../CONTRIBUTING.md) (in Portuguese). In this project, keep the object-oriented style of the `JogoDaVelha` class and use only the Python standard library, unless the feature needs something very specific (such as colors).
 - **Email me:** if you prefer something more private, write to [**contato@ryanmorais.com.br**](mailto:contato@ryanmorais.com.br).
 
 I will be very happy to see your progress and get your feedback so we can keep improving our study materials! 🤝

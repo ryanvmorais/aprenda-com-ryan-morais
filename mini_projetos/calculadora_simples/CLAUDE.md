@@ -45,9 +45,7 @@ specs/001-calculadora-simples/ # spec por engenharia reversa do comportamento at
 iniciar_calculadora.bat        # atalho Windows (uv run main.py)
 iniciar_calculadora.sh         # atalho Linux/macOS (uv run main.py)
 .gitattributes                 # LF fixo nos atalhos .sh (com CRLF o shebang quebra no Linux/macOS)
-CODE_OF_CONDUCT.md             # Contributor Covenant 2.1 (pt-BR); contato: contato@ryanmorais.com.br
-SECURITY.md                    # política de segurança; relatos pelo Private Vulnerability Reporting
-CONTRIBUTING.md                # guia de contribuição (fork, Conventional Commits, PR)
+../../CONTRIBUTING.md          # com CODE_OF_CONDUCT.md e SECURITY.md: valem para o repositório inteiro, na raiz
 assets/                        # animação (SVG) de uma sessão real do main.py, no topo do README
 ../../.github/   # CI, CodeQL, pip-audit, Dependabot, templates e o script de impessoalidade
                  # (scripts/conferir_impessoalidade.py, para o repositório inteiro): ficam na raiz

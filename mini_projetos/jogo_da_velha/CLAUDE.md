@@ -55,9 +55,7 @@ pyproject.toml        # gerenciado por uv — sem deps de runtime, grupo dev com
 uv.lock               # lock do grupo dev — nunca editar à mão
 .gitattributes        # LF fixo nos atalhos .sh (com CRLF o shebang quebra no Linux/macOS)
 LICENSE               # MIT
-CONTRIBUTING.md       # como contribuir: fork, Conventional Commits, portão de qualidade
-CODE_OF_CONDUCT.md    # Contributor Covenant 2.1 (pt-BR); contato: contato@ryanmorais.com.br
-SECURITY.md           # política de segurança; relatos pelo Private Vulnerability Reporting
+../../CONTRIBUTING.md # com CODE_OF_CONDUCT.md e SECURITY.md: valem para o repositório inteiro, na raiz
 ../../.github/   # CI, CodeQL, pip-audit, Dependabot, templates e o script de impessoalidade
                  # (scripts/conferir_impessoalidade.py, para o repositório inteiro): ficam na raiz
 ```
