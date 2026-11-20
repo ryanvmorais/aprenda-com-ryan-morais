@@ -1,6 +1,6 @@
 ---
 feature: Jogo Adivinhe o Número via terminal
-status: em andamento
+status: concluído
 date: 2026-11-20
 related: []
 origin: concepção

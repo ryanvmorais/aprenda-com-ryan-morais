@@ -11,6 +11,7 @@ This folder gathers the channel's **Python mini projects**: small programs that 
 | Project | What you practice |
 |---|---|
 | [Simple Calculator](calculadora_simples/README.en.md) | Dictionaries, loops and error handling |
+| [Guess the Number](adivinhe_o_numero/README.en.md) | Drawing numbers with `random`, the `while` loop and input validation |
 | [Rock, Paper, Scissors](pedra_papel_tesoura/README.en.md) | Dictionaries and Object-Oriented Programming |
 | [Tic-Tac-Toe](jogo_da_velha/README.en.md) | Matrices, conditionals and OOP |
 | [Snake Game](jogo_da_cobrinha/README.en.md) | Dynamic lists and a game loop with the `curses` library |

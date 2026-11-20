@@ -1,6 +1,6 @@
 ---
 feature: Jogo Adivinhe o Número via terminal
-status: em andamento
+status: concluído
 date: 2026-11-20
 related:
   - 001-adivinhe-o-numero/requirements.md
@@ -304,6 +304,10 @@ ou `EOFError` (RNF-04). Ver `tests/test_main.py` e a seção "Testes" do `requir
 4. **Apelidos de tipo (ADR-3).** O "Modelo de dados" mostra `Leitor = Callable[[str], str]`;
    no `main.py`, os dois apelidos usam a instrução `type` (PEP 695, Python 3.12), a forma
    explícita de declarar um apelido de tipo. O uso nas assinaturas não muda.
+5. **Largura da animação do README.** O `tasks.md` previa a largura de 52 colunas das outras
+   animações. A dica "⬇️  O número é menor que 50. Tentativas restantes: 7." tem 53 e quebraria,
+   deixando o ponto final sozinho na linha de baixo; esta animação usa 54 colunas, e a letra fica
+   cerca de 4% menor que nas outras.
 
 ## Notas de implementação
 
@@ -315,3 +319,10 @@ ou `EOFError` (RNF-04). Ver `tests/test_main.py` e a seção "Testes" do `requir
   menu (o `cls` devolve 0 no Windows e, com a saída redirecionada, deixa o caractere de limpar a
   tela no arquivo) e o `uv run main.py` com a entrada por pipe e a saída redirecionada para
   arquivo: os emojis saem sem `UnicodeEncodeError`, e o fim da entrada encerra com a despedida.
+- **Animação do README:** gravada rodando o `main()` de verdade, com o sorteio fixo em 37 e o
+  roteiro de entradas do nível médio: 50 e 25 (as duas dicas), "abc" (recusado pelo `try`/`except`,
+  sem gastar tentativa), 37 (acerto na 3ª, novo recorde) e "n", até o resumo de recordes.
+- **README:** além das seções do `pedra_papel_tesoura`, o Guia de Implementação fecha com uma dica
+  de estratégia (a busca binária, que deu os limites de cada nível, ver as decisões do
+  `requirements.md`), e a nota de Como rodar lembra o Ctrl+C.
+- **Testes:** com o `test_impessoalidade.py` e o `test_readme_en.py`, a suíte tem 53 casos.
