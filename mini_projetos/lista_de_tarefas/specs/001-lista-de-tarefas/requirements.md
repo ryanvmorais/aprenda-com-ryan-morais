@@ -219,6 +219,10 @@ para quem pede movimento reduzido; o `CLAUDE.md`, com os comandos e a arquitetur
 e o `SECURITY.md`. O portão de qualidade (ruff, black, mypy strict e pytest) roda no CI, e o
 Dependabot propõe as atualizações das ferramentas de desenvolvimento.
 
+> Nota (2026-11-20): o `CONTRIBUTING.md`, o `CODE_OF_CONDUCT.md` e o `SECURITY.md` passaram a
+> valer para o repositório inteiro e ficam na raiz; as regras de contribuição próprias deste
+> projeto estão na seção de dúvidas e sugestões do README.
+
 ## Perguntas em aberto / decisões resolvidas
 
 Nenhuma pergunta em aberto. Decisões tomadas na revisão dos requisitos:
@@ -292,3 +296,7 @@ substituída nos testes dos outros requisitos.
 versionados não citam o mantenedor nem apontam para ferramentas que quem clona não tem. O
 `.gitignore`, a animação e os arquivos da comunidade são conferidos à mão, antes de cada pull
 request.
+
+> Nota (2026-11-20): a conferência de impessoalidade passou a valer para o repositório inteiro
+> e fica na raiz, em `.github/scripts/conferir_impessoalidade.py`, que o CI roda a cada pull
+> request; o `tests/test_impessoalidade.py` saiu deste projeto.
