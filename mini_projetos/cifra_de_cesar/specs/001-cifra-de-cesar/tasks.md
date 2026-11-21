@@ -89,7 +89,7 @@ O portão de qualidade de cada etapa roda, dentro de `mini_projetos/cifra_de_ces
 - [x] `iniciar_cifra.bat` e `iniciar_cifra.sh`: atalhos no formato dos do
       `verificador_de_forca_de_senha` (`uv run main.py`, com `python`/`python3` como
       alternativa). — RNF-02
-- [ ] Conferência manual: uma sessão no terminal que cifra um texto com acentos, decifra com a
+- [x] Conferência manual: uma sessão no terminal que cifra um texto com acentos, decifra com a
       chave, quebra o texto cifrado pela força bruta e pela frequência (um texto longo e um curto,
       com o aviso), com uma opção inválida, uma chave inválida e um texto sem letras no meio, e
       sai; o Ctrl+C no pedido do texto e no da chave; a limpeza de tela a cada volta do menu; a
