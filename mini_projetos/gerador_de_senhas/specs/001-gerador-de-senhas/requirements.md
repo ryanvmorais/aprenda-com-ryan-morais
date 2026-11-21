@@ -1,6 +1,6 @@
 ---
 feature: Gerador de senhas e frases-senha via terminal, com a entropia de cada uma
-status: em andamento
+status: concluído
 date: 2026-11-20
 related: []
 origin: concepção

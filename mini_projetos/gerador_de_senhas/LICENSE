@@ -1,0 +1,42 @@
+MIT License
+
+Copyright (c) 2026 Ryan Morais
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Word list (palavras.txt)
+
+The file palavras.txt is an unmodified copy of the Portuguese word list of
+BIP-39 (Mnemonic code for generating deterministic keys):
+
+  Repository: https://github.com/bitcoin/bips
+  File:       bip-0039/portuguese.txt
+  Commit:     d353c54154bac64a88eb18cf2d47d15ead083de4 (2020-09-01)
+  SHA-256:    2685e9c194c82ae67e10ba59d9ea5345a23dc093e92276fc5361f6667d79cd3f
+
+BIP-39 falls under the MIT License: the same terms printed above apply to the
+word list, with the copyright held by its authors, listed below.
+
+BIP-39 authors: Marek Palatinus, Pavol Rusnak, Aaron Voisine and Sean Bowe.
+
+Portuguese word list authors, as recorded in the commit that created the file:
+sabotag3x, ninjastic, Breno Rodrigues Brito, bitmover, alegotardo, kuthullu
+and Trimegistus.
