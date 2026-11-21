@@ -48,7 +48,7 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 | Spec | Escopo | Entrega | Status |
 |---|---|---|---|
-| [001-gerador-de-senhas](001-gerador-de-senhas/requirements.md) | O programa completo: senha forte com um Enter, senha personalizada (tamanho, tipos de caractere, sem caracteres parecidos) com pelo menos um de cada tipo sem enviesar o sorteio, frase-senha com a lista portuguesa do BIP-39, entropia com a conta, demonstração de por que o `random` não serve para senha, limpeza de tela multiplataforma | — | aprovado |
+| [001-gerador-de-senhas](001-gerador-de-senhas/requirements.md) | O programa completo: senha forte com um Enter, senha personalizada (tamanho, tipos de caractere, sem caracteres parecidos) com pelo menos um de cada tipo sem enviesar o sorteio, frase-senha com a lista portuguesa do BIP-39, entropia com a conta, demonstração de por que o `random` não serve para senha, limpeza de tela multiplataforma | — | em andamento |
 
 ## Notas de manutenção
 

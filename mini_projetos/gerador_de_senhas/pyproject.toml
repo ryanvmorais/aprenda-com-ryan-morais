@@ -1,0 +1,61 @@
+# =============================================================================
+# Configuração do projeto (PEP 621) — gerenciado com uv.
+#
+#   [project]                 metadados (projeto didático, só stdlib em runtime)
+#   [dependency-groups] dev   ferramentas de qualidade (uv instala por padrão)
+#   [tool.*]                  config de ruff, black, mypy e pytest
+#
+# As versões exatas do grupo dev ficam travadas no uv.lock (gerado por
+# `uv lock`). Commite pyproject.toml e uv.lock juntos.
+# =============================================================================
+
+[project]
+name = "gerador-de-senhas"
+version = "0.1.0"
+description = "Gerador de senhas em Python — exercício educacional de secrets x random, das constantes do módulo string e da entropia em bits."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Ryan Morais" }]
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "ruff>=0.17.4",
+    "black>=26.10.1",
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+]
+
+[tool.uv]
+# Script educacional, não uma lib a ser empacotada/instalada como pacote.
+package = false
+# Carência de 7 dias para versões novas (mesmo prazo do cooldown do Dependabot):
+# um pacote sequestrado costuma ser retirado do PyPI antes disso.
+exclude-newer = "7 days"
+
+# --- Linter (substitui o flake8 + isort, lê o pyproject nativamente) ---
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+# E/W = pycodestyle, F = pyflakes, I = isort, UP = pyupgrade
+select = ["E", "W", "F", "I", "UP"]
+
+# --- Formatador ---
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+# --- Type checker ---
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["main.py", "tests"]
+
+# --- Testes ---
+[tool.pytest.ini_options]
+addopts = "-ra -q"
+testpaths = ["tests"]
+pythonpath = ["."]

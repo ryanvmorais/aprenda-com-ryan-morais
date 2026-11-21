@@ -43,6 +43,7 @@ jobs:
         projeto:
           - adivinhe_o_numero
           - calculadora_simples
+          - gerador_de_senhas
           - jogo_da_cobrinha
           - jogo_da_forca
           - jogo_da_velha
@@ -56,7 +57,7 @@ jobs:
           # Nenhum passo seguinte precisa do token do GitHub; ele não fica no disco.
           persist-credentials: false
 
-      # Mesmo motivo do ci.yml: sem o sufixo, os 8 jobs disputam a mesma chave de cache.
+      # Mesmo motivo do ci.yml: sem o sufixo, os 9 jobs disputam a mesma chave de cache.
       - name: Instala o uv
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
