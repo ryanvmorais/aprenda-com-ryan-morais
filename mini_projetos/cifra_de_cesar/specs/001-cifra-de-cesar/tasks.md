@@ -1,6 +1,6 @@
 ---
 feature: Cifra de César via terminal, com cifrar, decifrar e quebrar por força bruta e por frequência
-status: em andamento
+status: concluído
 date: 2026-11-21
 related:
   - 001-cifra-de-cesar/requirements.md
@@ -99,12 +99,12 @@ O portão de qualidade de cada etapa roda, dentro de `mini_projetos/cifra_de_ces
 
 ## Etapa 3 — Documentação do projeto
 
-- [ ] `tests/test_readme_en.py`: cópia do arquivo do `verificador_de_forca_de_senha`. — RNF-09
-- [ ] `assets/cifra-de-cesar-python-terminal-sessao.svg`: animação de uma sessão real do `main.py`,
+- [x] `tests/test_readme_en.py`: cópia do arquivo do `verificador_de_forca_de_senha`. — RNF-09
+- [x] `assets/cifra-de-cesar-python-terminal-sessao.svg`: animação de uma sessão real do `main.py`,
       com as entradas de um roteiro, no visual das outras animações e na largura de 54 colunas (ou
       na menor acima de 52 em que a linha mais longa caiba sem quebrar), com textos que caibam
       nessa largura; quem pede movimento reduzido vê a última tela parada. — RNF-09
-- [ ] `README.md`: mesmas seções e na mesma ordem do `README.md` do
+- [x] `README.md`: mesmas seções e na mesma ordem do `README.md` do
       `verificador_de_forca_de_senha`, abrindo com a animação e os badges e com o aviso de que a
       cifra de César não protege nada; o "Guia de Implementação" explica o `ord`, o `chr` e o
       `% 26` com a volta do Z para o A, a chave negativa para decifrar, a tabela do
@@ -114,24 +114,26 @@ O portão de qualidade de cada etapa roda, dentro de `mini_projetos/cifra_de_ces
       "Atividades para praticar" e "Continue praticando", que aponta para os outros mini-projetos;
       a linha "Contribua com código" aponta para o `CONTRIBUTING.md` da raiz e traz as regras
       próprias do projeto. — RF-01 a RF-10, RNF-07, RNF-08, RNF-09, ADR-2, ADR-3, ADR-5, ADR-6
-- [ ] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem. — RNF-09
-- [ ] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `verificador_de_forca_de_senha` (visão geral,
+- [x] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem. — RNF-09
+- [x] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `verificador_de_forca_de_senha` (visão geral,
       comandos, arquitetura e convenções), com os cuidados da `FREQUENCIAS` copiada do estudo sem
       alteração (o teste confere as 26 letras e a soma), da troca de método de pontuação, que muda
       o ADR-5 e o `MINIMO_LETRAS` junto, e da lista de `import` que o teste do RNF-07 confere. —
       RNF-07, RNF-08, RNF-09, ADR-5, ADR-6, ADR-7
-- [ ] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
+- [x] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
       outros mini-projetos. — RNF-09
-- [ ] `LICENSE`: a licença MIT do `verificador_de_forca_de_senha`, sem a seção da lista de senhas
+- [x] `LICENSE`: a licença MIT do `verificador_de_forca_de_senha`, sem a seção da lista de senhas
       comuns. — RNF-09
-- [ ] Portão de qualidade. —
+- [x] Portão de qualidade. — 2026-11-21: `ruff check`, `black --check` e `mypy` limpos;
+      `pytest` com 265 casos verdes (259 do `test_main.py` e 6 do `test_readme_en.py`).
 
 ## Etapa 4 — Integração na pasta `mini_projetos/` e fechamento da spec
 
-- [ ] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
+- [x] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
       (`ord` e `chr`, aritmética modular, força bruta e frequência das letras com `Counter`). —
       RNF-09
-- [ ] `specs/001-cifra-de-cesar/`: `Desvios` e `Notas de implementação` no `design.md`, se houver o
+- [x] `specs/001-cifra-de-cesar/`: `Desvios` e `Notas de implementação` no `design.md`, se houver o
       que registrar; `status: concluído` nos três arquivos e na linha do índice do
       `specs/README.md`. — RNF-09
-- [ ] Portão de qualidade. —
+- [x] Portão de qualidade. — 2026-11-21: `ruff check`, `black --check` e `mypy` limpos;
+      `pytest` com 265 casos verdes.

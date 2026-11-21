@@ -48,7 +48,7 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 | Spec | Escopo | Entrega | Status |
 |---|---|---|---|
-| [001-cifra-de-cesar](001-cifra-de-cesar/requirements.md) | O programa completo: cifrar e decifrar com uma chave de 1 a 25 por `ord`, `chr` e o resto da divisão por 26, acentos e cedilha tirados com o `unicodedata`, quebra por força bruta com as 25 chaves e pela frequência das letras com o `Counter` e a tabela do português da COPPE/UFRJ, aviso de texto curto, limpeza de tela multiplataforma | — | em andamento |
+| [001-cifra-de-cesar](001-cifra-de-cesar/requirements.md) | O programa completo: cifrar e decifrar com uma chave de 1 a 25 por `ord`, `chr` e o resto da divisão por 26, acentos e cedilha tirados com o `unicodedata`, quebra por força bruta com as 25 chaves e pela frequência das letras com o `Counter` e a tabela do português da COPPE/UFRJ, aviso de texto curto, limpeza de tela multiplataforma | — | concluído |
 
 ## Notas de manutenção
 

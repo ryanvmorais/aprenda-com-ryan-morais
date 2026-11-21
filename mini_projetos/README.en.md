@@ -19,6 +19,7 @@ This folder gathers the channel's **Python mini projects**: small programs that 
 | [CPF Validator](validador_de_cpf/README.en.md) | The check digit algorithm, the remainder of a division and pure functions |
 | [Password Generator](gerador_de_senhas/README.en.md) | `secrets` vs `random`, the `string` constants and entropy in bits |
 | [Password Strength Checker](verificador_de_forca_de_senha/README.en.md) | Rules with `any()`, regular expressions, `getpass` and estimated entropy |
+| [Caesar Cipher](cifra_de_cesar/README.en.md) | `ord` and `chr`, modular arithmetic, brute force and letter frequency with `Counter` |
 | [Snake Game](jogo_da_cobrinha/README.en.md) | Dynamic lists and a game loop with the `curses` library |
 
 ---
