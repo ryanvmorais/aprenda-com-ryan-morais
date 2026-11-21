@@ -48,7 +48,7 @@ implementação, tarefa a tarefa --[portão de qualidade]--> concluído
 
 | Spec | Escopo | Entrega | Status |
 |---|---|---|---|
-| [001-verificador-de-forca-de-senha](001-verificador-de-forca-de-senha/requirements.md) | O programa completo: senha lida com o `getpass`, tipos de caractere com `any()`, repetições e sequências descontadas, comparação com a lista portuguesa de senhas comuns do SecLists, nota de 0 a 4 pela entropia estimada com a conta, sugestões do que melhorar sem mostrar a senha, exemplos comentados, limpeza de tela multiplataforma | — | em andamento |
+| [001-verificador-de-forca-de-senha](001-verificador-de-forca-de-senha/requirements.md) | O programa completo: senha lida com o `getpass`, tipos de caractere com `any()`, repetições e sequências descontadas, comparação com a lista portuguesa de senhas comuns do SecLists, nota de 0 a 4 pela entropia estimada com a conta, sugestões do que melhorar sem mostrar a senha, exemplos comentados, limpeza de tela multiplataforma | — | concluído |
 
 ## Notas de manutenção
 

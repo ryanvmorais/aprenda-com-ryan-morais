@@ -1,6 +1,6 @@
 ---
 feature: Verificador de força de senha via terminal, com nota, entropia estimada e sugestões
-status: em andamento
+status: concluído
 date: 2026-11-20
 related:
   - 001-verificador-de-forca-de-senha/requirements.md
@@ -551,3 +551,18 @@ emojis contando duas). Ver `tests/test_main.py` e a seção "Testes" do `require
 2. **RF-08, RF-09:** com 1, o resultado usa o singular (`Tamanho: 1 caractere, 1 conta na
    entropia` e `Com mais 1 caractere, a senha passa de 80 bits.`), que o quadro ilustrativo não
    mostrava.
+3. **RNF-09:** a animação do README fica nas 52 colunas de sempre, e não em 54 ou numa largura
+   acima de 52, como pedia o `tasks.md`: a linha mais longa da sessão, a sugestão de tamanho
+   (`- Com mais 6 caracteres, a senha passa de 80 bits.`), tem 50 colunas, que cabem sem quebrar.
+
+## Notas de implementação
+
+- **Testes:** 168 casos: 162 em `tests/test_main.py` (etapas 1 e 2, implementadas juntas) e 6 em
+  `tests/test_readme_en.py` (etapa 3). Ruff, black e mypy strict verdes.
+- **Animação do README:** a sessão verifica `Senha@123` (2 de 4, com a sequência) e
+  `sotaque-haver-abreviar-briga` (4 de 4), as duas dos exemplos do design, mostra os exemplos
+  comentados e sai. No pedido da senha, o cursor fica parado pelo tempo da digitação, sem nada na
+  tela, como no terminal com o `getpass`. A última tela, a que fica parada para quem pede
+  movimento reduzido, é a dos exemplos. viewBox de 682 × 660, num ciclo de 16 s.
+- **Dica de estudo do README:** `Flamengo@2026` tira 4 nas regras (13 caracteres, 85,2 bits), o
+  exemplo de um limite que um estimador com dicionários e datas pega.
