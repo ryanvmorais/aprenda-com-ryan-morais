@@ -1,6 +1,6 @@
 ---
 feature: Gerador de senhas e frases-senha via terminal, com a entropia de cada uma
-status: aprovado
+status: em andamento
 date: 2026-11-20
 related:
   - 001-gerador-de-senhas/requirements.md
@@ -508,3 +508,20 @@ O RNF-07 tem um teste com o módulo `ast`: ele lê o `main.py`, confere que os `
 `__future__`, `collections.abc`, `math`, `os`, `pathlib`, `random`, `secrets`, `string` e `sys`, que
 nenhuma chamada a `open`, `write_text` ou `write_bytes` aparece e que `sys.argv` não é lido. Ver
 `tests/test_main.py` e a seção "Testes" do `requirements.md`.
+
+## Desvios
+
+1. **RF-04, RF-08:** as perguntas de número começam por "Digite" (`Digite o tamanho, de 8 a 64
+   [16]:` e `Digite a quantidade de palavras, de 5 a 12 [7]:`), e não só pelo nome, como no quadro
+   ilustrativo. O `pedido` de `perguntar_numero` leva o artigo (`"o tamanho"`), e a recusa sai do
+   mesmo texto com `capitalize()` (`⚠️ O tamanho vai de 8 a 64.`), sem um parâmetro a mais para a
+   mensagem.
+
+## Notas de implementação
+
+- **Testes:** 128 casos em `tests/test_main.py` (etapas 1 e 2, implementadas juntas). Ruff, black
+  e mypy strict verdes.
+- **`eh_numero`:** a conferência `isascii()` e `isdecimal()` ficou numa função pequena, usada por
+  `conferir_opcao` e por `conferir_numero`, para a regra não se repetir.
+- **Senha da demonstração:** com a semente 2026, o `random` gera `pO#$?nC/<*1,)~!.`, a mesma do
+  quadro ilustrativo.
