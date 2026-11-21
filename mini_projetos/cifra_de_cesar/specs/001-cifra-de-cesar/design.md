@@ -1,6 +1,6 @@
 ---
 feature: Cifra de César via terminal, com cifrar, decifrar e quebrar por força bruta e por frequência
-status: em andamento
+status: concluído
 date: 2026-11-21
 related:
   - 001-cifra-de-cesar/requirements.md
@@ -565,3 +565,7 @@ e do quadro inteiro com um texto curto (54 colunas, com os emojis contando duas)
 - **Tabela de frequência:** os 26 percentuais da `FREQUENCIAS` foram conferidos contra a tabela
   1.2.1 do PDF do estudo (página 4), sem diferença; o PDF escreve com ponto decimal e zero à
   esquerda (`04.97%`).
+- **Animação do README:** a sessão cifra `O segredo da mensagem está nas letras.` com a chave 7
+  e quebra o texto cifrado pela frequência, numa largura de 54 colunas, a do pedido do texto com
+  a frase e a das linhas cortadas. A força bruta fica fora da animação: as 25 linhas deixariam o
+  quadro com quase o dobro da altura dos outros.

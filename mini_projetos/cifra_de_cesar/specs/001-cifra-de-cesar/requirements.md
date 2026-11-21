@@ -1,6 +1,6 @@
 ---
 feature: Cifra de César via terminal, com cifrar, decifrar e quebrar por força bruta e por frequência
-status: em andamento
+status: concluído
 date: 2026-11-21
 related: []
 origin: concepção

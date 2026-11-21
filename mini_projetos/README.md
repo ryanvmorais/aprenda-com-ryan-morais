@@ -19,6 +19,7 @@ Esta pasta reúne os **mini projetos em Python** do canal: programas pequenos, q
 | [Validador de CPF](validador_de_cpf/) | Algoritmo dos dígitos verificadores, resto da divisão e funções puras |
 | [Gerador de Senhas](gerador_de_senhas/) | `secrets` x `random`, as constantes de `string` e a entropia em bits |
 | [Verificador de Força de Senha](verificador_de_forca_de_senha/) | Regras com `any()`, expressões regulares, `getpass` e a entropia estimada |
+| [Cifra de César](cifra_de_cesar/) | `ord` e `chr`, aritmética modular, força bruta e frequência das letras com `Counter` |
 | [Jogo da Cobrinha](jogo_da_cobrinha/) | Listas dinâmicas e game loop com a biblioteca `curses` |
 
 ---
