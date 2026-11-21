@@ -1,6 +1,6 @@
 ---
 feature: Cifra de César via terminal, com cifrar, decifrar e quebrar por força bruta e por frequência
-status: aprovado
+status: em andamento
 date: 2026-11-21
 related:
   - 001-cifra-de-cesar/requirements.md
@@ -550,3 +550,18 @@ chamada a `open`, `read_text`, `write_text`, `read_bytes` ou `write_bytes` apare
 `sys.argv` não é lido. Três testes medem a largura das linhas dos textos do programa, dos pedidos
 e do quadro inteiro com um texto curto (54 colunas, com os emojis contando duas). Ver
 `tests/test_main.py` e a seção "Testes" do `requirements.md`.
+
+## Desvios
+
+1. **RF-04:** o aviso de acentos também entra no fim de `descrever_forca_bruta` e de
+   `descrever_frequencia` (antes do aviso de texto curto), porque o RF-04 pede o aviso quando o
+   texto é quebrado. O design o citava só nos quadros de cifrar e de decifrar.
+2. **RF-09:** com menos de três letras diferentes no texto, a linha das mais comuns mostra só as
+   que há (`A (3)` ou `A (2) e B (1)`). A junção com vírgula e "e" fica dentro de
+   `descrever_frequencia`, sem função à parte.
+
+## Notas de implementação
+
+- **Tabela de frequência:** os 26 percentuais da `FREQUENCIAS` foram conferidos contra a tabela
+  1.2.1 do PDF do estudo (página 4), sem diferença; o PDF escreve com ponto decimal e zero à
+  esquerda (`04.97%`).

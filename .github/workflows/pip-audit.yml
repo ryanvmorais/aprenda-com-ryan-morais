@@ -43,6 +43,7 @@ jobs:
         projeto:
           - adivinhe_o_numero
           - calculadora_simples
+          - cifra_de_cesar
           - gerador_de_senhas
           - jogo_da_cobrinha
           - jogo_da_forca
