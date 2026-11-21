@@ -1,6 +1,6 @@
 ---
 feature: Gerador de senhas e frases-senha via terminal, com a entropia de cada uma
-status: em andamento
+status: concluído
 date: 2026-11-20
 related:
   - 001-gerador-de-senhas/requirements.md
@@ -107,13 +107,13 @@ ordem: `uv run ruff check .`, `uv run black --check .`, `uv run mypy` e `uv run 
 
 ## Etapa 3 — Documentação do projeto
 
-- [ ] `tests/test_readme_en.py`: cópia do do `validador_de_cpf`. — RNF-09
-- [ ] `assets/gerador-de-senhas-python-terminal-sessao.svg`: animação de uma sessão real do
+- [x] `tests/test_readme_en.py`: cópia do arquivo do `validador_de_cpf`. — RNF-09
+- [x] `assets/gerador-de-senhas-python-terminal-sessao.svg`: animação de uma sessão real do
       `main.py`, com as entradas de um roteiro e um sorteio de semente fixa, no visual das outras
       animações e na largura de 54 colunas (ou na menor acima de 52 em que a linha mais longa caiba
       sem quebrar); quem pede movimento reduzido vê a última tela parada. As senhas da sessão são
       só as do sorteio com semente fixa. — RNF-07, RNF-09
-- [ ] `README.md`: mesmas seções e na mesma ordem do `README.md` do `validador_de_cpf`, abrindo
+- [x] `README.md`: mesmas seções e na mesma ordem do `README.md` do `validador_de_cpf`, abrindo
       com a animação e os badges; o "Guia de Implementação" explica por que o `secrets` e não o
       `random` (com o aviso da documentação do Python), as constantes do módulo `string`, a regra
       "um de cada tipo" sorteando de novo, a entropia com a conta e a diferença da fórmula para a
@@ -121,24 +121,26 @@ ordem: `uv run ruff check .`, `uv run black --check .`, `uv run mypy` e `uv run 
       senha é guardada; com "Atividades para praticar" e "Continue praticando", que aponta para os
       outros mini-projetos; a linha "Contribua com código" aponta para o `CONTRIBUTING.md` da raiz
       e traz as regras próprias do projeto. — RF-01 a RF-10, RNF-07, RNF-08, RNF-09, ADR-3, ADR-5
-- [ ] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem. — RNF-09
-- [ ] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `validador_de_cpf` (visão geral, comandos,
+- [x] `README.en.md`: versão em inglês, com as mesmas seções e na mesma ordem. — RNF-09
+- [x] `CLAUDE.md`: mesma estrutura do `CLAUDE.md` do `validador_de_cpf` (visão geral, comandos,
       arquitetura e convenções), com os cuidados do sorteio só pelo `escolher` (o `random` só na
       demonstração), da regra "um de cada tipo" que sorteia de novo, do `palavras.txt` que não se
       edita (o teste confere o SHA-256) e da lista de `import` que o teste do RNF-07 confere. —
       RNF-07, RNF-08, RNF-09, ADR-2, ADR-3, ADR-6
-- [ ] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
+- [x] `docs/stack.md`: mapa da stack (Python, uv, ruff, black, mypy, pytest), no formato dos
       outros mini-projetos. — RNF-09
-- [ ] `LICENSE`: a licença MIT do `validador_de_cpf`, seguida da seção da lista de palavras, com a
+- [x] `LICENSE`: a licença MIT do `validador_de_cpf`, seguida da seção da lista de palavras, com a
       origem (repositório, arquivo e commit), a licença MIT da BIP-39 e os autores da BIP-39 e da
       lista portuguesa. — RNF-08, RNF-09
-- [ ] Portão de qualidade. — <resultado registrado ao executar>
+- [x] Portão de qualidade. — 2026-11-20: `ruff check`, `black --check` e `mypy` limpos;
+      `pytest` com 134 casos verdes (128 do `test_main.py` e 6 do `test_readme_en.py`).
 
 ## Etapa 4 — Integração na pasta `mini_projetos/` e fechamento da spec
 
-- [ ] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
+- [x] `../README.md` e `../README.en.md`: uma linha na tabela de projetos, com o que se pratica
       (`secrets` x `random`, as constantes de `string` e a entropia). — RNF-09
-- [ ] `specs/001-gerador-de-senhas/`: `Desvios` e `Notas de implementação` no `design.md`, se
+- [x] `specs/001-gerador-de-senhas/`: `Desvios` e `Notas de implementação` no `design.md`, se
       houver o que registrar; `status: concluído` nos três arquivos e na linha do índice do
       `specs/README.md`. — RNF-09
-- [ ] Portão de qualidade. — <resultado registrado ao executar>
+- [x] Portão de qualidade. — 2026-11-20: `ruff check`, `black --check` e `mypy` limpos;
+      `pytest` com 134 casos verdes.

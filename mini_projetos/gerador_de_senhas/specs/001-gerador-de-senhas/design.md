@@ -1,6 +1,6 @@
 ---
 feature: Gerador de senhas e frases-senha via terminal, com a entropia de cada uma
-status: em andamento
+status: concluído
 date: 2026-11-20
 related:
   - 001-gerador-de-senhas/requirements.md
@@ -324,8 +324,8 @@ de uso da persona casual.
 
 **Trade-off.** O laço pode sortear mais de uma vez: com 8 caracteres e os quatro tipos, cerca de
 metade das senhas sorteadas cumpre a regra, então são cerca de duas tentativas em média, e com 16
-caracteres, quase sempre uma. A entropia mostrada é a da fórmula, um pouco acima da real (decisão
-3).
+caracteres, cerca de 4 em cada 5, ou 1,2 tentativa em média. A entropia mostrada é a da fórmula,
+um pouco acima da real (decisão 3).
 
 ### ADR-4 — O alfabeto em grupos, um por tipo de caractere
 
@@ -516,6 +516,10 @@ nenhuma chamada a `open`, `write_text` ou `write_bytes` aparece e que `sys.argv`
    ilustrativo. O `pedido` de `perguntar_numero` leva o artigo (`"o tamanho"`), e a recusa sai do
    mesmo texto com `capitalize()` (`⚠️ O tamanho vai de 8 a 64.`), sem um parâmetro a mais para a
    mensagem.
+2. **RNF-09:** a animação do README fica nas 52 colunas de sempre, e não em 54 ou numa largura
+   acima de 52, como pedia o `tasks.md`: a linha mais longa da sessão, o pedido da quantidade de
+   palavras com a resposta (`Digite a quantidade de palavras, de 5 a 12 [7]: 5`), tem 49 colunas,
+   que cabem sem quebrar.
 
 ## Notas de implementação
 
@@ -525,3 +529,16 @@ nenhuma chamada a `open`, `write_text` ou `write_bytes` aparece e que `sys.argv`
   `conferir_opcao` e por `conferir_numero`, para a regra não se repetir.
 - **Senha da demonstração:** com a semente 2026, o `random` gera `pO#$?nC/<*1,)~!.`, a mesma do
   quadro ilustrativo.
+- **Testes:** 134 casos: 128 em `tests/test_main.py` (etapas 1 e 2) e 6 em
+  `tests/test_readme_en.py` (etapa 3).
+- **ADR-3, a média de tentativas:** a conta exata, por inclusão e exclusão, dá 46% das senhas
+  de 8 caracteres e 82% das de 16 cumprindo a regra com os quatro tipos; o trade-off do ADR-3
+  dizia "quase sempre uma" para 16 caracteres e foi corrigido para "cerca de 4 em cada 5". A
+  perda de entropia da decisão 3 do `requirements.md` confere: no pior caso, 1,26 bit com 8
+  caracteres e 0,37 bit com 16.
+- **Animação do README:** a sessão gera a senha forte, recusa o tamanho 7 na personalizada e
+  gera uma de 12 caracteres sem símbolos e sem os parecidos, uma frase-senha de 5 palavras, a
+  demonstração do `random` e sai. A última tela, a que fica parada para quem pede movimento
+  reduzido, é a da demonstração. O sorteio da sessão usa a semente 11, e não a
+  `SEMENTE_DEMONSTRACAO`, porque com a mesma semente a senha forte sairia igual às duas do
+  `random`. viewBox de 682 × 635, num ciclo de 19 s.
