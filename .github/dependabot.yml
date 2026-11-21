@@ -54,6 +54,28 @@ updates:
           - "minor"
           - "patch"
 
+  # gerador_de_senhas: ferramentas de dev do pyproject.toml, grafo travado no uv.lock.
+  - package-ecosystem: "uv"
+    directory: "/mini_projetos/gerador_de_senhas"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+    labels:
+      - "dependencies"
+    cooldown:
+      default-days: 7
+    groups:
+      uv-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
   # jogo_da_cobrinha: dependencia de runtime (windows-curses) e ferramentas de dev do
   # pyproject.toml, grafo travado no uv.lock.
   - package-ecosystem: "uv"
