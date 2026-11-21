@@ -1,6 +1,6 @@
 ---
 feature: Verificador de força de senha via terminal, com nota, entropia estimada e sugestões
-status: aprovado
+status: em andamento
 date: 2026-11-20
 related:
   - 001-verificador-de-forca-de-senha/requirements.md
@@ -542,3 +542,12 @@ O RNF-07 tem um teste com o módulo `ast`: ele lê o `main.py`, confere que os `
 `typing`, que nenhuma chamada a `open`, `write_text` ou `write_bytes` aparece e que `sys.argv` não
 é lido. Três testes medem a largura das linhas dos textos e do quadro inteiro (54 colunas, com os
 emojis contando duas). Ver `tests/test_main.py` e a seção "Testes" do `requirements.md`.
+
+## Desvios
+
+1. **RF-08:** os textos ganharam uma função a mais, `juntar_nomes`, que junta os nomes dos tipos
+   com vírgula e, no último, com "e" (`minúsculas, números e símbolos`), para as linhas `Tem:` e
+   `Falta:` usarem a mesma junção. O design não listava essa função.
+2. **RF-08, RF-09:** com 1, o resultado usa o singular (`Tamanho: 1 caractere, 1 conta na
+   entropia` e `Com mais 1 caractere, a senha passa de 80 bits.`), que o quadro ilustrativo não
+   mostrava.
