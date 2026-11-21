@@ -59,7 +59,7 @@ jobs:
           # Nenhum passo seguinte precisa do token do GitHub; ele não fica no disco.
           persist-credentials: false
 
-      # Mesmo motivo do ci.yml: sem o sufixo, os 10 jobs disputam a mesma chave de cache.
+      # Mesmo motivo do ci.yml: sem o sufixo, os 11 jobs disputam a mesma chave de cache.
       - name: Instala o uv
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:

@@ -44,6 +44,7 @@ main.py              # classe JogoDaVelha + função main() (ponto de entrada)
 tests/test_main.py   # suíte pytest (20 casos)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
 README.en.md         # versão em inglês do README (mesmas seções, mesma ordem)
+tests/__init__.py    # torna tests/ um pacote (vazio)
 docs/stack.md         # o que cada peça da stack faz e por quê
 assets/               # animação (SVG) de uma partida real do main.py, no topo do README
 specs/                # spec-driven development (ver specs/README.md)
