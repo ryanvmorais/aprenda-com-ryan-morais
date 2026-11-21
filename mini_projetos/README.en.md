@@ -18,6 +18,7 @@ This folder gathers the channel's **Python mini projects**: small programs that 
 | [To-Do List](lista_de_tarefas/README.en.md) | JSON files, `pathlib` and atomic writes |
 | [CPF Validator](validador_de_cpf/README.en.md) | The check digit algorithm, the remainder of a division and pure functions |
 | [Password Generator](gerador_de_senhas/README.en.md) | `secrets` vs `random`, the `string` constants and entropy in bits |
+| [Password Strength Checker](verificador_de_forca_de_senha/README.en.md) | Rules with `any()`, regular expressions, `getpass` and estimated entropy |
 | [Snake Game](jogo_da_cobrinha/README.en.md) | Dynamic lists and a game loop with the `curses` library |
 
 ---

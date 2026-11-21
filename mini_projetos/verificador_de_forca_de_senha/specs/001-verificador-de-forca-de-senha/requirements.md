@@ -1,6 +1,6 @@
 ---
 feature: Verificador de força de senha via terminal, com nota, entropia estimada e sugestões
-status: em andamento
+status: concluído
 date: 2026-11-20
 related: []
 origin: concepção
