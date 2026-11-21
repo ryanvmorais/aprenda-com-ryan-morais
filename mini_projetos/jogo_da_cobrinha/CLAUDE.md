@@ -46,6 +46,7 @@ main.py              # todas as funções do jogo + ciclo_do_jogo (ponto de entr
 tests/test_main.py   # suíte pytest (27 casos), com _FakeJanela (curses.window falsa)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
 README.en.md         # versão em inglês do README (mesmas seções, mesma ordem)
+tests/__init__.py    # torna tests/ um pacote (vazio)
 docs/stack.md         # o que cada peça da stack faz e por quê
 specs/                # spec-driven development (ver specs/README.md)
   001-jogo-da-cobrinha/

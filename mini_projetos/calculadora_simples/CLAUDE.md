@@ -47,6 +47,7 @@ iniciar_calculadora.sh         # atalho Linux/macOS (uv run main.py)
 ../../.gitattributes           # LF fixo nos atalhos .sh e CRLF nos .bat; vale para o repositório inteiro, na raiz
 ../../CONTRIBUTING.md          # com CODE_OF_CONDUCT.md e SECURITY.md: valem para o repositório inteiro, na raiz
 assets/                        # animação (SVG) de uma sessão real do main.py, no topo do README
+LICENSE                        # licença MIT
 ../../.github/   # CI, CodeQL, pip-audit, Dependabot, templates e o script de impessoalidade
                  # (scripts/conferir_impessoalidade.py, para o repositório inteiro): ficam na raiz
 ```
