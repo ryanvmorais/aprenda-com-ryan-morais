@@ -248,8 +248,28 @@ def test_achar_repeticoes(senha: str, esperado: list[tuple[int, int]]) -> None:
     assert achar_repeticoes(senha) == esperado
 
 
+# As duas pontas de cada sequência, na ordem das `SEQUENCIAS`: uma ponta
+# encurtada deixa de achar a janela dela. A exceção é o "jkl", o fim da fileira
+# do meio, que o alfabeto também acha.
 @pytest.mark.parametrize(
-    "senha", ["abc", "cba", "123", "987", "qwe", "asd", "zxc", "ABC", "Abc", "ewq"]
+    "senha",
+    [
+        "abc",
+        "xyz",
+        "012",
+        "789",
+        "qwe",
+        "iop",
+        "asd",
+        "jkl",
+        "zxc",
+        "bnm",
+        "cba",
+        "987",
+        "ewq",
+        "ABC",
+        "Abc",
+    ],
 )
 def test_achar_sequencias_acha_cada_sequencia_e_o_contrario(senha: str) -> None:
     assert achar_sequencias(senha) == [(0, 3)]
@@ -388,6 +408,11 @@ def test_dar_nota_zero_para_a_senha_comum() -> None:
 @pytest.mark.parametrize(("bits", "nota"), [(45.9, 1), (28, 1), (27.9, 0)])
 def test_dar_nota_limita_a_senha_curta(bits: float, nota: int) -> None:
     assert dar_nota(bits, 7, comum=False) == nota
+
+
+def test_dar_nota_nao_limita_a_senha_de_8_caracteres() -> None:
+    # 8 é o tamanho mínimo: a trava vale de 7 para baixo.
+    assert dar_nota(45.9, 8, comum=False) == 2
 
 
 def test_os_nomes_cobrem_cada_nota() -> None:
@@ -825,22 +850,63 @@ def test_main_le_a_senha_com_o_getpass_por_padrao() -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_main_py_so_importa_os_modulos_previstos_e_nao_grava_arquivo() -> None:
-    arvore = ast.parse(Path(modulo_main.__file__).read_text(encoding="utf-8"))
+# O `os` e o `sys` também abrem caminho para o disco (`os.open`, `os.popen`,
+# `os.remove`) e para a linha de comando (`sys.argv`): deles, só o que o
+# programa usa para limpar a tela e reconfigurar a saída.
+ATRIBUTOS_PREVISTOS = {("os", "name"), ("os", "system"), ("sys", "stdout")}
+
+
+def inventariar(fonte: str) -> tuple[set[str], set[str], set[tuple[str, str]]]:
+    """Lista os módulos, as chamadas e os atributos de `os` e `sys`.
+
+    Args:
+        fonte (str): O código Python a examinar.
+
+    Returns:
+        tuple[set[str], set[str], set[tuple[str, str]]]: Os módulos importados,
+            o nome de cada chamada (`open` ou o `write_text` de `caminho.write_text`)
+            e cada par (módulo, nome) de `os` e `sys`, lido como `os.popen` ou
+            importado com `from os import popen`.
+    """
     modulos: set[str] = set()
     chamadas: set[str] = set()
     atributos: set[tuple[str, str]] = set()
-    for no in ast.walk(arvore):
+    for no in ast.walk(ast.parse(fonte)):
         if isinstance(no, ast.Import):
             modulos.update(apelido.name for apelido in no.names)
         elif isinstance(no, ast.ImportFrom):
             modulos.add(no.module or "")
+            atributos.update((no.module or "", apelido.name) for apelido in no.names)
         elif isinstance(no, ast.Call) and isinstance(no.func, ast.Name):
             chamadas.add(no.func.id)
         elif isinstance(no, ast.Call) and isinstance(no.func, ast.Attribute):
             chamadas.add(no.func.attr)
         if isinstance(no, ast.Attribute) and isinstance(no.value, ast.Name):
             atributos.add((no.value.id, no.attr))
+    return modulos, chamadas, {par for par in atributos if par[0] in ("os", "sys")}
+
+
+def test_inventariar_acusa_o_que_grava_arquivo_ou_le_a_linha_de_comando() -> None:
+    # O controle do teste abaixo: cada forma que ele recusa aparece aqui.
+    fonte = (
+        "import os\n"
+        "import sys\n"
+        "from os import remove\n"
+        "open('senha.txt', 'w')\n"
+        "Path('senha.txt').write_text('x')\n"
+        "Path('senha.bin').write_bytes(b'x')\n"
+        "os.popen('echo')\n"
+        "print(sys.argv)\n"
+    )
+    modulos, chamadas, atributos = inventariar(fonte)
+    assert modulos == {"os", "sys"}
+    assert {"open", "write_text", "write_bytes"} <= chamadas
+    assert atributos == {("os", "remove"), ("os", "popen"), ("sys", "argv")}
+
+
+def test_main_py_so_importa_os_modulos_previstos_e_nao_grava_arquivo() -> None:
+    fonte = Path(modulo_main.__file__).read_text(encoding="utf-8")
+    modulos, chamadas, atributos = inventariar(fonte)
 
     previstos = {
         "__future__",
@@ -856,4 +922,4 @@ def test_main_py_so_importa_os_modulos_previstos_e_nao_grava_arquivo() -> None:
     }
     assert modulos <= previstos
     assert not chamadas & {"open", "write_text", "write_bytes"}
-    assert ("sys", "argv") not in atributos
+    assert atributos <= ATRIBUTOS_PREVISTOS

@@ -45,7 +45,7 @@ uv lock --upgrade-package <pacote>
 
 ```
 main.py              # funções do programa + main() (ponto de entrada)
-tests/test_main.py   # suíte pytest (117 casos)
+tests/test_main.py   # suíte pytest (119 casos)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
 README.en.md         # versão em inglês do README (mesmas seções, mesma ordem)
 tests/__init__.py    # torna tests/ um pacote (vazio)
@@ -107,8 +107,9 @@ só vive na variável `resultado` até a próxima volta. Detalhamento completo
 > uma pessoa conhecida. Exemplo novo segue a mesma regra.
 
 > **Cuidado:** o `main.py` só importa `__future__`, `collections.abc`, `os`,
-> `random`, `sys` e `typing`, e não chama `open`: é o que garante que nenhum
-> CPF sai da tela (RNF-07). O teste
+> `random`, `sys` e `typing`, não chama `open` e, do `os` e do `sys`, só usa
+> `os.name`, `os.system` e `sys.stdout`: é o que garante que nenhum CPF sai da
+> tela (RNF-07). O teste
 > `test_main_py_so_importa_os_modulos_previstos_e_nao_abre_arquivo` confere a
 > lista com o módulo `ast`; um `import` novo muda o teste junto, e um módulo de
 > rede ou de arquivo muda a spec antes.

@@ -577,6 +577,19 @@ def test_opcao_frase_senha_com_a_quantidade_pedida() -> None:
     assert "Entropia: 5 × log2(6) ≈ 12,9 bits" in resultado
 
 
+def test_opcao_frase_senha_recusa_um_passo_fora_de_cada_ponta(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    # O 4 e o 13 ficam um passo fora de 5 a 12; o 12, a ponta de cima, é aceito.
+    leitor = LeitorFalso("4", "13", "12")
+    resultado = opcao_frase_senha(leitor, random.Random(2026).choice, PALAVRAS_TESTE)
+    assert len(gerada_do_resultado(resultado).split("-")) == 12
+    assert leitor.pedidos == ["Digite a quantidade de palavras, de 5 a 12 [7]: "] * 3
+    assert capsys.readouterr().out == (
+        "⚠️ A quantidade de palavras vai de 5 a 12.\n" * 2
+    )
+
+
 def test_opcao_frase_senha_padrao_com_a_lista_inteira() -> None:
     palavras = carregar_palavras(ARQUIVO_PALAVRAS)
     resultado = opcao_frase_senha(LeitorFalso(""), random.Random(2026).choice, palavras)
@@ -769,22 +782,63 @@ def test_main_sorteia_com_o_secrets_por_padrao() -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_main_py_so_importa_os_modulos_previstos_e_nao_grava_arquivo() -> None:
-    arvore = ast.parse(Path(modulo_main.__file__).read_text(encoding="utf-8"))
+# O `os` e o `sys` também abrem caminho para o disco (`os.open`, `os.popen`,
+# `os.remove`) e para a linha de comando (`sys.argv`): deles, só o que o
+# programa usa para limpar a tela e reconfigurar a saída.
+ATRIBUTOS_PREVISTOS = {("os", "name"), ("os", "system"), ("sys", "stdout")}
+
+
+def inventariar(fonte: str) -> tuple[set[str], set[str], set[tuple[str, str]]]:
+    """Lista os módulos, as chamadas e os atributos de `os` e `sys`.
+
+    Args:
+        fonte (str): O código Python a examinar.
+
+    Returns:
+        tuple[set[str], set[str], set[tuple[str, str]]]: Os módulos importados,
+            o nome de cada chamada (`open` ou o `write_text` de `caminho.write_text`)
+            e cada par (módulo, nome) de `os` e `sys`, lido como `os.popen` ou
+            importado com `from os import popen`.
+    """
     modulos: set[str] = set()
     chamadas: set[str] = set()
     atributos: set[tuple[str, str]] = set()
-    for no in ast.walk(arvore):
+    for no in ast.walk(ast.parse(fonte)):
         if isinstance(no, ast.Import):
             modulos.update(apelido.name for apelido in no.names)
         elif isinstance(no, ast.ImportFrom):
             modulos.add(no.module or "")
+            atributos.update((no.module or "", apelido.name) for apelido in no.names)
         elif isinstance(no, ast.Call) and isinstance(no.func, ast.Name):
             chamadas.add(no.func.id)
         elif isinstance(no, ast.Call) and isinstance(no.func, ast.Attribute):
             chamadas.add(no.func.attr)
-        elif isinstance(no, ast.Attribute) and isinstance(no.value, ast.Name):
+        if isinstance(no, ast.Attribute) and isinstance(no.value, ast.Name):
             atributos.add((no.value.id, no.attr))
+    return modulos, chamadas, {par for par in atributos if par[0] in ("os", "sys")}
+
+
+def test_inventariar_acusa_o_que_grava_arquivo_ou_le_a_linha_de_comando() -> None:
+    # O controle do teste abaixo: cada forma que ele recusa aparece aqui.
+    fonte = (
+        "import os\n"
+        "import sys\n"
+        "from os import remove\n"
+        "open('senha.txt', 'w')\n"
+        "Path('senha.txt').write_text('x')\n"
+        "Path('senha.bin').write_bytes(b'x')\n"
+        "os.popen('echo')\n"
+        "print(sys.argv)\n"
+    )
+    modulos, chamadas, atributos = inventariar(fonte)
+    assert modulos == {"os", "sys"}
+    assert {"open", "write_text", "write_bytes"} <= chamadas
+    assert atributos == {("os", "remove"), ("os", "popen"), ("sys", "argv")}
+
+
+def test_main_py_so_importa_os_modulos_previstos_e_nao_grava_arquivo() -> None:
+    fonte = Path(modulo_main.__file__).read_text(encoding="utf-8")
+    modulos, chamadas, atributos = inventariar(fonte)
 
     previstos = {
         "__future__",
@@ -799,4 +853,4 @@ def test_main_py_so_importa_os_modulos_previstos_e_nao_grava_arquivo() -> None:
     }
     assert modulos <= previstos
     assert not chamadas & {"open", "write_text", "write_bytes"}
-    assert ("sys", "argv") not in atributos
+    assert atributos <= ATRIBUTOS_PREVISTOS

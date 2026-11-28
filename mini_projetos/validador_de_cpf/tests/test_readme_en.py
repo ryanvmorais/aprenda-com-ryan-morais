@@ -8,7 +8,8 @@ desafios, o link de troca entre os dois arquivos e os arquivos do repositório p
 onde a versão em inglês aponta.
 
 Estratégia de isolamento: só os dois READMEs e a existência dos arquivos que eles
-linkam são lidos; fora de uma árvore com os dois, os testes são pulados.
+linkam são lidos. Sem um dos dois, os testes falham com o nome do arquivo que
+falta, em vez de serem pulados: um README renomeado não passa em silêncio.
 """
 
 from __future__ import annotations
@@ -16,15 +17,13 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-import pytest
-
 # ---------------------------------------------------------------------------
 # Constantes
 # ---------------------------------------------------------------------------
 
 # A pasta do projeto, um nível acima de tests/.
 _RAIZ = Path(__file__).resolve().parents[1]
-# Os dois arquivos comparados; sem um deles na árvore, os testes são pulados.
+# Os dois arquivos comparados.
 _PORTUGUES = _RAIZ / "README.md"
 _INGLES = _RAIZ / "README.en.md"
 
@@ -33,12 +32,6 @@ _ALVO = re.compile(r"\]\(([^)\s]+)\)")
 
 # Título ATX; a sequência de "#" é o nível.
 _TITULO = re.compile(r"^(#{1,6}) ")
-
-# Os dois READMEs são necessários em todos os testes abaixo.
-_precisa_dos_dois = pytest.mark.skipif(
-    not (_PORTUGUES.is_file() and _INGLES.is_file()),
-    reason="os dois READMEs não estão nesta árvore",
-)
 
 
 # ---------------------------------------------------------------------------
@@ -119,24 +112,20 @@ def _blocos_de_codigo(caminho: Path) -> int:
 # ---------------------------------------------------------------------------
 
 
-@_precisa_dos_dois
 def test_os_dois_readmes_tem_os_mesmos_titulos_na_mesma_ordem() -> None:
     assert _niveis(_INGLES) == _niveis(_PORTUGUES)
 
 
-@_precisa_dos_dois
 def test_os_dois_readmes_tem_as_mesmas_linhas_na_tabela_de_tecnologias() -> None:
     assert _linhas_da_tabela(_INGLES, "Tool") == _linhas_da_tabela(
         _PORTUGUES, "Ferramenta"
     )
 
 
-@_precisa_dos_dois
 def test_os_dois_readmes_tem_a_mesma_quantidade_de_blocos_de_codigo() -> None:
     assert _blocos_de_codigo(_INGLES) == _blocos_de_codigo(_PORTUGUES)
 
 
-@_precisa_dos_dois
 def test_os_dois_readmes_tem_a_mesma_quantidade_de_desafios() -> None:
     ingles = _INGLES.read_text(encoding="utf-8").count("**What you learn:**")
     portugues = _PORTUGUES.read_text(encoding="utf-8").count("**O Aprendizado:**")
@@ -145,7 +134,6 @@ def test_os_dois_readmes_tem_a_mesma_quantidade_de_desafios() -> None:
     assert portugues > 0
 
 
-@_precisa_dos_dois
 def test_cada_readme_linka_o_outro_nas_primeiras_linhas() -> None:
     ingles = "\n".join(_fora_dos_blocos(_INGLES)[:6])
     portugues = "\n".join(_fora_dos_blocos(_PORTUGUES)[:6])
@@ -154,7 +142,6 @@ def test_cada_readme_linka_o_outro_nas_primeiras_linhas() -> None:
     assert "(README.en.md)" in portugues
 
 
-@_precisa_dos_dois
 def test_os_links_do_readme_em_ingles_apontam_para_arquivos_que_existem() -> None:
     texto = _INGLES.read_text(encoding="utf-8")
     relativos = [
