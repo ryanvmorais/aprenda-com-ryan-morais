@@ -41,7 +41,7 @@ uv lock --upgrade-package <pacote>
 
 ```
 main.py              # funções do jogo + main() (ponto de entrada)
-tests/test_main.py   # suíte pytest (45 casos)
+tests/test_main.py   # suíte pytest (46 casos)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
 README.en.md         # versão em inglês do README (mesmas seções, mesma ordem)
 tests/__init__.py    # torna tests/ um pacote (vazio)

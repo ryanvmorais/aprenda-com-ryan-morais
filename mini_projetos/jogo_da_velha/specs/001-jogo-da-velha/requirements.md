@@ -158,25 +158,29 @@ bloqueia, cores no terminal).
 ### RF-01, RF-02, RF-03 — Lógica pura do jogo
 
 `tests/test_main.py` cobre `verificar_vitoria_ou_empate` para linha, coluna,
-as duas diagonais, tabuleiro vazio e tabuleiro cheio sem vencedor
-(parametrizado onde fazia sentido); `jogada_do_usuario` com entrada
-válida/fora do intervalo/posição ocupada/não numérica (via `monkeypatch` em
-`input`); e `jogada_da_maquina` com `random.choice` mockado, incluindo os
-casos de guarda (vencedor já definido, tabuleiro cheio).
+as duas diagonais, tabuleiro vazio, tabuleiro cheio sem vencedor e tabuleiro
+cheio com vencedor, em que a vitória vale mais que o empate (parametrizado
+onde fazia sentido); `jogada_do_usuario` com entrada
+válida, fora do intervalo (um passo fora de cada ponta, na linha e na
+coluna), posição ocupada e não numérica (via `monkeypatch` em `input`); e
+`jogada_da_maquina` com `random.choice` mockado, que confere a lista exata
+das posições livres sorteadas, com a única casa livre e com os casos de
+guarda (vencedor já definido, tabuleiro cheio).
 
 ### RF-04 — Exibição
 
 `tests/test_main.py` verifica, via `capsys`, que `exibir_tabuleiro` mostra
-as jogadas atuais do tabuleiro.
+o tabuleiro inteiro, linha a linha, com as jogadas atuais e os separadores.
 
 ### RF-05, RF-06 — Loop principal e limpeza de tela
 
-Não têm teste automatizado direto: `main()` é um loop interativo até
-`input()` sem timeout embutido, e `limpar_tela()` chama `os.system` (efeito
-de terminal, não de retorno). Cobertos por verificação manual ao rodar o
-jogo (inclusive com entrada via pipe, para expor o crash de codificação
-corrigido no ADR-4 de `design.md`); `limpar_tela` é mockada nos testes acima
-para isolar a lógica.
+`tests/test_main.py` roda `main()` com `input()` e `random.choice` mockados
+(a máquina joga na primeira casa livre): uma sessão com vitória de X, o
+replay com `S` e uma partida empatada, e outra com a vitória da máquina e a
+saída com `n`. `limpar_tela()` chama `os.system` (efeito de terminal, não de
+retorno) e fica de fora: é mockada em todos os testes, e a limpeza é
+conferida à mão ao rodar o jogo (inclusive com entrada via pipe, para expor
+o crash de codificação corrigido no ADR-4 de `design.md`).
 
 ### RNF-05 — Documentação conferida
 

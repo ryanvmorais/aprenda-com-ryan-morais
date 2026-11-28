@@ -48,7 +48,7 @@ uv lock --upgrade-package <pacote>
 
 ```
 main.py               # funções do programa + main() (ponto de entrada)
-tests/test_main.py    # suíte pytest (259 casos)
+tests/test_main.py    # suíte pytest (260 casos)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
 README.en.md          # versão em inglês do README (mesmas seções, mesma ordem)
 tests/__init__.py     # torna tests/ um pacote (vazio)
@@ -105,8 +105,8 @@ próxima volta. Detalhamento completo (RF-NN, ADRs) em
 > e não troque um valor por outra fonte: os testes
 > `test_frequencias_tem_as_26_letras_do_alfabeto`,
 > `test_frequencias_tem_os_percentuais_do_estudo` e
-> `test_frequencias_somam_perto_de_100` conferem as 26 letras, os três maiores
-> percentuais e a soma entre 99,9 e 100,1.
+> `test_frequencias_somam_perto_de_100` conferem as 26 letras, o percentual de
+> cada uma (a tabela escrita no teste) e a soma entre 99,9 e 100,1.
 
 > **Cuidado:** a pontuação pela soma dos produtos (ADR-5) e o
 > `MINIMO_LETRAS = 30` do aviso de texto curto (ADR-6) saíram da mesma
@@ -115,12 +115,14 @@ próxima volta. Detalhamento completo (RF-NN, ADRs) em
 > numa spec nova.
 
 > **Cuidado:** o `main.py` só importa `__future__`, `collections`,
-> `collections.abc`, `os`, `string`, `sys` e `unicodedata`, não chama `open`,
-> `read_text`, `write_text`, `read_bytes` nem `write_bytes` e não lê
-> `sys.argv`: é o que garante que o texto digitado não sai do computador nem
-> fica no histórico do shell (RNF-07). O teste
+> `collections.abc`, `os`, `string`, `sys` e `unicodedata`, não chama `open` e,
+> do `os` e do `sys`, só usa `os.name`, `os.system` e `sys.stdout` (nada de
+> `os.open`, `os.remove`, `os.popen` nem `sys.argv`): é o que garante que o
+> texto digitado não sai do computador nem fica no histórico do shell
+> (RNF-07). O teste
 > `test_main_py_so_importa_os_modulos_previstos_e_nao_le_nem_grava_arquivo`
-> confere a lista com o módulo `ast`; um `import` novo muda o teste junto, e
+> confere as listas com o módulo `ast` (allow-list, inclusive o
+> `from os import ...`); um `import` ou um atributo novo muda o teste junto, e
 > um módulo de rede ou de arquivo muda a spec antes.
 
 > **Cuidado:** nenhuma linha que o programa escreve passa de 54 colunas

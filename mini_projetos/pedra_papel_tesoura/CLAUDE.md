@@ -41,7 +41,7 @@ uv lock --upgrade-package <pacote>
 
 ```
 main.py              # classe PedraPapelTesoura + função main() (ponto de entrada)
-tests/test_main.py   # suíte pytest (17 casos)
+tests/test_main.py   # suíte pytest (21 casos)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
 README.en.md         # versão em inglês do README (mesmas seções, mesma ordem)
 tests/__init__.py    # torna tests/ um pacote (vazio)

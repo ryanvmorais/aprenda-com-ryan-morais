@@ -43,7 +43,7 @@ uv lock --upgrade-package <pacote>
 
 ```
 main.py              # todas as funções do jogo + ciclo_do_jogo (ponto de entrada)
-tests/test_main.py   # suíte pytest (27 casos), com _FakeJanela (curses.window falsa)
+tests/test_main.py   # suíte pytest (40 casos), com _FakeJanela (curses.window falsa)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
 README.en.md         # versão em inglês do README (mesmas seções, mesma ordem)
 tests/__init__.py    # torna tests/ um pacote (vazio)
@@ -102,11 +102,13 @@ justificar automação por evento); rode o portão manualmente antes de
 commitar.
 
 > **Cuidado:** o jogo abre uma janela `curses` de verdade — não tem como
-> rodar `ciclo_do_jogo` de ponta a ponta num terminal não interativo (CI,
-> pipe, um agente automatizado). A suíte de testes cobre cada peça isolada
-> via `_FakeJanela`; qualquer mudança de comportamento do loop principal
-> merece um teste manual, rodando `uv run main.py` num terminal de
-> verdade.
+> rodar `uv run main.py` de ponta a ponta num terminal não interativo (CI,
+> pipe, um agente automatizado). A suíte cobre cada peça isolada e o
+> `ciclo_do_jogo` inteiro contra a `_FakeJanela` (com `curses.curs_set`
+> trocado por um registro e um teto de leituras de tecla, para a partida
+> sem fim falhar em vez de travar); só o `curses.wrapper` fica de fora.
+> Qualquer mudança visual merece um teste manual, rodando `uv run main.py`
+> num terminal de verdade.
 
 ## Spec-driven development
 

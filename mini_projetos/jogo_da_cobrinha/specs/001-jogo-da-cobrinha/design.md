@@ -210,8 +210,9 @@ projeto.
 
 ## Estratégia de testes
 
-Unitária, sem integração (não há rede nem arquivo, e `ciclo_do_jogo` não é
-testado diretamente — ver a seção "Testes" de `requirements.md`).
+Unitária, sem integração (não há rede nem arquivo); `ciclo_do_jogo` roda
+inteiro contra a janela falsa, e só o `curses.wrapper` fica de fora (ver a
+seção "Testes" de `requirements.md`).
 `_FakeJanela` substitui toda `curses.window` real; `input()` é mockado via
 `monkeypatch.setattr("builtins.input", ...)`; `random.randint` e
 `time.sleep` são mockados quando o teste precisa de determinismo ou não

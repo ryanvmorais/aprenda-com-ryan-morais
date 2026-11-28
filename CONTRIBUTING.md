@@ -24,4 +24,5 @@ Este repositório é um laboratório de estudo: mini projetos, cursos e tutoriai
 - Mantenha a **coerência na nomenclatura** das variáveis e funções (sempre em português e seguindo o padrão snake_case).
 - Siga a organização que o projeto já tem (funções pequenas ou classe, conforme o caso); cada README lista, em "Ficou com alguma dúvida ou tem sugestões?", as regras próprias daquele projeto.
 - Toda mudança de comportamento deve vir com o teste correspondente em `tests/test_main.py`.
+- Todo teste novo ou alterado é **visto falhando uma vez** antes do commit: quebre de propósito a linha do `main.py` que ele protege (troque o valor, inverta a condição), confira que o teste fica vermelho e desfaça a quebra. A descrição do PR conta o que foi quebrado e o resultado.
 - Dúvidas vão pelas [Issues](https://github.com/ryanvmorais/aprenda-com-ryan-morais/issues). Falhas de segurança, nunca: siga o [SECURITY.md](SECURITY.md). A convivência segue o [Código de Conduta](CODE_OF_CONDUCT.md).

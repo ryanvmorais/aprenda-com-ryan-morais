@@ -159,21 +159,25 @@ efeito de suspense).
 
 `tests/test_main.py` cobre `determinar_vencedor` para todas as combinações
 (empate, vitória do usuário, vitória do computador — parametrizado),
-`realizar_jogada_usuario` com entrada válida/fora do intervalo/não numérica
-(via `monkeypatch` em `input`), e `realizar_jogada_computador` com
-`random.choice` mockado.
+`realizar_jogada_usuario` com entrada válida, fora do intervalo (um passo
+fora de cada ponta) e não numérica (via `monkeypatch` em `input`), e
+`realizar_jogada_computador` com `random.choice` mockado, que confere que o
+sorteio é entre as três opções.
 
 ### RF-04 — Exibição
 
 `tests/test_main.py` verifica, via `capsys`, que `exibir_placar` mostra o
-placar sempre e a seção "ÚLTIMA RODADA" só quando há resultado.
+placar sempre, com os pontos de cada lado, e a seção "ÚLTIMA RODADA" (as duas
+jogadas e o resultado) só quando há resultado.
 
 ### RF-05, RF-06 — Loop principal e limpeza de tela
 
-Não têm teste automatizado direto: `main()` é um loop interativo até
-`input()` sem timeout embutido, e `limpar_tela()` chama `os.system` (efeito
-de terminal, não de retorno). Cobertos por verificação manual ao rodar o
-jogo; `limpar_tela` é mockada nos testes acima para isolar a lógica.
+`tests/test_main.py` roda `main()` com `input()` e `random.choice` mockados:
+uma sessão de duas rodadas (vitória e derrota), com uma resposta inválida no
+replay e o placar final, e outra que sai no `1` depois da primeira rodada.
+`limpar_tela()` chama `os.system` (efeito de terminal, não de retorno) e fica
+de fora: é mockada em todos os testes, e a limpeza é conferida à mão ao
+rodar o jogo.
 
 ### RNF-05 — Documentação conferida
 
