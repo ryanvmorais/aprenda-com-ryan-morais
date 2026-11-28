@@ -23,6 +23,10 @@ import pytest
 
 import main
 
+# A partida mais longa dos testes dura 24 quadros; 200 leituras de tecla é
+# folga de sobra, e passar disso quer dizer que a cobra nunca bateu em nada.
+LEITURAS_MAXIMAS = 200
+
 # ---------------------------------------------------------------------------
 # Fake de curses.window
 # ---------------------------------------------------------------------------
@@ -51,6 +55,7 @@ class _FakeJanela:
         self.bordas = 0
         self.timeout_chamado: int | None = None
         self.refrescada = False
+        self.leituras = 0
 
     def getmaxyx(self) -> tuple[int, int]:
         """Returns:
@@ -74,6 +79,19 @@ class _FakeJanela:
         self.timeout_chamado = ms
 
     def getch(self) -> int:
+        """Devolve a próxima tecla da fila, ou -1 (nenhuma) quando ela acaba.
+
+        Returns:
+            int: O código da tecla, como o `getch` do curses.
+
+        Raises:
+            AssertionError: Depois de `LEITURAS_MAXIMAS` leituras: uma partida
+                que nunca termina (a colisão quebrada) falha o teste em vez de
+                travar a suíte.
+        """
+        self.leituras += 1
+        if self.leituras > LEITURAS_MAXIMAS:
+            raise AssertionError(f"a partida passou de {LEITURAS_MAXIMAS} quadros")
         return next(self._teclas, -1)
 
     def refresh(self) -> None:
