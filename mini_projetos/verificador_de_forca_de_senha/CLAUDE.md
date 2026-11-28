@@ -50,7 +50,7 @@ uv lock --upgrade-package <pacote>
 ```
 main.py               # funções do programa + main() (ponto de entrada)
 senhas_comuns.txt     # as 150 senhas da lista portuguesa do SecLists — cópia exata, nunca editar
-tests/test_main.py    # suíte pytest (162 casos)
+tests/test_main.py    # suíte pytest (169 casos)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
 README.en.md          # versão em inglês do README (mesmas seções, mesma ordem)
 tests/__init__.py     # torna tests/ um pacote (vazio)
@@ -127,7 +127,8 @@ Detalhamento completo (RF-NN, ADRs) em
 
 > **Cuidado:** o `main.py` só importa `__future__`, `collections.abc`,
 > `getpass`, `math`, `os`, `pathlib`, `re`, `string`, `sys` e `typing`, não
-> chama `open`, `write_text` nem `write_bytes` e não lê `sys.argv`: é o que
+> chama `open`, `write_text` nem `write_bytes` e, do `os` e do `sys`, só usa
+> `os.name`, `os.system` e `sys.stdout` (nada de `sys.argv`): é o que
 > garante que nenhuma senha sai do computador (RNF-07). O teste
 > `test_main_py_so_importa_os_modulos_previstos_e_nao_grava_arquivo` confere a
 > lista com o módulo `ast`; um `import` novo muda o teste junto, e um módulo de

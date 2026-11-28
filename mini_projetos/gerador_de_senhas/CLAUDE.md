@@ -48,7 +48,7 @@ uv lock --upgrade-package <pacote>
 ```
 main.py               # funções do programa + main() (ponto de entrada)
 palavras.txt          # as 2048 palavras da lista portuguesa do BIP-39 — cópia exata, nunca editar
-tests/test_main.py    # suíte pytest (128 casos)
+tests/test_main.py    # suíte pytest (130 casos)
 tests/test_readme_en.py # confere que README.en.md segue a estrutura do README.md
 README.en.md          # versão em inglês do README (mesmas seções, mesma ordem)
 tests/__init__.py     # torna tests/ um pacote (vazio)
@@ -120,7 +120,8 @@ Detalhamento completo (RF-NN, ADRs) em
 
 > **Cuidado:** o `main.py` só importa `__future__`, `collections.abc`, `math`,
 > `os`, `pathlib`, `random`, `secrets`, `string` e `sys`, não chama `open`,
-> `write_text` nem `write_bytes` e não lê `sys.argv`: é o que garante que
+> `write_text` nem `write_bytes` e, do `os` e do `sys`, só usa `os.name`,
+> `os.system` e `sys.stdout` (nada de `sys.argv`): é o que garante que
 > nenhuma senha sai da tela (RNF-07). O teste
 > `test_main_py_so_importa_os_modulos_previstos_e_nao_grava_arquivo` confere a
 > lista com o módulo `ast`; um `import` novo muda o teste junto, e um módulo de
