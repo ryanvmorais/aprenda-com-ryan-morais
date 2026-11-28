@@ -167,11 +167,28 @@ def test_forca_tem_um_desenho_por_numero_de_erros() -> None:
     assert len(FORCA) == ERROS_MAXIMOS + 1
 
 
-def test_forca_completa_tem_cabeca_bracos_e_pernas() -> None:
-    assert FORCA[ERROS_MAXIMOS].splitlines()[3:6] == [
-        "  O   |",
-        r" /|\  |",
-        r" / \  |",
+# Cada erro acrescenta uma parte, na ordem: cabeça, tronco, braço esquerdo,
+# braço direito, perna esquerda e perna direita.
+@pytest.mark.parametrize(
+    ("erros", "corpo"),
+    [
+        (0, ["      |", "      |", "      |"]),
+        (1, ["  O   |", "      |", "      |"]),
+        (2, ["  O   |", "  |   |", "      |"]),
+        (3, ["  O   |", " /|   |", "      |"]),
+        (4, ["  O   |", r" /|\  |", "      |"]),
+        (5, ["  O   |", r" /|\  |", " /    |"]),
+        (6, ["  O   |", r" /|\  |", r" / \  |"]),
+    ],
+)
+def test_forca_desenha_uma_parte_a_mais_por_erro(erros: int, corpo: list[str]) -> None:
+    assert FORCA[erros].splitlines() == [
+        "",
+        "  +---+",
+        "  |   |",
+        *corpo,
+        "      |",
+        "=========",
     ]
 
 
@@ -285,7 +302,15 @@ def test_conferir_entrada_recusa_a_letra_repetida(entrada: str) -> None:
 
 
 @pytest.mark.parametrize(
-    ("resposta", "esperado"), [("s", True), ("S", True), ("n", False), ("N", False)]
+    ("resposta", "esperado"),
+    [
+        ("s", True),
+        ("S", True),
+        (" s ", True),
+        ("n", False),
+        ("N", False),
+        (" n ", False),
+    ],
 )
 def test_perguntar_jogar_de_novo(resposta: str, esperado: bool) -> None:
     assert perguntar_jogar_de_novo(LeitorFalso(resposta)) is esperado

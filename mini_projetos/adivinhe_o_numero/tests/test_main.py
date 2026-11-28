@@ -120,6 +120,12 @@ def test_escolher_nivel_devolve_o_nivel_da_tecla(tecla: str, nome: str) -> None:
     assert escolher_nivel(LeitorFalso(tecla)).nome == nome
 
 
+def test_escolher_nivel_tira_os_espacos_das_pontas() -> None:
+    leitor = LeitorFalso(" 3 ")
+    assert escolher_nivel(leitor) == NIVEIS["3"]
+    assert len(leitor.pedidos) == 1
+
+
 @pytest.mark.parametrize("invalida", ["4", "0", "abc", ""])
 def test_escolher_nivel_repete_o_pedido_na_opcao_invalida(
     invalida: str, capsys: pytest.CaptureFixture[str]

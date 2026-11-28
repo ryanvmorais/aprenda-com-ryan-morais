@@ -14,7 +14,7 @@ from collections.abc import Iterator
 
 import pytest
 
-from main import JogoDaVelha
+from main import JogoDaVelha, main
 
 pytestmark = pytest.mark.usefixtures("_sem_tela")
 
@@ -142,6 +142,27 @@ def test_verificar_vitoria_tabuleiro_cheio_sem_vencedor_e_empate(
     assert jogo.status_final == "Empate"
 
 
+# A última jogada enche o tabuleiro e fecha uma linha ao mesmo tempo: a
+# vitória precisa sair antes da conferência do empate.
+@pytest.mark.parametrize(
+    "tabuleiro",
+    [
+        pytest.param([["X", "X", "X"], ["O", "O", "X"], ["X", "O", "O"]], id="linha"),
+        pytest.param(
+            [["X", "O", "X"], ["O", "X", "O"], ["O", "X", "X"]], id="diagonal"
+        ),
+    ],
+)
+def test_verificar_vitoria_no_tabuleiro_cheio_vale_mais_que_o_empate(
+    jogo: JogoDaVelha, tabuleiro: list[list[str]]
+) -> None:
+    jogo.tabuleiro = tabuleiro
+
+    jogo.verificar_vitoria_ou_empate()
+
+    assert jogo.status_final == "X"
+
+
 # ---------------------------------------------------------------------------
 # jogada_do_usuario
 # ---------------------------------------------------------------------------
@@ -155,13 +176,25 @@ def test_jogada_do_usuario_aceita_posicao_livre(
     assert jogo.tabuleiro[1][1] == "X"
 
 
+# Um passo fora de cada ponta, na linha e na coluna (o "-1" viraria o índice
+# da última linha ou coluna).
+@pytest.mark.parametrize(
+    ("linha", "coluna"), [("3", "0"), ("-1", "0"), ("0", "3"), ("0", "-1"), ("5", "0")]
+)
 def test_jogada_do_usuario_repete_apos_coordenada_fora_do_limite(
-    jogo: JogoDaVelha, monkeypatch: pytest.MonkeyPatch
+    jogo: JogoDaVelha,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    linha: str,
+    coluna: str,
 ) -> None:
     """Coordenada fora de 0-2 não deve travar: o loop pede de novo até validar."""
-    _digitar(monkeypatch, "5", "0", "0", "0")
+    _digitar(monkeypatch, linha, coluna, "1", "1")
     jogo.jogada_do_usuario()
-    assert jogo.tabuleiro[0][0] == "X"
+    esperado = _tabuleiro_vazio()
+    esperado[1][1] = "X"
+    assert jogo.tabuleiro == esperado
+    assert capsys.readouterr().out.count("Coordenada fora do limite!") == 1
 
 
 def test_jogada_do_usuario_repete_apos_posicao_ocupada(
@@ -191,9 +224,30 @@ def test_jogada_do_usuario_repete_apos_entrada_nao_numerica(
 def test_jogada_da_maquina_ocupa_posicao_livre_sorteada(
     jogo: JogoDaVelha, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setattr(random, "choice", lambda _posicoes: (1, 1))
+    jogo.tabuleiro[0][0] = "X"
+    jogo.tabuleiro[2][2] = "O"
+    recebidas: list[list[tuple[int, int]]] = []
+
+    def _choice_falso(posicoes: list[tuple[int, int]]) -> tuple[int, int]:
+        recebidas.append(list(posicoes))
+        return (1, 1)
+
+    monkeypatch.setattr(random, "choice", _choice_falso)
     jogo.jogada_da_maquina()
     assert jogo.tabuleiro[1][1] == "O"
+    # O sorteio é só entre as posições livres, na ordem do tabuleiro.
+    assert recebidas == [
+        [(0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1)],
+    ]
+
+
+def test_jogada_da_maquina_com_uma_posicao_livre_joga_nela(jogo: JogoDaVelha) -> None:
+    """Com o sorteio de verdade, a única casa livre é a única saída possível."""
+    jogo.tabuleiro = [["X", "O", "X"], ["X", "O", "O"], ["O", " ", "X"]]
+
+    jogo.jogada_da_maquina()
+
+    assert jogo.tabuleiro == [["X", "O", "X"], ["X", "O", "O"], ["O", "O", "X"]]
 
 
 def test_jogada_da_maquina_nao_joga_se_ja_houver_vencedor(jogo: JogoDaVelha) -> None:
@@ -226,6 +280,50 @@ def test_exibir_tabuleiro_mostra_as_jogadas_atuais(
 
     jogo.exibir_tabuleiro()
 
+    assert capsys.readouterr().out.splitlines() == [
+        "",
+        " X |   |  ",
+        "-----------",
+        "   | O |  ",
+        "-----------",
+        "   |   |  ",
+        "",
+    ]
+
+
+# ---------------------------------------------------------------------------
+# main
+# ---------------------------------------------------------------------------
+
+
+def test_main_joga_duas_partidas_vitoria_e_empate(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """A máquina joga na primeira casa livre: o resultado das partidas é fixo."""
+    monkeypatch.setattr(random, "choice", lambda posicoes: posicoes[0])
+    # Partida 1: X fecha a coluna 0. Partida 2: o tabuleiro enche sem vencedor.
+    vitoria = ["0", "0", "1", "0", "2", "0"]
+    empate = ["0", "1", "1", "0", "1", "1", "2", "0", "2", "2"]
+    _digitar(monkeypatch, *vitoria, "S", *empate, "n")
+
+    main()
+
     saida = capsys.readouterr().out
-    assert "X" in saida
-    assert "O" in saida
+    assert saida.count("🎉 Fim de jogo! O vencedor foi: X") == 1
+    assert saida.count("⚖️ Deu Velha! O jogo terminou empatado.") == 1
+    assert saida.index("O vencedor foi: X") < saida.index("Deu Velha!")
+    assert saida.splitlines()[-1] == "Até a próxima! 👋"
+
+
+def test_main_mostra_a_vitoria_da_maquina(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """A máquina fecha a linha 0 enquanto X joga embaixo; a resposta "n" encerra."""
+    monkeypatch.setattr(random, "choice", lambda posicoes: posicoes[0])
+    _digitar(monkeypatch, "2", "2", "2", "1", "1", "2", "n")
+
+    main()
+
+    saida = capsys.readouterr().out
+    assert "🎉 Fim de jogo! O vencedor foi: O" in saida
+    assert saida.count("Sua vez (X)!") == 3

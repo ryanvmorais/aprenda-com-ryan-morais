@@ -133,15 +133,34 @@ def test_calculadora_trata_entrada_nao_numerica_sem_travar(
     assert "Calculadora encerrada." in saida
 
 
+# O menu vai de 1 a 5: o "0" e o "6" ficam um passo fora de cada ponta (o "0"
+# viraria o índice -1, a última operação da lista).
+@pytest.mark.parametrize("opcao", ["0", "6", "9"])
 def test_calculadora_opcao_invalida_pede_nova_escolha(
-    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str], opcao: str
 ) -> None:
     """Escolher um número fora do intervalo do menu pede nova tentativa."""
-    respostas = _entradas(["9", "", "1", "5", "3", "1"])
+    respostas = _entradas([opcao, "", "1", "5", "3", "1"])
     monkeypatch.setattr("builtins.input", lambda _prompt="": next(respostas))
 
     main.calculadora()
 
     saida = capsys.readouterr().out
-    assert "Opção inválida!" in saida
+    assert saida.count("Opção inválida!") == 1
+    assert "Operação escolhida: Soma" in saida
     assert "Calculadora encerrada." in saida
+
+
+def test_calculadora_continua_com_outra_tecla_e_so_sai_com_1(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Qualquer resposta diferente de "1" no fim da conta abre outra operação."""
+    respostas = _entradas(["1", "5", "3", "x", "2", "5", "3", "1"])
+    monkeypatch.setattr("builtins.input", lambda _prompt="": next(respostas))
+
+    main.calculadora()
+
+    saida = capsys.readouterr().out
+    assert "RESULTADO: 5.0 + 3.0 = 8.0" in saida
+    assert "RESULTADO: 5.0 - 3.0 = 2.0" in saida
+    assert saida.count("Calculadora encerrada.") == 1
