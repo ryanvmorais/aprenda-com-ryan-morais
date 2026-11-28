@@ -249,7 +249,8 @@ def test_achar_repeticoes(senha: str, esperado: list[tuple[int, int]]) -> None:
 
 
 # As duas pontas de cada sequência, na ordem das `SEQUENCIAS`: uma ponta
-# encurtada deixa de achar a janela dela.
+# encurtada deixa de achar a janela dela. A exceção é o "jkl", o fim da fileira
+# do meio, que o alfabeto também acha.
 @pytest.mark.parametrize(
     "senha",
     [

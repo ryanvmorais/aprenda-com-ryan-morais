@@ -566,9 +566,7 @@ def test_conferir_opcao_aceita_cada_opcao(opcao: int) -> None:
 
 
 # O "0" e o "5" ficam um passo fora de cada ponta do menu.
-@pytest.mark.parametrize(
-    "entrada", ["", "  ", "0", "5", "9", "abc", "²", "-1", "1.0"]
-)
+@pytest.mark.parametrize("entrada", ["", "  ", "0", "5", "9", "abc", "²", "-1", "1.0"])
 def test_conferir_opcao_recusa_o_resto(entrada: str) -> None:
     assert conferir_opcao(entrada) is None
 
