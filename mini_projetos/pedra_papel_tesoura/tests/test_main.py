@@ -14,7 +14,7 @@ from collections.abc import Iterator
 
 import pytest
 
-from main import PedraPapelTesoura
+from main import PedraPapelTesoura, main
 
 pytestmark = pytest.mark.usefixtures("_sem_tela")
 
@@ -73,13 +73,20 @@ def test_realizar_jogada_usuario_aceita_entrada_valida(
     assert jogo.jogada_usuario == "papel"
 
 
+# O "-1" e o "3" ficam um passo fora de cada ponta de 0-2 (o "-1" viraria o
+# índice da última opção, "tesoura").
+@pytest.mark.parametrize("fora", ["-1", "3", "5"])
 def test_realizar_jogada_usuario_repete_apos_numero_fora_do_intervalo(
-    jogo: PedraPapelTesoura, monkeypatch: pytest.MonkeyPatch
+    jogo: PedraPapelTesoura,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    fora: str,
 ) -> None:
     """Entrada fora de 0-2 não deve travar: o loop pede de novo até validar."""
-    _digitar(monkeypatch, "5", "0")
+    _digitar(monkeypatch, fora, "0")
     jogo.realizar_jogada_usuario()
     assert jogo.jogada_usuario == "pedra"
+    assert capsys.readouterr().out.count("Opção inválida!") == 1
 
 
 def test_realizar_jogada_usuario_repete_apos_entrada_nao_numerica(
@@ -99,9 +106,17 @@ def test_realizar_jogada_usuario_repete_apos_entrada_nao_numerica(
 def test_realizar_jogada_computador_sorteia_entre_as_opcoes(
     jogo: PedraPapelTesoura, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setattr(random, "choice", lambda _opcoes: "tesoura")
+    recebidas: list[list[str]] = []
+
+    def _choice_falso(opcoes: list[str]) -> str:
+        recebidas.append(list(opcoes))
+        return "tesoura"
+
+    monkeypatch.setattr(random, "choice", _choice_falso)
     jogo.realizar_jogada_computador()
     assert jogo.jogada_computador == "tesoura"
+    # O sorteio é entre as três opções, não um recorte delas.
+    assert recebidas == [["pedra", "papel", "tesoura"]]
 
 
 # ---------------------------------------------------------------------------
@@ -179,10 +194,14 @@ def test_determinar_vencedor_acumula_placar_entre_rodadas(
 def test_exibir_placar_sem_resultado_nao_mostra_ultima_rodada(
     jogo: PedraPapelTesoura, capsys: pytest.CaptureFixture[str]
 ) -> None:
+    # Placares diferentes: trocar os dois pontos de lugar muda a linha.
+    jogo.pontos_usuario = 2
+    jogo.pontos_computador = 1
+
     jogo.exibir_placar()
 
     saida = capsys.readouterr().out
-    assert "PLACAR" in saida
+    assert "PLACAR: Você 2 x 1 Computador" in saida
     assert "ÚLTIMA RODADA" not in saida
 
 
@@ -194,7 +213,50 @@ def test_exibir_placar_com_resultado_mostra_as_jogadas(
 
     jogo.exibir_placar("🎉 VOCÊ VENCEU A RODADA!")
 
+    linhas = capsys.readouterr().out.splitlines()
+    inicio = linhas.index("ÚLTIMA RODADA:")
+    assert linhas[inicio + 1 : inicio + 4] == [
+        "Você escolheu: PEDRA",
+        "Computador escolheu: TESOURA",
+        "👉 🎉 VOCÊ VENCEU A RODADA!",
+    ]
+
+
+# ---------------------------------------------------------------------------
+# main
+# ---------------------------------------------------------------------------
+
+
+def test_main_joga_ate_o_nao_e_mostra_o_placar_final(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Duas rodadas (vitória e derrota), uma resposta inválida no replay e o fim."""
+    # Rodada 1: pedra contra tesoura (vitória). Rodada 2: pedra contra papel.
+    sorteios = iter(["tesoura", "papel"])
+    monkeypatch.setattr(random, "choice", lambda _opcoes: next(sorteios))
+    _digitar(monkeypatch, "0", "0", "0", "talvez", "1")
+
+    main()
+
     saida = capsys.readouterr().out
-    assert "ÚLTIMA RODADA" in saida
-    assert "PEDRA" in saida
-    assert "TESOURA" in saida
+    assert "🎉 VOCÊ VENCEU A RODADA!" in saida
+    assert "😢 O COMPUTADOR VENCEU A RODADA!" in saida
+    assert saida.count("Resposta inválida. Digite 0 ou 1.") == 1
+    assert saida.splitlines()[-2:] == [
+        "Sessão encerrada com placar de 1 x 1.",
+        "Até a próxima! 👋",
+    ]
+
+
+def test_main_sai_no_1_sem_jogar_outra_rodada(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Com "1" na primeira pergunta, a sessão acaba depois de uma rodada só."""
+    monkeypatch.setattr(random, "choice", lambda _opcoes: "tesoura")
+    _digitar(monkeypatch, "0", "1")
+
+    main()
+
+    saida = capsys.readouterr().out
+    assert saida.count("Computador escolheu: TESOURA") == 1
+    assert "Sessão encerrada com placar de 1 x 0." in saida

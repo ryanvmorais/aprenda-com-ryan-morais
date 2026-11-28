@@ -149,9 +149,10 @@ fruta dourada, atravessar paredes).
 
 ### RF-01 — Seleção de dificuldade
 
-`tests/test_main.py` cobre `selecionar_nivel_dificuldade` com entrada
-válida e com entrada fora do intervalo (via `monkeypatch` em `input`),
-verificando a mensagem de aviso via `capsys`.
+`tests/test_main.py` cobre `selecionar_nivel_dificuldade` com cada um dos
+cinco níveis (a espera de cada um escrita no teste) e com entrada fora do
+intervalo (via `monkeypatch` em `input`), verificando a mensagem de aviso via
+`capsys`.
 
 ### RF-02 — Desenho do campo
 
@@ -162,10 +163,11 @@ real.
 
 ### RF-03 — Movimento e direção oposta
 
-`tests/test_main.py` cobre `obter_nova_direcao` (timeout configurado,
-tecla de seta aceita, tecla não direcional ignorada — parametrizado),
+`tests/test_main.py` cobre `obter_nova_direcao` (timeout configurado, cada
+uma das quatro setas aceita, tecla não direcional ignorada — parametrizado),
 `direcao_e_oposta` (as quatro combinações opostas e uma lateral) e
-`mover_cobra` (deslocamento da cabeça nas quatro direções).
+`mover_cobra` (deslocamento da cabeça nas quatro direções e o corpo inteiro
+depois do passo).
 
 ### RF-04 — Alimentação
 
@@ -176,7 +178,8 @@ mockado, verificando os limites passados (`altura-2`, `largura-2`).
 ### RF-05 — Colisões
 
 `tests/test_main.py` cobre `verificar_colisoes` para os quatro lados da
-borda (parametrizado), para colisão com o próprio corpo e para o caso sem
+borda e para a casa logo ao lado de cada um, que ainda é campo livre
+(parametrizado), para colisão com o próprio corpo e para o caso sem
 colisão.
 
 ### RF-06 — Tela final
@@ -185,11 +188,16 @@ colisão.
 verificando a coordenada centralizada, o texto com a pontuação, o
 atributo `curses.A_REVERSE` e a chamada a `refresh`.
 
-### `ciclo_do_jogo` — sem teste automatizado direto
+### `ciclo_do_jogo` — a partida inteira contra a janela falsa
 
-O loop principal depende de um terminal real (`curses.wrapper`); não tem
-teste automatizado, mas cada peça que ele orquestra é coberta
-isoladamente acima. Verificado manualmente ao rodar o jogo.
+`tests/test_main.py` roda `ciclo_do_jogo` contra a `_FakeJanela`, com
+`curses.curs_set` (que exige um terminal real) trocado por um registro e as
+frutas fixadas por `random.randint`: numa partida, a cobra come a fruta, a
+meia-volta é ignorada e a batida na base vem no 9º quadro; noutra, a curva
+lateral é aceita e a batida na borda direita vem no 24º. A janela falsa
+falha o teste depois de 200 leituras de tecla, para uma partida sem fim não
+travar a suíte. Só o `curses.wrapper`, que prepara e restaura o terminal,
+fica de fora, conferido à mão ao rodar o jogo.
 
 ### RNF-04 — Documentação conferida
 

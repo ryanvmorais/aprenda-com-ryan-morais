@@ -377,6 +377,15 @@ def test_conferir_texto_aceita_e_tira_os_espacos_das_pontas() -> None:
     assert conferir_texto("  Gravar o vídeo  ") == Conferencia("Gravar o vídeo", "")
 
 
+def test_conferir_texto_vai_de_1_a_80_caracteres() -> None:
+    # Os números escritos aqui, e não lidos de TAMANHO_MAXIMO: o limite de 80 é
+    # o da spec, e mudá-lo no código precisa falhar algum teste.
+    assert conferir_texto("a" * 80) == Conferencia("a" * 80, "")
+    assert conferir_texto("a" * 81) == Conferencia(
+        "", "❌ Digite um texto de 1 a 80 caracteres."
+    )
+
+
 def test_conferir_texto_aceita_o_tamanho_maximo() -> None:
     texto = "a" * TAMANHO_MAXIMO
     assert conferir_texto(texto) == Conferencia(texto, "")
@@ -451,8 +460,8 @@ def test_exibir_tela_sem_mensagem_termina_no_menu(
     capsys: pytest.CaptureFixture[str],
 ) -> None:
     exibir_tela([nova_tarefa()], "")
-    linhas = [linha for linha in capsys.readouterr().out.splitlines() if linha]
-    assert linhas[-1] == "5 : Sair"
+    # Sem filtrar as linhas vazias: uma linha a mais depois do menu também falha.
+    assert capsys.readouterr().out.endswith("4 : Remover\n5 : Sair\n\n")
 
 
 # ---------------------------------------------------------------------------
@@ -589,6 +598,23 @@ def test_main_sessao_grava_e_reabre_com_a_mesma_lista(
     assert " 1. [x] 20/11/2026  Estudar pathlib" in saida
     assert " 2. [ ] 20/11/2026  Comprar pão" in saida
     assert "Pendentes: 1 | Concluídas: 1" in saida
+
+
+def test_main_edita_e_remove_pelo_menu(
+    arquivo: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    # Opção 3 edita a tarefa 1; opção 4 remove a tarefa 2, confirmada com "s".
+    salvar_tarefas([nova_tarefa("Estudar"), nova_tarefa("Comprar pão")], arquivo)
+    leitor = LeitorFalso("3", "1", "Estudar pathlib", "4", "2", "s", "5")
+    main(leitor, relogio_falso, arquivo)
+
+    saida = capsys.readouterr().out
+    assert "✏️ Tarefa editada: Estudar pathlib" in saida
+    assert "🗑️ Tarefa removida: Comprar pão" in saida
+    assert carregar_tarefas(arquivo, relogio_falso) == (
+        [nova_tarefa("Estudar pathlib")],
+        "",
+    )
 
 
 def test_main_avisa_do_arquivo_corrompido_na_primeira_tela(

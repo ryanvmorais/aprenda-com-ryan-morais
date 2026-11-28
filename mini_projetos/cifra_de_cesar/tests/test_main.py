@@ -334,9 +334,36 @@ def test_frequencias_tem_as_26_letras_do_alfabeto() -> None:
 
 
 def test_frequencias_tem_os_percentuais_do_estudo() -> None:
-    assert FREQUENCIAS["a"] == 14.64
-    assert FREQUENCIAS["e"] == 12.70
-    assert FREQUENCIAS["o"] == 10.78
+    # A tabela inteira escrita aqui, e não lida do `main.py`: uma letra com o
+    # percentual trocado muda a pontuação e precisa falhar algum teste.
+    assert FREQUENCIAS == {
+        "a": 14.64,
+        "b": 1.16,
+        "c": 3.76,
+        "d": 4.97,
+        "e": 12.70,
+        "f": 1.02,
+        "g": 1.29,
+        "h": 1.42,
+        "i": 5.90,
+        "j": 0.32,
+        "k": 0.01,
+        "l": 2.95,
+        "m": 4.71,
+        "n": 4.85,
+        "o": 10.78,
+        "p": 2.58,
+        "q": 1.09,
+        "r": 6.88,
+        "s": 7.97,
+        "t": 4.26,
+        "u": 4.42,
+        "v": 1.68,
+        "w": 0.01,
+        "x": 0.23,
+        "y": 0.01,
+        "z": 0.42,
+    }
 
 
 def test_frequencias_somam_perto_de_100() -> None:
@@ -737,22 +764,66 @@ def test_main_le_o_teclado_com_o_input_por_padrao() -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_main_py_so_importa_os_modulos_previstos_e_nao_le_nem_grava_arquivo() -> None:
-    arvore = ast.parse(Path(modulo_main.__file__).read_text(encoding="utf-8"))
+# O `os` e o `sys` também abrem caminho para o disco (`os.open`, `os.popen`,
+# `os.remove`) e para a linha de comando (`sys.argv`): deles, só o que o
+# programa usa para limpar a tela e reconfigurar a saída.
+ATRIBUTOS_PREVISTOS = {("os", "name"), ("os", "system"), ("sys", "stdout")}
+
+
+def inventariar(fonte: str) -> tuple[set[str], set[str], set[tuple[str, str]]]:
+    """Lista os módulos, as chamadas por nome e os atributos de `os` e `sys`.
+
+    Args:
+        fonte (str): O código Python a examinar.
+
+    Returns:
+        tuple[set[str], set[str], set[tuple[str, str]]]: Os módulos importados,
+            os nomes chamados direto (como `open`) e cada par (módulo, nome)
+            de `os` e `sys`, lido como `os.popen` ou importado com
+            `from os import popen`.
+    """
     modulos: set[str] = set()
     chamadas: set[str] = set()
     atributos: set[tuple[str, str]] = set()
-    for no in ast.walk(arvore):
+    for no in ast.walk(ast.parse(fonte)):
         if isinstance(no, ast.Import):
             modulos.update(apelido.name for apelido in no.names)
         elif isinstance(no, ast.ImportFrom):
             modulos.add(no.module or "")
+            atributos.update((no.module or "", apelido.name) for apelido in no.names)
         elif isinstance(no, ast.Call) and isinstance(no.func, ast.Name):
             chamadas.add(no.func.id)
-        elif isinstance(no, ast.Call) and isinstance(no.func, ast.Attribute):
-            chamadas.add(no.func.attr)
-        if isinstance(no, ast.Attribute) and isinstance(no.value, ast.Name):
+        elif isinstance(no, ast.Attribute) and isinstance(no.value, ast.Name):
             atributos.add((no.value.id, no.attr))
+    return modulos, chamadas, {par for par in atributos if par[0] in ("os", "sys")}
+
+
+def test_inventariar_acusa_o_que_abre_arquivo_ou_le_a_linha_de_comando() -> None:
+    # O controle do teste abaixo: cada forma que ele recusa aparece aqui.
+    fonte = (
+        "import os\n"
+        "import sys\n"
+        "from os import remove\n"
+        "open('texto.txt', 'w')\n"
+        "os.popen('echo')\n"
+        "os.open('texto.txt', os.O_CREAT)\n"
+        "print(sys.argv)\n"
+    )
+    modulos, chamadas, atributos = inventariar(fonte)
+    assert modulos == {"os", "sys"}
+    assert "open" in chamadas
+    assert atributos == {
+        ("os", "remove"),
+        ("os", "popen"),
+        ("os", "open"),
+        ("os", "O_CREAT"),
+        ("sys", "argv"),
+    }
+
+
+def test_main_py_so_importa_os_modulos_previstos_e_nao_le_nem_grava_arquivo() -> None:
+    fonte = Path(modulo_main.__file__).read_text(encoding="utf-8")
+    modulos, chamadas, atributos = inventariar(fonte)
 
     previstos = {
         "__future__",
@@ -764,6 +835,5 @@ def test_main_py_so_importa_os_modulos_previstos_e_nao_le_nem_grava_arquivo() ->
         "unicodedata",
     }
     assert modulos <= previstos
-    proibidas = {"open", "read_text", "write_text", "read_bytes", "write_bytes"}
-    assert not chamadas & proibidas
-    assert ("sys", "argv") not in atributos
+    assert "open" not in chamadas
+    assert atributos <= ATRIBUTOS_PREVISTOS

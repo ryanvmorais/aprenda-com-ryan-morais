@@ -529,9 +529,9 @@ caractere acima.
 
 Para a frequência, `contar_letras` e `pontuar` com valores conferidos à mão, e `ordenar_chaves`
 com frases de 30 letras ou mais, escritas para o teste, cifradas com cada uma das 25 chaves, tendo
-a chave certa em primeiro. Um teste confere que `FREQUENCIAS` tem as 26 letras de `ALFABETO`, os
-três maiores percentuais do estudo (A 14,64, E 12,70 e O 10,78) e a soma entre 99,9 e 100,1
-(RNF-08). Os textos de `descrever_cifra`, `descrever_decifra`, `descrever_forca_bruta` e
+a chave certa em primeiro. Um teste confere que `FREQUENCIAS` tem as 26 letras de `ALFABETO`, o
+percentual do estudo de cada uma (a tabela escrita no teste, e não lida do `main.py`) e a soma
+entre 99,9 e 100,1 (RNF-08). Os textos de `descrever_cifra`, `descrever_decifra`, `descrever_forca_bruta` e
 `descrever_frequencia` são conferidos sem `capsys`, porque são devolvidos e não impressos,
 inclusive o aviso de acentos só quando o texto tinha acento e o aviso de texto curto abaixo de
 `MINIMO_LETRAS` e não a partir dele.
@@ -546,8 +546,9 @@ chamarem `os.system`: é o único `monkeypatch` da suíte (RF-01).
 
 O RNF-07 tem um teste com o módulo `ast`: ele lê o `main.py`, confere que os `import` ficam em
 `__future__`, `collections`, `collections.abc`, `os`, `string`, `sys` e `unicodedata`, que nenhuma
-chamada a `open`, `read_text`, `write_text`, `read_bytes` ou `write_bytes` aparece e que
-`sys.argv` não é lido. Três testes medem a largura das linhas dos textos do programa, dos pedidos
+chamada a `open` aparece e que, do `os` e do `sys`, só `os.name`, `os.system` e `sys.stdout` são
+usados (uma allow-list, que também conta o `from os import ...`; um teste de controle mostra cada
+forma recusada sendo acusada). Três testes medem a largura das linhas dos textos do programa, dos pedidos
 e do quadro inteiro com um texto curto (54 colunas, com os emojis contando duas). Ver
 `tests/test_main.py` e a seção "Testes" do `requirements.md`.
 
