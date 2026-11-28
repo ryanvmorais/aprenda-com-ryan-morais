@@ -400,12 +400,26 @@ def test_formatar_cpf_mantem_o_zero_a_esquerda() -> None:
     assert formatar_cpf("00000000000") == "000.000.000-00"
 
 
-@pytest.mark.parametrize("regiao", range(10))
-def test_descrever_regiao_pelo_nono_algarismo(regiao: int) -> None:
+# A tabela fica escrita aqui, e não lida do `REGIOES_FISCAIS`: comparar o
+# programa com ele mesmo deixaria passar duas regiões trocadas.
+@pytest.mark.parametrize(
+    ("regiao", "estados"),
+    [
+        (0, "RS"),
+        (1, "DF, GO, MS, MT e TO"),
+        (2, "AC, AM, AP, PA, RO e RR"),
+        (3, "CE, MA e PI"),
+        (4, "AL, PB, PE e RN"),
+        (5, "BA e SE"),
+        (6, "MG"),
+        (7, "ES e RJ"),
+        (8, "SP"),
+        (9, "PR e SC"),
+    ],
+)
+def test_descrever_regiao_pelo_nono_algarismo(regiao: int, estados: str) -> None:
     cpf = f"28001238{regiao}38"
-    assert descrever_regiao(cpf) == (
-        f"Região fiscal {regiao}: {REGIOES_FISCAIS[regiao]}"
-    )
+    assert descrever_regiao(cpf) == f"Região fiscal {regiao}: {estados}"
 
 
 def test_descrever_regiao_do_exemplo_da_receita() -> None:
@@ -551,7 +565,10 @@ def test_conferir_opcao_aceita_cada_opcao(opcao: int) -> None:
     assert conferir_opcao(f" {opcao} ") == opcao
 
 
-@pytest.mark.parametrize("entrada", ["", "  ", "0", "9", "abc", "²", "-1", "1.0"])
+# O "0" e o "5" ficam um passo fora de cada ponta do menu.
+@pytest.mark.parametrize(
+    "entrada", ["", "  ", "0", "5", "9", "abc", "²", "-1", "1.0"]
+)
 def test_conferir_opcao_recusa_o_resto(entrada: str) -> None:
     assert conferir_opcao(entrada) is None
 
@@ -687,18 +704,68 @@ def test_main_sai_sem_stack_trace(
 # ---------------------------------------------------------------------------
 
 
-def test_main_py_so_importa_os_modulos_previstos_e_nao_abre_arquivo() -> None:
-    arvore = ast.parse(Path(modulo_main.__file__).read_text(encoding="utf-8"))
+# O `os` e o `sys` também abrem caminho para o disco (`os.open`, `os.popen`,
+# `os.remove`) e para a linha de comando (`sys.argv`): deles, só o que o
+# programa usa para limpar a tela e reconfigurar a saída.
+ATRIBUTOS_PREVISTOS = {("os", "name"), ("os", "system"), ("sys", "stdout")}
+
+
+def inventariar(fonte: str) -> tuple[set[str], set[str], set[tuple[str, str]]]:
+    """Lista os módulos, as chamadas por nome e os atributos de `os` e `sys`.
+
+    Args:
+        fonte (str): O código Python a examinar.
+
+    Returns:
+        tuple[set[str], set[str], set[tuple[str, str]]]: Os módulos importados,
+            os nomes chamados direto (como `open`) e cada par (módulo, nome)
+            de `os` e `sys`, lido como `os.popen` ou importado com
+            `from os import popen`.
+    """
     modulos: set[str] = set()
     chamadas: set[str] = set()
-    for no in ast.walk(arvore):
+    atributos: set[tuple[str, str]] = set()
+    for no in ast.walk(ast.parse(fonte)):
         if isinstance(no, ast.Import):
             modulos.update(apelido.name for apelido in no.names)
         elif isinstance(no, ast.ImportFrom):
             modulos.add(no.module or "")
+            atributos.update((no.module or "", apelido.name) for apelido in no.names)
         elif isinstance(no, ast.Call) and isinstance(no.func, ast.Name):
             chamadas.add(no.func.id)
+        elif isinstance(no, ast.Attribute) and isinstance(no.value, ast.Name):
+            atributos.add((no.value.id, no.attr))
+    return modulos, chamadas, {par for par in atributos if par[0] in ("os", "sys")}
+
+
+def test_inventariar_acusa_o_que_abre_arquivo_ou_le_a_linha_de_comando() -> None:
+    # O controle do teste abaixo: cada forma que ele recusa aparece aqui.
+    fonte = (
+        "import os\n"
+        "import sys\n"
+        "from os import remove\n"
+        "open('cpf.txt', 'w')\n"
+        "os.popen('echo')\n"
+        "os.open('cpf.txt', os.O_CREAT)\n"
+        "print(sys.argv)\n"
+    )
+    modulos, chamadas, atributos = inventariar(fonte)
+    assert modulos == {"os", "sys"}
+    assert "open" in chamadas
+    assert atributos == {
+        ("os", "remove"),
+        ("os", "popen"),
+        ("os", "open"),
+        ("os", "O_CREAT"),
+        ("sys", "argv"),
+    }
+
+
+def test_main_py_so_importa_os_modulos_previstos_e_nao_abre_arquivo() -> None:
+    fonte = Path(modulo_main.__file__).read_text(encoding="utf-8")
+    modulos, chamadas, atributos = inventariar(fonte)
 
     previstos = {"__future__", "collections.abc", "os", "random", "sys", "typing"}
     assert modulos <= previstos
     assert "open" not in chamadas
+    assert atributos <= ATRIBUTOS_PREVISTOS
